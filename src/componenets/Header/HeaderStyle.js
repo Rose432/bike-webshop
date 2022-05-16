@@ -82,10 +82,9 @@ export const Nav = styled.a`
   color: #343a40;
   font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: -0.5px;
+  letter-spacing: 0px;
 
   &::after {
-    font-weight: 500;
     position: absolute;
     content: "";
     display: block;

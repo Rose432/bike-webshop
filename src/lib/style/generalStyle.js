@@ -14,4 +14,15 @@ export const Button = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   box-shadow: 0 2px 5px #000000;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 5px 5px #000000;
+  }
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
 `;

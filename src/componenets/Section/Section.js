@@ -1,8 +1,15 @@
 import React from "react";
-import {} from "./SectionStyle";
+import { Section as SectionWrapper, SectionInner, Title } from "./SectionStyle";
 
-const Section = () => {
-  return;
+const Section = ({ children }) => {
+  return (
+    <SectionWrapper>
+      <SectionInner>
+        <Title>Our Recommendation</Title>
+        {children}
+      </SectionInner>
+    </SectionWrapper>
+  );
 };
 
 export default Section;
