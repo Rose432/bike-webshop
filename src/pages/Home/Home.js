@@ -1,4 +1,6 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import { commerce } from "../../lib/commerce";
 import Header from "../../componenets/Header/Header";
 import Landing from "../../componenets/Landing/Landing";
 import Section from "../../componenets/Section/Section";
@@ -12,12 +14,24 @@ import {
   ClockIcon,
   QuestionMarkIcon,
 } from "../../lib/style/generalStyle";
-import Bike1 from "../../assets/images/bike1.jpg";
-import Bike2 from "../../assets/images/bike2.jpg";
-import Bike3 from "../../assets/images/bike3.jpg";
-import Bike4 from "../../assets/images/bike4.jpg";
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState({});
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+
+    setProducts(data);
+  };
+
+  const fetchCart = async () => {
+    setCart(await commerce.cart.retriece());
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <Header />
@@ -26,26 +40,17 @@ const Home = () => {
         title={"bestsellers"}
         children={
           <Grid>
-            <BikeCard
-              imgSrc={Bike1}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
-            <BikeCard
-              imgSrc={Bike2}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
-            <BikeCard
-              imgSrc={Bike3}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
-            <BikeCard
-              imgSrc={Bike4}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
+            {products.map(
+              (bicycle, index) =>
+                index < 4 && (
+                  <BikeCard
+                    imgSrc={bicycle.image.url}
+                    imgAlt={bicycle.description}
+                    bikeTitle={bicycle.name}
+                    bikePrice={bicycle.price.formatted_with_symbol}
+                  />
+                )
+            )}
           </Grid>
         }
       />
