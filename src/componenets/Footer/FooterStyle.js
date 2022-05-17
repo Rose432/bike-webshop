@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const FooterContainer = styled.footer`
   display: grid;
   gap: 30px;
-  grid-template-columns: 1.5fr 0.5fr 1fr;
+  grid-template-columns: 1.2fr 0.6fr 1.2fr;
+  justify-items: center;
 `;
 
 export const FlexContainer = styled.div`

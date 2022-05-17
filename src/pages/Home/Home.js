@@ -13,11 +13,14 @@ import {
   TruckIcon,
   ClockIcon,
   QuestionMarkIcon,
+  SpinnerWrapper,
 } from "../../lib/style/generalStyle";
+import { ThreeDots } from "react-loader-spinner";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
+  const n = 4;
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -32,6 +35,30 @@ const Home = () => {
     fetchProducts();
   }, []);
 
+  const bicycles =
+    products.length > 1
+      ? products.map(
+          (bicycle, index) =>
+            index < 4 && (
+              <BikeCard
+                imgSrc={bicycle.image.url}
+                imgAlt={bicycle.description}
+                bikeTitle={bicycle.name}
+                bikePrice={bicycle.price.formatted_with_symbol}
+              />
+            )
+        )
+      : [...Array(n)].map((e, i) => (
+          <SpinnerWrapper key={i}>
+            <ThreeDots
+              color="#087f5b"
+              height={80}
+              width={80}
+              strokeWidth={0.8}
+            />
+          </SpinnerWrapper>
+        ));
+
   return (
     <>
       <Header />
@@ -39,21 +66,7 @@ const Home = () => {
       <Section
         title={"bestsellers"}
         linkText={"See more bicycles →"}
-        children={
-          <Grid>
-            {products.map(
-              (bicycle, index) =>
-                index < 4 && (
-                  <BikeCard
-                    imgSrc={bicycle.image.url}
-                    imgAlt={bicycle.description}
-                    bikeTitle={bicycle.name}
-                    bikePrice={bicycle.price.formatted_with_symbol}
-                  />
-                )
-            )}
-          </Grid>
-        }
+        children={<Grid>{bicycles}</Grid>}
       />
       <Section
         isAfterSection

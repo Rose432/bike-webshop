@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink, Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
@@ -44,7 +45,7 @@ export const LogoContainer = styled.div`
   width: 100px;
 `;
 
-export const LogoLink = styled.a`
+export const LogoLink = styled(Link)`
   font-size: 24px;
   color: black;
   font-weight: 700;
@@ -76,7 +77,7 @@ export const NavWrapper = styled.nav`
   justify-content: space-between;
 `;
 
-export const Nav = styled.a`
+export const Nav = styled(NavLink)`
   position: relative;
   display: inline-block;
   color: #343a40;

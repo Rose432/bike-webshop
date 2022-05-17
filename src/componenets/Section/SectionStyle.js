@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Section = styled.section`
   padding: 128px calc((100% - 1260px) / 2);
@@ -54,7 +55,7 @@ export const Title = styled.h2`
   }
 `;
 
-export const SmallLink = styled.a`
+export const SmallLink = styled(Link)`
   padding-top: 64px;
   font-size: 18px;
   text-decoration: underline;
@@ -63,4 +64,9 @@ export const SmallLink = styled.a`
   justify-content: center;
   text-decoration: under;
   color: #087f5b;
+  transition: all 0.3s ease-in;
+
+  &:hover {
+    font-weight: 500;
+  }
 `;

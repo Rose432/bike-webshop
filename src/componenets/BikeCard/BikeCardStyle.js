@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const BikeCard = styled.div`
   width: 100%;
-  padding: 10px 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,13 +25,15 @@ export const BikeCard = styled.div`
 `;
 
 export const Figure = styled.figure`
-  width: 250px;
+  width: 100%;
   height: 300px;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 `;
 export const Img = styled.img`
   object-fit: cover;

@@ -26,16 +26,16 @@ const Header = () => {
       <HeaderWrapper>
         <HeaderInner>
           <LogoContainer>
-            <LogoLink href="/">Bikeshop</LogoLink>
+            <LogoLink to="/">Bikeshop</LogoLink>
           </LogoContainer>
           <IconContainer>
             <Favorite />
             <Cart />
           </IconContainer>
           <NavWrapper>
-            <Nav href="/">Shop</Nav>
-            <Nav href="/">Register</Nav>
-            <Nav href="/">Contact</Nav>
+            <Nav to="/shop">Shop</Nav>
+            <Nav to="/">Register</Nav>
+            <Nav to="/">Contact</Nav>
           </NavWrapper>
         </HeaderInner>
       </HeaderWrapper>

@@ -12,7 +12,7 @@ const Section = ({ children, title, isAfterSection, isFooter, linkText }) => {
       <SectionInner isAfterSection={isAfterSection}>
         {title && <Title>{title}</Title>}
         {children}
-        {linkText && <SmallLink>{linkText}</SmallLink>}
+        {linkText && <SmallLink to="/shop">{linkText}</SmallLink>}
       </SectionInner>
     </SectionWrapper>
   );

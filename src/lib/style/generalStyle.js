@@ -83,3 +83,12 @@ export const QuestionMarkIcon = styled(ContactSupportOutlinedIcon)`
   color: #087f5b;
   transition: all 0.3s ease-in-out;
 `;
+
+// SpinnerWrapper
+
+export const SpinnerWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
