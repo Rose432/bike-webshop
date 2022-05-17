@@ -49,6 +49,7 @@ export const Grid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   place-items: center;
   gap: 10px;
+  row-gap: 64px;
 
   ${(props) =>
     props.isFeature &&

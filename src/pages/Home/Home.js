@@ -14,7 +14,6 @@ import {
   ClockIcon,
   QuestionMarkIcon,
 } from "../../lib/style/generalStyle";
-import { RateReviewRounded } from "@material-ui/icons";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
