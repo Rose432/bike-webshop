@@ -14,6 +14,7 @@ import {
   ClockIcon,
   QuestionMarkIcon,
 } from "../../lib/style/generalStyle";
+import { RateReviewRounded } from "@material-ui/icons";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -38,6 +39,7 @@ const Home = () => {
       <Landing />
       <Section
         title={"bestsellers"}
+        linkText={"See more bicycles →"}
         children={
           <Grid>
             {products.map(

@@ -53,3 +53,14 @@ export const Title = styled.h2`
     margin-right: 10px;
   }
 `;
+
+export const SmallLink = styled.a`
+  padding-top: 64px;
+  font-size: 18px;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: under;
+  color: #087f5b;
+`;
