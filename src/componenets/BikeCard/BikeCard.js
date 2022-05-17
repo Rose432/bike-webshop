@@ -7,6 +7,7 @@ import {
   Title,
   Price,
 } from "./BikeCardStyle";
+import { Button } from "../../lib/style/generalStyle";
 
 const BikeCard = ({ imgSrc, imgAlt, bikeTitle, bikePrice }) => {
   return (
@@ -17,6 +18,7 @@ const BikeCard = ({ imgSrc, imgAlt, bikeTitle, bikePrice }) => {
       <Content>
         <Title>{bikeTitle}</Title>
         <Price>{bikePrice}</Price>
+        <Button isShop>Add to cart</Button>
       </Content>
     </BikeContainer>
   );

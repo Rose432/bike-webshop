@@ -24,11 +24,11 @@ export const HeaderSecondary = styled.div`
 `;
 
 export const Guest = styled.span`
-  color: #c3fae8;
+  color: #f0fdf9;
 `;
 
 export const SignIn = styled.a`
-  color: #c3fae8;
+  color: #f0fdf9;
 `;
 
 export const HeaderInner = styled.div`
@@ -64,7 +64,7 @@ export const IconContainer = styled.div`
 export const Cart = styled(ShoppingCartOutlinedIcon)``;
 
 export const Profile = styled(PersonOutlineOutlinedIcon)`
-  color: #c3fae8;
+  color: #f0fdf9;
 `;
 
 export const Favorite = styled(FavoriteBorderOutlinedIcon)``;
@@ -82,7 +82,7 @@ export const Nav = styled.a`
   color: #343a40;
   font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: 0px;
+  letter-spacing: -0.2px;
 
   &::after {
     position: absolute;
@@ -91,7 +91,7 @@ export const Nav = styled.a`
     opacity: 0;
     width: 100%;
     height: 2px;
-    background-color: #099268;
+    background-color: #087f5b;
     margin: auto;
     transition: all 0.3s ease-in-out;
   }

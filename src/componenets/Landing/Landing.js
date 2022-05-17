@@ -14,7 +14,9 @@ const Landing = () => {
       <LandingInner>
         <Content>
           <Title>Travel, Explore and Enjoy Nature with Us</Title>
-          <Subtitle>We are premium brand offering best bikes for You.</Subtitle>
+          <Subtitle>
+            We are premium brand offering the best bikes for You.
+          </Subtitle>
           <Button>Explore Shop</Button>
         </Content>
       </LandingInner>
