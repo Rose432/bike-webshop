@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { colors } from "../../lib/style/theme";
+import { colors, breakpoints } from "../../lib/style/theme";
 
 export const BikeCard = styled.div`
-  width: 100%;
+  width: 300px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding-bottom: 20px;
@@ -12,6 +12,10 @@ export const BikeCard = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0px 1px 2px ${colors.primary};
+
+  @media (${breakpoints.tabletMedium}) {
+    width: 250px;
+  }
 
   &:hover {
     figure {
@@ -30,7 +34,8 @@ export const FigureLink = styled(Link)``;
 
 export const Figure = styled.figure`
   width: 100%;
-  height: 300px;
+  height: 250px;
+  /* height: 300px; */
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12px;
@@ -39,6 +44,7 @@ export const Figure = styled.figure`
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 `;
+
 export const Img = styled.img`
   object-fit: cover;
   width: 100%;

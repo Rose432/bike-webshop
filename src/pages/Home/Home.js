@@ -97,6 +97,7 @@ const Home = () => {
           </Grid>
         }
       />
+
       <Section isFooter children={<Footer />} />
     </>
   );

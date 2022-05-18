@@ -3,15 +3,20 @@ import { NavLink, Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import { colors } from "../../lib/style/theme";
+import { colors, breakpoints } from "../../lib/style/theme";
 
 export const HeaderWrapper = styled.header`
   background-color: ${colors.secondary};
   height: 10vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
+  padding: 0 10px;
+
+  @media (${breakpoints.tabletMedium}) {
+    padding: 0 24px;
+  }
 
   ${(props) =>
     props.isSecondary &&
@@ -61,16 +66,24 @@ export const SignIn = styled.a`
 `;
 
 export const HeaderInner = styled.div`
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1260px;
   z-index: 1;
+
+  @media (${breakpoints.destkop}) {
+    width: 960px;
+  }
+
+  @media (${breakpoints.destkopLarge}) {
+    width: 1260px;
+  }
 `;
 
 export const LogoContainer = styled.div`
-  width: 100px;
+  /* width: 100px; */
 `;
 
 export const LogoLink = styled(Link)`
@@ -134,7 +147,8 @@ export const Nav = styled(NavLink)`
   position: relative;
   display: inline-block;
   color: ${colors.textPrimary};
-  font-size: 18px;
+  font-size: 12px;
+  /* font-size: 18px; */
   text-transform: uppercase;
   letter-spacing: -0.2px;
 

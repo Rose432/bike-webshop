@@ -3,7 +3,7 @@ import FlightOutlinedIcon from "@material-ui/icons/FlightOutlined";
 import LocalShippingOutlinedIcon from "@material-ui/icons/LocalShippingOutlined";
 import ScheduleOutlinedIcon from "@material-ui/icons/ScheduleOutlined";
 import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
-import { colors } from "../../lib/style/theme";
+import { colors, breakpoints } from "../../lib/style/theme";
 
 // BUTTON
 
@@ -54,10 +54,14 @@ export const Button = styled.button`
 export const Grid = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   place-items: center;
   gap: 10px;
   row-gap: 64px;
+
+  @media (${breakpoints.tabletMedium}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   ${(props) =>
     props.isFeature &&
@@ -98,4 +102,18 @@ export const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const NoCoursesWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 150%;
+  transform: translate(-50%, -50%);
+`;
+
+export const NoCourses = styled.p`
+  color: ${colors.textPrimary};
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
 `;
