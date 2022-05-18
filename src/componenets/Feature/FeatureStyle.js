@@ -17,6 +17,10 @@ export const FeatureContainer = styled.div`
   @media (${breakpoints.tabletMedium}) {
     width: 200px;
   }
+
+  @media (${breakpoints.tablet}) {
+    width: 220px;
+  }
 `;
 
 export const IconContainer = styled.span`
@@ -27,18 +31,24 @@ export const IconContainer = styled.span`
   border-radius: 50%;
   background-color: ${colors.secondary};
   margin-bottom: 16px;
-  /* margin-bottom: 24px; */
   width: 32px;
   height: 32px;
   transition: all 0.3s ease-in-out;
+
+  @media (${breakpoints.destkop}) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const Title = styled.p`
   font-size: 20px;
-  /* font-size: 24px; */
   font-weight: 500;
   margin-bottom: 12px;
   color: ${colors.textPrimary};
+
+  @media (${breakpoints.destkop}) {
+    font-size: 24px;
+  }
 `;
 
 export const Subtitle = styled.p`
@@ -48,5 +58,9 @@ export const Subtitle = styled.p`
 
   @media (${breakpoints.tabletMedium}) {
     font-size: 14px;
+  }
+
+  @media (${breakpoints.tablet}) {
+    font-size: 16px;
   }
 `;

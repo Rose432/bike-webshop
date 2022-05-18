@@ -17,6 +17,18 @@ export const BikeCard = styled.div`
     width: 250px;
   }
 
+  @media (${breakpoints.tablet}) {
+    width: 350px;
+  }
+
+  @media (${breakpoints.destkop}) {
+    width: 240px;
+  }
+
+  @media (${breakpoints.destkopLarge}) {
+    width: 300px;
+  }
+
   &:hover {
     figure {
       box-shadow: 0px 2px 5px ${colors.textPrimary};
@@ -43,6 +55,10 @@ export const Figure = styled.figure`
   transition: all 0.3s ease-in-out;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
+
+  @media (${breakpoints.tablet}) {
+    height: 300px;
+  }
 `;
 
 export const Img = styled.img`

@@ -6,11 +6,15 @@ export const FooterContainer = styled.footer`
   margin: 0 auto;
   display: grid;
   gap: 30px;
-  /* grid-template-columns: 1.2fr 0.6fr 1.2fr; */
-  /* justify-items: center; */
 
   @media (${breakpoints.tabletMedium}) {
     width: 400px;
+  }
+
+  @media (${breakpoints.tablet}) {
+    grid-template-columns: 1.2fr 0.6fr 1.2fr;
+    justify-items: center;
+    width: 100%;
   }
 `;
 
@@ -33,7 +37,6 @@ export const Title = styled.p`
 `;
 
 export const LogoContainer = styled.div`
-  /* width: 100px; */
   margin-bottom: 8px;
 `;
 
@@ -45,10 +48,17 @@ export const Logo = styled.a`
 
 export const Text = styled.p`
   font-size: 14px;
-  /* font-size: 16px; */
   line-height: 1.3;
 
   @media (${breakpoints.tabletMedium}) {
+    font-size: 16px;
+  }
+
+  @media (${breakpoints.tablet}) {
+    font-size: 14px;
+  }
+
+  @media (${breakpoints.destkop}) {
     font-size: 16px;
   }
 `;

@@ -63,10 +63,18 @@ export const Grid = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
+  @media (${breakpoints.tabletMedium}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (${breakpoints.destkop}) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   ${(props) =>
     props.isFeature &&
     `
-    gap: 30px;
+    gap: 32px;
   `}
 `;
 

@@ -19,12 +19,18 @@ export const Landing = styled.div`
 
 export const LandingInner = styled.div`
   position: absolute;
+  padding: 0 10px;
   height: 100%;
   top: 0;
   display: flex;
   align-items: center;
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.tabletMedium}) {
+    padding: 0 24px;
+  }
+
+  @media (${breakpoints.destkop}) {
+    padding: 0;
     width: 960px;
     left: calc((100% - 960px) / 2);
   }
@@ -36,19 +42,20 @@ export const LandingInner = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 32px;
-  /* gap: 48px; */
+
+  @media (${breakpoints.tablet}) {
+    gap: 48px;
+  }
 `;
 
 export const Title = styled.h1`
   color: ${colors.secondary};
   font-size: 30px;
-  /* font-size: 86px; */
   text-align: center;
 
   @media (${breakpoints.mobileLarge}) {
@@ -62,12 +69,23 @@ export const Title = styled.h1`
   @media (${breakpoints.tabletMedium}) {
     font-size: 52px;
   }
+
+  @media (${breakpoints.tablet}) {
+    font-size: 62px;
+  }
+
+  @media (${breakpoints.destkop}) {
+    font-size: 74px;
+  }
+
+  @media (${breakpoints.destkopLarge}) {
+    font-size: 86px;
+  }
 `;
 
 export const Subtitle = styled.span`
   width: 250px;
   font-size: 16px;
-  /* font-size: 24px; */
   color: ${colors.secondary};
   text-align: center;
 
@@ -83,6 +101,15 @@ export const Subtitle = styled.span`
   @media (${breakpoints.tabletMedium}) {
     width: 400px;
     font-size: 20px;
+  }
+
+  @media (${breakpoints.tablet}) {
+    width: 450px;
+    font-size: 24px;
+  }
+
+  @media (${breakpoints.tablet}) {
+    width: 100%;
   }
 `;
 

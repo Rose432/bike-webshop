@@ -9,13 +9,16 @@ export const HeaderWrapper = styled.header`
   background-color: ${colors.secondary};
   height: 10vh;
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   padding: 0 10px;
 
   @media (${breakpoints.tabletMedium}) {
     padding: 0 24px;
+  }
+
+  @media (${breakpoints.destkop}) {
+    padding: 0;
   }
 
   ${(props) =>
@@ -82,9 +85,7 @@ export const HeaderInner = styled.div`
   }
 `;
 
-export const LogoContainer = styled.div`
-  /* width: 100px; */
-`;
+export const LogoContainer = styled.div``;
 
 export const LogoLink = styled(Link)`
   font-size: 24px;
@@ -144,13 +145,17 @@ export const NavWrapper = styled.nav`
 `;
 
 export const Nav = styled(NavLink)`
+  display: none;
   position: relative;
-  display: inline-block;
   color: ${colors.textPrimary};
   font-size: 12px;
-  /* font-size: 18px; */
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: -0.2px;
+
+  @media (${breakpoints.destkop}) {
+    display: inline-block;
+  }
 
   ${(props) =>
     props.isSecondary &&
