@@ -5,6 +5,7 @@ import {
   Content,
   Title,
   Subtitle,
+  ButtonLink,
 } from "./LandingStyle";
 import { Button } from "../../lib/style/generalStyle";
 
@@ -17,7 +18,9 @@ const Landing = () => {
           <Subtitle>
             We are premium brand offering the best bikes for You.
           </Subtitle>
-          <Button>Explore Shop</Button>
+          <ButtonLink to="/shop">
+            <Button>Explore Shop</Button>
+          </ButtonLink>
         </Content>
       </LandingInner>
     </LandingBackground>

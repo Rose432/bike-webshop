@@ -15,27 +15,35 @@ import {
   Nav,
 } from "./HeaderStyle";
 
-const Header = () => {
+const Header = ({ isSecondary }) => {
   return (
     <>
-      <HeaderSecondary>
-        <Guest>Guest</Guest>
-        <Profile />
-        <SignIn href="/">Sign In</SignIn>
+      <HeaderSecondary isSecondary={isSecondary}>
+        <Guest isSecondary={isSecondary}>Guest</Guest>
+        <Profile isSecondary={isSecondary}>Profile</Profile>
+        <SignIn isSecondary={isSecondary} href="/">
+          Sign In
+        </SignIn>
       </HeaderSecondary>
-      <HeaderWrapper>
+      <HeaderWrapper isSecondary={isSecondary}>
         <HeaderInner>
           <LogoContainer>
             <LogoLink to="/">Bikeshop</LogoLink>
           </LogoContainer>
           <IconContainer>
-            <Favorite />
-            <Cart />
+            <Favorite isSecondary={isSecondary} />
+            <Cart isSecondary={isSecondary} />
           </IconContainer>
           <NavWrapper>
-            <Nav to="/shop">Shop</Nav>
-            <Nav to="/">Register</Nav>
-            <Nav to="/">Contact</Nav>
+            <Nav isSecondary={isSecondary} to="/shop">
+              Shop
+            </Nav>
+            <Nav isSecondary={isSecondary} to="/">
+              Register
+            </Nav>
+            <Nav isSecondary={isSecondary} to="/">
+              Contact
+            </Nav>
           </NavWrapper>
         </HeaderInner>
       </HeaderWrapper>

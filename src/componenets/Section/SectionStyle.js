@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { colors } from "../../lib/style/theme";
 
 export const Section = styled.section`
   padding: 128px calc((100% - 1260px) / 2);
@@ -13,7 +14,7 @@ export const Section = styled.section`
   ${(props) =>
     props.isFooter &&
     `
-   background-color:  #087f5b;
+   background-color:  ${colors.primary};
    padding: 64px  calc((100% - 1260px) / 2);
   
 `}
@@ -41,7 +42,7 @@ export const Title = styled.h2`
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  color: #343a40;
+  color: ${colors.textPrimary};
   margin-bottom: 64px;
 
   &::after,
@@ -49,7 +50,7 @@ export const Title = styled.h2`
     content: "";
     width: 200px;
     height: 1px;
-    background-color: #dee2e6;
+    background-color: ${colors.tertiary};
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -63,7 +64,7 @@ export const SmallLink = styled(Link)`
   align-items: center;
   justify-content: center;
   text-decoration: under;
-  color: #087f5b;
+  color: ${colors.primary};
   transition: all 0.3s ease-in;
 
   &:hover {

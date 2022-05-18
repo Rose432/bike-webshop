@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { colors } from "../../lib/style/theme";
 
 export const BikeCard = styled.div`
   width: 100%;
@@ -9,20 +11,22 @@ export const BikeCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 1px 2px #087f5b;
+  box-shadow: 0px 1px 2px ${colors.primary};
 
   &:hover {
     figure {
-      box-shadow: 0px 2px 5px #343a40;
+      box-shadow: 0px 2px 5px ${colors.textPrimary};
     }
     img {
       transform: scale(1.1);
     }
     p {
-      color: #087f5b;
+      color: ${colors.primary};
     }
   }
 `;
+
+export const FigureLink = styled(Link)``;
 
 export const Figure = styled.figure`
   width: 100%;
@@ -50,15 +54,17 @@ export const Content = styled.div`
   gap: 12px;
 `;
 
+export const TitleLink = styled(Link)``;
+
 export const Title = styled.p`
   font-size: 24px;
-  color: #343a40;
+  color: ${colors.textPrimary};
   transition: all 0.3s ease-in-out;
 `;
 
 export const Price = styled.span`
   font-size: 18px;
-  color: #343a40;
+  color: ${colors.textPrimary};
   transition: all 0.3s ease-in-out;
   margin-bottom: 12px;
 `;

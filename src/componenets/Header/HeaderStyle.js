@@ -3,33 +3,61 @@ import { NavLink, Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import { colors } from "../../lib/style/theme";
 
 export const HeaderWrapper = styled.header`
-  background-color: #f0fdf9;
-  height: 8vh;
+  background-color: ${colors.secondary};
+  height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  ${(props) =>
+    props.isSecondary &&
+    `
+  background-color: ${colors.primary};
+  height: 10vh;
+  `}
 `;
 
 export const HeaderSecondary = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #343a40;
+  background-color: ${colors.textPrimary};
   width: 100%;
   justify-self: start;
   height: 4vh;
   gap: 5px;
+
+  ${(props) =>
+    props.isSecondary &&
+    `
+  background-color: ${colors.secondary};
+  `}
 `;
 
 export const Guest = styled.span`
-  color: #f0fdf9;
+  color: ${colors.secondary};
+
+  ${(props) =>
+    props.isSecondary &&
+    `
+  color: ${colors.textSecondary};
+  
+  `}
 `;
 
 export const SignIn = styled.a`
-  color: #f0fdf9;
+  color: ${colors.secondary};
+
+  ${(props) =>
+    props.isSecondary &&
+    `
+  color: ${colors.textSecondary};
+  
+  `}
 `;
 
 export const HeaderInner = styled.div`
@@ -47,7 +75,7 @@ export const LogoContainer = styled.div`
 
 export const LogoLink = styled(Link)`
   font-size: 24px;
-  color: black;
+  color: ${colors.black};
   font-weight: 700;
 `;
 
@@ -62,13 +90,38 @@ export const IconContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const Cart = styled(ShoppingCartOutlinedIcon)``;
+export const Cart = styled(ShoppingCartOutlinedIcon)`
+  color: ${colors.textPrimary};
 
-export const Profile = styled(PersonOutlineOutlinedIcon)`
-  color: #f0fdf9;
+  ${(props) =>
+    props.isSecondary &&
+    `
+  color: ${colors.secondary};
+  
+  `}
 `;
 
-export const Favorite = styled(FavoriteBorderOutlinedIcon)``;
+export const Profile = styled(PersonOutlineOutlinedIcon)`
+  color: ${colors.secondary};
+
+  ${(props) =>
+    props.isSecondary &&
+    `
+  color: ${colors.textSecondary};
+  
+  `}
+`;
+
+export const Favorite = styled(FavoriteBorderOutlinedIcon)`
+  color: ${colors.textPrimary};
+
+  ${(props) =>
+    props.isSecondary &&
+    `
+  color: ${colors.secondary};
+  
+  `}
+`;
 
 export const NavWrapper = styled.nav`
   gap: 20px;
@@ -80,10 +133,17 @@ export const NavWrapper = styled.nav`
 export const Nav = styled(NavLink)`
   position: relative;
   display: inline-block;
-  color: #343a40;
+  color: ${colors.textPrimary};
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: -0.2px;
+
+  ${(props) =>
+    props.isSecondary &&
+    `
+  color: ${colors.secondary};
+  
+  `}
 
   &::after {
     position: absolute;
@@ -92,9 +152,16 @@ export const Nav = styled(NavLink)`
     opacity: 0;
     width: 100%;
     height: 2px;
-    background-color: #087f5b;
+    background-color: ${colors.primary};
     margin: auto;
     transition: all 0.3s ease-in-out;
+
+    ${(props) =>
+      props.isSecondary &&
+      `
+  background-color: ${colors.secondary};
+  
+  `}
   }
 
   &:hover::after {

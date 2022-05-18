@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../lib/style/theme";
 
 export const FooterContainer = styled.footer`
   display: grid;
@@ -10,7 +11,7 @@ export const FooterContainer = styled.footer`
 export const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  color: #f0fdf9;
+  color: ${colors.secondary};
 `;
 
 export const Title = styled.p`
@@ -27,7 +28,7 @@ export const LogoContainer = styled.div`
 
 export const Logo = styled.a`
   font-size: 24px;
-  color: black;
+  color: ${colors.black};
   font-weight: 700;
 `;
 

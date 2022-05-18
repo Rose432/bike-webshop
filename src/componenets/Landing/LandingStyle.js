@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Img from "../../assets/images/landing2.jpg";
+import { colors } from "../../lib/style/theme";
+import { Link } from "react-router-dom";
 
 export const Landing = styled.div`
   background-image: linear-gradient(
@@ -11,7 +13,7 @@ export const Landing = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  height: 88vh;
+  height: 86vh;
   position: relative;
 `;
 
@@ -33,12 +35,14 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h1`
-  color: #f0fdf9;
+  color: ${colors.secondary};
   font-size: 86px;
   text-align: center;
 `;
 
 export const Subtitle = styled.span`
   font-size: 24px;
-  color: #f0fdf9;
+  color: ${colors.secondary};
 `;
+
+export const ButtonLink = styled(Link)``;
