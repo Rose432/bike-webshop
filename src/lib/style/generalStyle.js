@@ -10,43 +10,79 @@ import { colors, breakpoints } from "../../lib/style/theme";
 export const Button = styled.button`
   border: none;
   border-radius: 10px;
-  background-color: ${colors.secondary};
-  padding: 14px 28px;
+  background-color: ${colors.primary};
+  color: ${colors.secondary};
+  padding: 10px 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  color: ${colors.primary};
+  font-size: 18px;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 2px 5px ${colors.black};
   transition: all 0.3s ease-in-out;
+  font-weight: 500;
+
+  @media (${breakpoints.tabletSmall}) {
+    ${(props) =>
+      props.isBack &&
+      `
+    padding: 10px 20px;
+    font-size: 16px;
+
+     `}
+  }
 
   &:hover {
-    box-shadow: 0 5px 5px ${colors.black};
+    box-shadow: 0 1px 4px ${colors.black};
 
     ${(props) =>
       props.isShop &&
       `
-     
-     background-color:  ${colors.primary};
-     color:  ${colors.secondary};
-     `}
+      background-color:  ${colors.primary};
+      color:  ${colors.secondary};
+      `}
   }
 
   ${(props) =>
     props.isShop &&
     `
+    color: ${colors.primary};
+    border: 1px solid ${colors.primary};
      background-color:  ${colors.white};
      `}
 
   ${(props) =>
-    props.isBicycle &&
+    props.isBack &&
     `
-    padding: 12px 28px;
-    width: 150px;
+    padding: 8px 16px;
+    font-size: 14px;
+
      `}
+     
+${(props) =>
+    props.isOutline &&
+    `
+    border: 1px solid ${colors.primary};
+    background-color:  ${colors.white};
+    color:  ${colors.primary};
+    `}
+
+ ${(props) =>
+    props.isOutlineSecondary &&
+    `
+     border: 1px solid ${colors.secondary};
+    background-color:  ${colors.primary};
+    color:  ${colors.secondary};
+ `}
+
+ ${(props) =>
+    props.isSecondary &&
+    `
+    background-color: ${colors.secondary};
+     color: ${colors.primary};
+     
+ `}
 `;
 
 // GRID
@@ -59,12 +95,22 @@ export const Grid = styled.div`
   gap: 10px;
   row-gap: 64px;
 
-  @media (${breakpoints.tabletMedium}) {
+  @media (${breakpoints.tabletSmall}) {
     grid-template-columns: repeat(2, 1fr);
+
+    ${(props) =>
+      props.isFeature &&
+      `
+    grid-template-columns: repeat(1,1fr);
+    `}
   }
 
   @media (${breakpoints.tabletMedium}) {
-    grid-template-columns: repeat(2, 1fr);
+    ${(props) =>
+      props.isFeature &&
+      `
+    grid-template-columns: repeat(2,1fr);
+    `}
   }
 
   @media (${breakpoints.destkop}) {
@@ -75,6 +121,7 @@ export const Grid = styled.div`
     props.isFeature &&
     `
     gap: 32px;
+
   `}
 `;
 
@@ -112,16 +159,44 @@ export const SpinnerWrapper = styled.div`
   align-items: center;
 `;
 
-export const NoCoursesWrapper = styled.div`
+// NO BICYCLES FOUND
+
+export const NotFoundWrapper = styled.div`
   position: absolute;
   left: 50%;
   top: 150%;
   transform: translate(-50%, -50%);
 `;
 
-export const NoCourses = styled.p`
+export const NotFound = styled.p`
   color: ${colors.textPrimary};
   font-size: 18px;
   font-weight: 700;
   text-align: center;
 `;
+
+// SEARCH RESULTS
+
+// export const SearchWrapper = styled.div`
+//   position: relative;
+//   display: grid;
+//   grid-template-columns: repeat(1, 1fr);
+//   place-items: center;
+//   gap: 10px;
+//   row-gap: 64px;
+
+//   @media (${breakpoints.tabletMedium}) {
+//     display: flex;
+//     flex-wrap: wrap;
+//     row-gap: 64px;
+//     column-gap: 10px;
+//   }
+
+//   @media (${breakpoints.destkop}) {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     grid-template-columns: repeat(3, 1fr);
+//     column-gap: 48px;
+//   }
+// `;

@@ -23,7 +23,7 @@ const BicyclePage = ({ imgSrc, bikeTitle, bikeDescription, bikePrice }) => {
       <Content>
         <Flex>
           <Name>{bikeTitle}</Name>
-          <Button isShop onClick={() => navigate(-1)} isBicycle>
+          <Button isShop onClick={() => navigate(-1)} isBack>
             Back
           </Button>
         </Flex>

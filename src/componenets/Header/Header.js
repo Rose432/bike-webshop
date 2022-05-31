@@ -1,53 +1,55 @@
 import React from "react";
+import { useState } from "react";
 import {
   HeaderWrapper,
-  HeaderSecondary,
-  Guest,
-  SignIn,
   HeaderInner,
   LogoContainer,
   LogoLink,
   IconContainer,
   Cart,
-  Profile,
   Favorite,
   NavWrapper,
   Nav,
 } from "./HeaderStyle";
+import Hamburger from "../Hamburger/Hamburger";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import { Button } from "../../lib/style/generalStyle";
 
-const Header = ({ isSecondary }) => {
+const Header = ({ isSecondary, isHome, buttons }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <>
-      <HeaderSecondary isSecondary={isSecondary}>
-        <Guest isSecondary={isSecondary}>Guest</Guest>
-        <Profile isSecondary={isSecondary}>Profile</Profile>
-        <SignIn isSecondary={isSecondary} href="/">
-          Sign In
-        </SignIn>
-      </HeaderSecondary>
-      <HeaderWrapper isSecondary={isSecondary}>
-        <HeaderInner>
-          <LogoContainer>
-            <LogoLink to="/">Bikeshop</LogoLink>
-          </LogoContainer>
-          <IconContainer>
-            <Favorite isSecondary={isSecondary} />
-            <Cart isSecondary={isSecondary} />
-          </IconContainer>
-          <NavWrapper>
-            <Nav isSecondary={isSecondary} to="/shop">
-              Shop
-            </Nav>
-            <Nav isSecondary={isSecondary} to="/">
-              Register
-            </Nav>
-            <Nav isSecondary={isSecondary} to="/">
-              Contact
-            </Nav>
-          </NavWrapper>
-        </HeaderInner>
-      </HeaderWrapper>
-    </>
+    <HeaderWrapper isSecondary={isSecondary}>
+      <HeaderInner>
+        <LogoContainer>
+          <LogoLink to="/">Bikeshop</LogoLink>
+        </LogoContainer>
+        <IconContainer>
+          <Favorite isSecondary={isSecondary} />
+          <Cart isSecondary={isSecondary} />
+        </IconContainer>
+        <NavWrapper>
+          <Nav isSecondary={isSecondary} to="/shop">
+            Shop
+          </Nav>
+          <Nav isSecondary={isSecondary} to="/">
+            Profile
+          </Nav>
+          <Nav isSecondary={isSecondary} to="/">
+            Contact
+          </Nav>
+          {buttons}
+          {/* <Nav isSecondary={isSecondary} to="/">
+            Log In
+          </Nav>
+          <Nav isSecondary={isSecondary} to="/">
+            Sign Up
+          </Nav> */}
+        </NavWrapper>
+        <Hamburger isHome={isHome} open={open} setOpen={setOpen} />
+      </HeaderInner>
+      <HamburgerMenu open={open} setOpen={setOpen} />
+    </HeaderWrapper>
   );
 };
 

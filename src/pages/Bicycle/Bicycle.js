@@ -7,7 +7,7 @@ import Section from "../../componenets/Section/Section";
 import BicyclePage from "../../componenets/BicyclePage/BicyclePage";
 import { commerce } from "../../lib/commerce";
 import { ThreeDots } from "react-loader-spinner";
-import { SpinnerWrapper } from "../../lib/style/generalStyle";
+import { SpinnerWrapper, Button } from "../../lib/style/generalStyle";
 
 const Bicycle = () => {
   const { name } = useParams();
@@ -43,7 +43,15 @@ const Bicycle = () => {
 
   return (
     <>
-      <Header isSecondary />
+      <Header
+        buttons={
+          <>
+            <Button isOutlineSecondary>Log In</Button>
+            <Button isSecondary>Sign Up</Button>
+          </>
+        }
+        isSecondary
+      />
       <Section children={showBicycle} />
       <Section isFooter children={<Footer />} />
     </>

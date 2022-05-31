@@ -9,7 +9,8 @@ export const colors = {
   black: "#000000",
   white: "#ffffff",
   textPrimary: "#333",
-  textSecondary: " #555",
+  textSecondary: "#555",
+  bgMenuHover: "#38d9a9",
 };
 
 export const breakpoints = {

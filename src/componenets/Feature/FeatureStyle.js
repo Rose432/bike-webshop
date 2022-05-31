@@ -19,7 +19,7 @@ export const FeatureContainer = styled.div`
   }
 
   @media (${breakpoints.tablet}) {
-    width: 220px;
+    width: 230px;
   }
 `;
 

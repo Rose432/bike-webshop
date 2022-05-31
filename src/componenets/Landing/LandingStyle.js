@@ -13,7 +13,7 @@ export const Landing = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  height: 86vh;
+  height: 90vh;
   position: relative;
 `;
 

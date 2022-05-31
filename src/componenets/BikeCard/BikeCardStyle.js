@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { colors, breakpoints } from "../../lib/style/theme";
 
 export const BikeCard = styled.div`
-  width: 300px;
+  width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding-bottom: 20px;
@@ -13,7 +13,7 @@ export const BikeCard = styled.div`
   justify-content: center;
   box-shadow: 0px 1px 2px ${colors.primary};
 
-  @media (${breakpoints.tabletMedium}) {
+  /* @media (${breakpoints.tabletMedium}) {
     width: 250px;
   }
 
@@ -27,7 +27,7 @@ export const BikeCard = styled.div`
 
   @media (${breakpoints.destkopLarge}) {
     width: 300px;
-  }
+  } */
 
   &:hover {
     figure {
@@ -42,12 +42,13 @@ export const BikeCard = styled.div`
   }
 `;
 
-export const FigureLink = styled(Link)``;
+export const FigureLink = styled(Link)`
+  width: 100%;
+`;
 
 export const Figure = styled.figure`
   width: 100%;
   height: 250px;
-  /* height: 300px; */
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12px;

@@ -44,7 +44,7 @@ const Footer = () => {
         <SignInNewsletter>
           Subscribe to our daily newsletter to get the latest news.
         </SignInNewsletter>
-        <Button>Sign me Up</Button>
+        <Button isOutline>Sign me Up</Button>
       </FlexContainer>
     </FooterContainer>
   );

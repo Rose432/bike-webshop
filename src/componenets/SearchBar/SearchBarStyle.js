@@ -15,11 +15,11 @@ export const SearchInputs = styled.div`
   width: 290px;
 
   @media (${breakpoints.tablet}) {
-    width: 320px;
+    width: 350px;
   }
 
   @media (${breakpoints.destkopLarge}) {
-    width: 350px;
+    width: 400px;
   }
 `;
 
@@ -54,6 +54,7 @@ export const IconContainer = styled.div`
 export const Icon = styled(SearchIcon)`
   font-size: 30px !important;
   color: ${colors.textPrimary};
+  cursor: pointer;
 `;
 
 export const ClearIcon = styled(CloseIcon)`

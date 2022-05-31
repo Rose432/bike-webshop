@@ -4,66 +4,26 @@ import { colors, breakpoints } from "../../lib/style/theme";
 
 export const Section = styled.section`
   width: 100%;
-  padding: 64px 10px;
+  padding: 32px 10px;
 
   @media (${breakpoints.tabletMedium}) {
-    padding: 80px 24px;
+    padding: 40px 24px;
   }
 
   @media (${breakpoints.tablet}) {
-    padding: 96px 24px;
+    padding: 48px 24px;
   }
 
   @media (${breakpoints.destkop}) {
-    padding: 128px 0px;
+    padding: 64px 0px;
     display: grid;
     place-items: center;
   }
 
   ${(props) =>
-    props.isAfterSection &&
-    `
-    padding: 0px 10px 64px 10px;
-
-    @media (${breakpoints.tabletMedium}) {
-    padding: 0px 24px 80px 24px;
-  }
-
-    @media (${breakpoints.tablet}) {
-    padding: 0px 24px 96px 24px;
-  }
-  
-    @media (${breakpoints.destkop}) {
-      padding: 0px;
-      padding-bottom: 64px;
-      display: grid;
-      place-items: center;
-    
-  }
-
-`}
-
-  ${(props) =>
     props.isFooter &&
     `
-    padding: 32px 10px;
-
    background-color:  ${colors.primary};
-
-   @media (${breakpoints.tabletMedium}) {
-    padding: 40px 24px;
-  }
-
-   @media (${breakpoints.tablet}) {
-    padding: 48px 24px;
-  }
-
-   @media(${breakpoints.destkop}) {
-      padding: 64px 0px;
-      display: grid;
-      place-items: center;
-   }
-
 `}
 `;
 
@@ -77,18 +37,6 @@ export const SectionInner = styled.div`
   @media (${breakpoints.destkopLarge}) {
     width: 1260px;
   }
-
-  ${(props) =>
-    props.isAfterSection &&
-    `
-    `}
-
-  /* width: 1000px; */
-  ${(props) =>
-    props.isFooter &&
-    `
-   
-    `}
 `;
 
 export const Title = styled.h2`

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef } from "react";
 
 import {
   Search,
@@ -17,6 +18,11 @@ function SearchBar({
   clearInput,
   searchStringLength,
 }) {
+  const inputRef = useRef(null);
+  const onClick = () => {
+    inputRef.current.focus();
+  };
+
   return (
     <Search>
       <SearchInputs>
@@ -27,12 +33,13 @@ function SearchBar({
           onChange={onChange}
           maxLength="30"
           value={searchWord}
+          ref={inputRef}
         />
         <IconContainer>
           {searchStringLength > 0 ? (
             <ClearIcon onClick={clearInput} />
           ) : (
-            <Icon />
+            <Icon onClick={onClick} />
           )}
         </IconContainer>
       </SearchInputs>

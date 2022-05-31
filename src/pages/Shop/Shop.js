@@ -9,8 +9,9 @@ import SearchBar from "../../componenets/SearchBar/SearchBar";
 import {
   Grid,
   SpinnerWrapper,
-  NoCoursesWrapper,
-  NoCourses,
+  NotFoundWrapper,
+  NotFound,
+  Button,
 } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
 
@@ -43,23 +44,23 @@ const Shop = () => {
     setWordEntered("");
   };
 
-  let bicycles;
-
-  bicycles =
+  let bicycles =
     products.length > 1 ? (
-      products.map(
-        (bicycle, index) =>
-          index < products.length && (
-            <BikeCard
-              key={bicycle.id}
-              bicycleId={bicycle.name}
-              imgSrc={bicycle.image.url}
-              imgAlt={bicycle.description}
-              bikeTitle={bicycle.name}
-              bikePrice={bicycle.price.formatted_with_symbol}
-            />
-          )
-      )
+      <Grid>
+        {products.map(
+          (bicycle, index) =>
+            index < products.length && (
+              <BikeCard
+                key={bicycle.id}
+                bicycleId={bicycle.name}
+                imgSrc={bicycle.image.url}
+                imgAlt={bicycle.description}
+                bikeTitle={bicycle.name}
+                bikePrice={bicycle.price.formatted_with_symbol}
+              />
+            )
+        )}
+      </Grid>
     ) : (
       <SpinnerWrapper>
         <ThreeDots color="#087f5b" height={70} width={70} />
@@ -67,21 +68,27 @@ const Shop = () => {
     );
 
   if (filteredData.length !== 0) {
-    bicycles = filteredData.map((bicycle, index) => (
-      <BikeCard
-        key={bicycle.id}
-        bicycleId={bicycle.name}
-        imgSrc={bicycle.image.url}
-        imgAlt={bicycle.description}
-        bikeTitle={bicycle.name}
-        bikePrice={bicycle.price.formatted_with_symbol}
-      />
-    ));
+    bicycles = (
+      <Grid>
+        {filteredData.map((bicycle, index) => (
+          <BikeCard
+            key={bicycle.id}
+            bicycleId={bicycle.name}
+            imgSrc={bicycle.image.url}
+            imgAlt={bicycle.description}
+            bikeTitle={bicycle.name}
+            bikePrice={bicycle.price.formatted_with_symbol}
+          />
+        ))}
+      </Grid>
+    );
   } else if (wordEntered.length > 0 && !filteredData.includes({})) {
     bicycles = (
-      <NoCoursesWrapper>
-        <NoCourses>No results for "{wordEntered}"</NoCourses>
-      </NoCoursesWrapper>
+      <Grid>
+        <NotFoundWrapper>
+          <NotFound>No results for "{wordEntered}"</NotFound>
+        </NotFoundWrapper>
+      </Grid>
     );
   }
 
@@ -90,7 +97,15 @@ const Shop = () => {
   console.log(wordEntered);
   return (
     <>
-      <Header isSecondary />
+      <Header
+        buttons={
+          <>
+            <Button isOutlineSecondary>Log In</Button>
+            <Button isSecondary>Sign Up</Button>
+          </>
+        }
+        isSecondary
+      />
 
       <Section title={"All Bicycles"}>
         <SearchBar
@@ -101,7 +116,7 @@ const Shop = () => {
           clearInput={clearInput}
           searchStringLength={wordEntered.length}
         />
-        <Grid>{bicycles}</Grid>
+        {bicycles}
       </Section>
       <Section isFooter children={<Footer />} />
     </>

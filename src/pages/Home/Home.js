@@ -14,6 +14,7 @@ import {
   ClockIcon,
   QuestionMarkIcon,
   SpinnerWrapper,
+  Button,
 } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
 
@@ -30,6 +31,7 @@ const Home = () => {
   const fetchCart = async () => {
     setCart(await commerce.cart.retriece());
   };
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -59,7 +61,15 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header
+        buttons={
+          <>
+            <Button isOutline>Log In</Button>
+            <Button>Sign Up</Button>
+          </>
+        }
+        isHome={true}
+      />
       <Landing />
       <Section
         title={"bestsellers"}

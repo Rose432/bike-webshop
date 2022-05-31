@@ -19,7 +19,7 @@ const Landing = () => {
             We are premium brand offering the best bikes for You.
           </Subtitle>
           <ButtonLink to="/shop">
-            <Button>Explore Shop</Button>
+            <Button isOutline>Explore Shop</Button>
           </ButtonLink>
         </Content>
       </LandingInner>
