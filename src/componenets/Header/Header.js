@@ -4,6 +4,10 @@ import {
   HeaderWrapper,
   HeaderInner,
   LogoContainer,
+  LogoImgContainer,
+  LogoDownLine,
+  LogoLeftLine,
+  LogoRightLine,
   LogoLink,
   IconContainer,
   Cart,
@@ -19,37 +23,38 @@ const Header = ({ isSecondary, isHome, buttons }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <HeaderWrapper isSecondary={isSecondary}>
-      <HeaderInner>
-        <LogoContainer>
-          <LogoLink to="/">Bikeshop</LogoLink>
-        </LogoContainer>
-        <IconContainer>
-          <Favorite isSecondary={isSecondary} />
-          <Cart isSecondary={isSecondary} />
-        </IconContainer>
-        <NavWrapper>
-          <Nav isSecondary={isSecondary} to="/shop">
-            Shop
-          </Nav>
-          <Nav isSecondary={isSecondary} to="/">
-            Profile
-          </Nav>
-          <Nav isSecondary={isSecondary} to="/">
-            Contact
-          </Nav>
-          {buttons}
-          {/* <Nav isSecondary={isSecondary} to="/">
-            Log In
-          </Nav>
-          <Nav isSecondary={isSecondary} to="/">
-            Sign Up
-          </Nav> */}
-        </NavWrapper>
-        <Hamburger isHome={isHome} open={open} setOpen={setOpen} />
-      </HeaderInner>
+    <>
+      <HeaderWrapper isSecondary={isSecondary}>
+        <HeaderInner>
+          <LogoContainer to="/">
+            <LogoImgContainer>
+              <LogoDownLine />
+              <LogoLeftLine />
+              <LogoRightLine />
+            </LogoImgContainer>
+            <LogoLink to="/">Advanturer</LogoLink>
+          </LogoContainer>
+          <IconContainer>
+            <Favorite isSecondary={isSecondary} />
+            <Cart isSecondary={isSecondary} />
+          </IconContainer>
+          <NavWrapper>
+            <Nav isSecondary={isSecondary} to="/shop">
+              Shop
+            </Nav>
+            <Nav isSecondary={isSecondary} to="/">
+              Profile
+            </Nav>
+            <Nav isSecondary={isSecondary} to="/">
+              Contact
+            </Nav>
+            {buttons}
+          </NavWrapper>
+          <Hamburger open={open} setOpen={setOpen} />
+        </HeaderInner>
+      </HeaderWrapper>
       <HamburgerMenu open={open} setOpen={setOpen} />
-    </HeaderWrapper>
+    </>
   );
 };
 

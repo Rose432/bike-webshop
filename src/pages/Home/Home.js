@@ -20,16 +20,10 @@ import { ThreeDots } from "react-loader-spinner";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({});
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
-
     setProducts(data);
-  };
-
-  const fetchCart = async () => {
-    setCart(await commerce.cart.retriece());
   };
 
   useEffect(() => {
@@ -44,11 +38,12 @@ const Home = () => {
             index <= 3 && (
               <BikeCard
                 key={bicycle.id}
-                bicycleId={bicycle.name}
+                bicycleName={bicycle.name}
                 imgSrc={bicycle.image.url}
                 imgAlt={bicycle.description}
                 bikeTitle={bicycle.name}
                 bikePrice={bicycle.price.formatted_with_symbol}
+                bicycleId={bicycle.id}
               />
             )
         )}

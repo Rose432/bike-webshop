@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { colors, breakpoints } from "../../lib/style/theme";
 
 export const StyledMenu = styled.nav`
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +13,7 @@ export const StyledMenu = styled.nav`
   text-align: center;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   transition: transform 0.3s ease-in-out;
   width: 100%;
   z-index: 1;

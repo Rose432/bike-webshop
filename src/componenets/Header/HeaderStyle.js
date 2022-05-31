@@ -5,12 +5,13 @@ import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutline
 import { colors, breakpoints } from "../../lib/style/theme";
 
 export const HeaderWrapper = styled.header`
-  background-color: ${colors.white};
-  height: 10vh;
+  height: 12vh;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 10px;
+  width: 100%;
 
   @media (${breakpoints.tabletMedium}) {
     padding: 0 24px;
@@ -23,8 +24,8 @@ export const HeaderWrapper = styled.header`
   ${(props) =>
     props.isSecondary &&
     `
+    position: relative;
   background-color: ${colors.primary};
-  height: 10vh;
   `}
 `;
 
@@ -44,14 +45,56 @@ export const HeaderInner = styled.div`
   }
 `;
 
-export const LogoContainer = styled.div`
-  z-index: 2;
+export const LogoContainer = styled(Link)`
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  z-index: 3;
 `;
 
-export const LogoLink = styled(Link)`
-  font-size: 24px;
-  color: ${colors.black};
+export const LogoImgContainer = styled.div`
+  position: relative;
+  height: 30px;
+  width: 38px;
+  overflow: hidden;
+`;
+
+export const LogoDownLine = styled.div`
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
+  height: 1px;
+  width: 30px;
+  background-color: #c3fae8;
+`;
+
+export const LogoLeftLine = styled.div`
+  content: "";
+  position: absolute;
+  left: -9px;
+  height: 1px;
+  width: 60px;
+  background-color: #c3fae8;
+  transform: rotate(-55deg);
+`;
+
+export const LogoRightLine = styled.div`
+  content: "";
+  top: 12px;
+  left: 19px;
+  position: absolute;
+  height: 1px;
+  width: 22px;
+  background-color: #c3fae8;
+  transform: rotate(55deg);
+`;
+
+export const LogoLink = styled.div`
+  font-size: 18px;
+  color: ${colors.secondary};
   font-weight: 700;
+  text-transform: uppercase;
 `;
 
 export const IconContainer = styled.div`
@@ -59,36 +102,20 @@ export const IconContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
-  /* position: absolute; */
-  /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
+  z-index: 3;
 `;
 
 export const Cart = styled(ShoppingCartOutlinedIcon)`
-  color: ${colors.textPrimary};
-
-  ${(props) =>
-    props.isSecondary &&
-    `
   color: ${colors.secondary};
-  
-  `}
 `;
 
 export const Favorite = styled(FavoriteBorderOutlinedIcon)`
-  color: ${colors.textPrimary};
-
-  ${(props) =>
-    props.isSecondary &&
-    `
   color: ${colors.secondary};
-  
-  `}
 `;
 
 export const NavWrapper = styled.nav`
   display: none;
+  z-index: 1;
 
   @media (${breakpoints.destkop}) {
     display: flex;
@@ -100,17 +127,10 @@ export const NavWrapper = styled.nav`
 
 export const Nav = styled(NavLink)`
   position: relative;
-  color: ${colors.textPrimary};
+  color: ${colors.secondary};
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: -0.2px;
-
-  ${(props) =>
-    props.isSecondary &&
-    `
-  color: ${colors.secondary};
-  
-  `}
 
   &::after {
     position: absolute;
@@ -119,16 +139,9 @@ export const Nav = styled(NavLink)`
     opacity: 0;
     width: 100%;
     height: 2px;
-    background-color: ${colors.primary};
+    background-color: ${colors.secondary};
     margin: auto;
     transition: all 0.3s ease-in-out;
-
-    ${(props) =>
-      props.isSecondary &&
-      `
-  background-color: ${colors.secondary};
-  
-  `}
   }
 
   &:hover::after {

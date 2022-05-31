@@ -4,7 +4,11 @@ import {
   FlexContainer,
   Title,
   LogoContainer,
-  Logo,
+  LogoImgContainer,
+  LogoDownLine,
+  LogoLeftLine,
+  LogoRightLine,
+  LogoLink,
   Text,
   Adress,
   PhoneNumber,
@@ -18,8 +22,13 @@ const Footer = () => {
     <FooterContainer>
       <FlexContainer>
         <Title>About Us</Title>
-        <LogoContainer>
-          <Logo>Bikeshop</Logo>
+        <LogoContainer to="/">
+          <LogoImgContainer>
+            <LogoDownLine />
+            <LogoLeftLine />
+            <LogoRightLine />
+          </LogoImgContainer>
+          <LogoLink>Advanturer</LogoLink>
         </LogoContainer>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec

@@ -57,7 +57,6 @@ export const Title = styled.h2`
   ::before {
     content: "";
     width: 50px;
-    /* width: 200px; */
     height: 1px;
     background-color: ${colors.tertiary};
     margin-left: 10px;

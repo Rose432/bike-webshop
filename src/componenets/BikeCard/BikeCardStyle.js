@@ -13,22 +13,6 @@ export const BikeCard = styled.div`
   justify-content: center;
   box-shadow: 0px 1px 2px ${colors.primary};
 
-  /* @media (${breakpoints.tabletMedium}) {
-    width: 250px;
-  }
-
-  @media (${breakpoints.tablet}) {
-    width: 350px;
-  }
-
-  @media (${breakpoints.destkop}) {
-    width: 240px;
-  }
-
-  @media (${breakpoints.destkopLarge}) {
-    width: 300px;
-  } */
-
   &:hover {
     figure {
       box-shadow: 0px 2px 5px ${colors.textPrimary};

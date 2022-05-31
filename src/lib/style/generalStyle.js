@@ -63,7 +63,6 @@ export const Button = styled.button`
 ${(props) =>
     props.isOutline &&
     `
-    border: 1px solid ${colors.primary};
     background-color:  ${colors.white};
     color:  ${colors.primary};
     `}

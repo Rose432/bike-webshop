@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { colors, breakpoints } from "../../lib/style/theme";
 
 export const FooterContainer = styled.footer`
@@ -28,7 +29,6 @@ export const Title = styled.p`
   text-transform: uppercase;
   font-weight: 500;
   font-size: 18px;
-  /* font-size: 20px; */
   margin-bottom: 16px;
 
   @media (${breakpoints.tabletMedium}) {
@@ -36,14 +36,56 @@ export const Title = styled.p`
   }
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled(Link)`
+  display: flex;
+  gap: 5px;
+  align-items: center;
   margin-bottom: 8px;
 `;
 
-export const Logo = styled.a`
-  font-size: 24px;
-  color: ${colors.black};
+export const LogoImgContainer = styled.div`
+  position: relative;
+  height: 30px;
+  width: 38px;
+  overflow: hidden;
+`;
+
+export const LogoDownLine = styled.div`
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 8px;
+  height: 1px;
+  width: 30px;
+  background-color: #c3fae8;
+`;
+
+export const LogoLeftLine = styled.div`
+  content: "";
+  position: absolute;
+  left: -9px;
+  height: 1px;
+  width: 60px;
+  background-color: #c3fae8;
+  transform: rotate(-55deg);
+`;
+
+export const LogoRightLine = styled.div`
+  content: "";
+  top: 12px;
+  left: 19px;
+  position: absolute;
+  height: 1px;
+  width: 22px;
+  background-color: #c3fae8;
+  transform: rotate(55deg);
+`;
+
+export const LogoLink = styled.div`
+  font-size: 18px;
+  color: ${colors.secondary};
   font-weight: 700;
+  text-transform: uppercase;
 `;
 
 export const Text = styled.p`

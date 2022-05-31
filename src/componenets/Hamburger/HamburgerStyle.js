@@ -24,11 +24,7 @@ export const StyledHamburger = styled.button`
   div {
     width: 30px;
     height: 4px;
-    background: ${({ open, isHome }) => {
-      if (open && isHome) return `${colors.secondary}`;
-      else if (!isHome) return `${colors.secondary}`;
-      else if (!open && isHome) return `${colors.textPrimary}`;
-    }};
+    background: ${colors.secondary};
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;

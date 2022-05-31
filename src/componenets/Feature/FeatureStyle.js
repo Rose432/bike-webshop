@@ -4,6 +4,7 @@ import { colors, breakpoints } from "../../lib/style/theme";
 export const FeatureContainer = styled.div`
   width: 300px;
   transition: all 0.3s ease-in-out;
+
   &:hover {
     svg {
       color: ${colors.secondary};

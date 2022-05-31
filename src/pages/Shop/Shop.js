@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { commerce } from "../../lib/commerce";
 import Header from "../../componenets/Header/Header";
 import Section from "../../componenets/Section/Section";
@@ -14,8 +14,10 @@ import {
   Button,
 } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
+import { CartContext } from "../../context/CartContext";
 
 const Shop = () => {
+  const { cart, setCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
@@ -52,11 +54,12 @@ const Shop = () => {
             index < products.length && (
               <BikeCard
                 key={bicycle.id}
-                bicycleId={bicycle.name}
+                bicycleName={bicycle.name}
                 imgSrc={bicycle.image.url}
                 imgAlt={bicycle.description}
                 bikeTitle={bicycle.name}
                 bikePrice={bicycle.price.formatted_with_symbol}
+                bicycleId={bicycle.id}
               />
             )
         )}
@@ -73,7 +76,7 @@ const Shop = () => {
         {filteredData.map((bicycle, index) => (
           <BikeCard
             key={bicycle.id}
-            bicycleId={bicycle.name}
+            bicycleName={bicycle.name}
             imgSrc={bicycle.image.url}
             imgAlt={bicycle.description}
             bikeTitle={bicycle.name}

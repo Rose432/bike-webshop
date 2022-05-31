@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import {
   BikeCard as BikeContainer,
   FigureLink,
@@ -10,22 +11,41 @@ import {
   Price,
 } from "./BikeCardStyle";
 import { Button } from "../../lib/style/generalStyle";
+import { commerce } from "../../lib/commerce";
+import { CartContext } from "../../context/CartContext";
 
-const BikeCard = ({ bicycleId, imgSrc, imgAlt, bikeTitle, bikePrice }) => {
+const BikeCard = ({
+  bicycleName,
+  imgSrc,
+  imgAlt,
+  bikeTitle,
+  bikePrice,
+  bicycleId,
+}) => {
+  const { cart, setCart } = useContext(CartContext);
+
+  const handleAddToCart = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity);
+    setCart(item.cart);
+    console.log(cart);
+  };
+
   return (
     <BikeContainer>
-      <FigureLink to={`/bicycle/${bicycleId}`}>
+      <FigureLink to={`/bicycle/${bicycleName}`}>
         <Figure>
           <Img alt={imgAlt} src={imgSrc} />
         </Figure>
       </FigureLink>
 
       <Content>
-        <TitleLink to={`/bicycle/${bicycleId}`}>
+        <TitleLink to={`/bicycle/${bicycleName}`}>
           <Title>{bikeTitle}</Title>
         </TitleLink>
         <Price>{bikePrice}</Price>
-        <Button isShop>Add to cart</Button>
+        <Button onClick={() => handleAddToCart(bicycleId, 1)} isShop>
+          Add to cart
+        </Button>
       </Content>
     </BikeContainer>
   );
