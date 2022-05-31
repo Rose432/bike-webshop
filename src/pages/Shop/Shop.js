@@ -10,6 +10,7 @@ import {
   Grid,
   SpinnerWrapper,
   NotFoundWrapper,
+  SearchWrapper,
   NotFound,
   Button,
 } from "../../lib/style/generalStyle";
@@ -17,20 +18,9 @@ import { ThreeDots } from "react-loader-spinner";
 import { CartContext } from "../../context/CartContext";
 
 const Shop = () => {
-  const { cart, setCart } = useContext(CartContext);
-  const [products, setProducts] = useState([]);
+  const { cart, setCart, products, setProducts } = useContext(CartContext);
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
-
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-
-    setProducts(data);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   const handleSearch = (event) => {
     const searchWord = event.target.value;
@@ -49,20 +39,17 @@ const Shop = () => {
   let bicycles =
     products.length > 1 ? (
       <Grid>
-        {products.map(
-          (bicycle, index) =>
-            index < products.length && (
-              <BikeCard
-                key={bicycle.id}
-                bicycleName={bicycle.name}
-                imgSrc={bicycle.image.url}
-                imgAlt={bicycle.description}
-                bikeTitle={bicycle.name}
-                bikePrice={bicycle.price.formatted_with_symbol}
-                bicycleId={bicycle.id}
-              />
-            )
-        )}
+        {products.map((bicycle, index) => (
+          <BikeCard
+            key={bicycle.id}
+            bicycleName={bicycle.name}
+            imgSrc={bicycle.image.url}
+            imgAlt={bicycle.description}
+            bikeTitle={bicycle.name}
+            bikePrice={bicycle.price.formatted_with_symbol}
+            bicycleId={bicycle.id}
+          />
+        ))}
       </Grid>
     ) : (
       <SpinnerWrapper>
@@ -72,7 +59,7 @@ const Shop = () => {
 
   if (filteredData.length !== 0) {
     bicycles = (
-      <Grid>
+      <SearchWrapper>
         {filteredData.map((bicycle, index) => (
           <BikeCard
             key={bicycle.id}
@@ -83,7 +70,7 @@ const Shop = () => {
             bikePrice={bicycle.price.formatted_with_symbol}
           />
         ))}
-      </Grid>
+      </SearchWrapper>
     );
   } else if (wordEntered.length > 0 && !filteredData.includes({})) {
     bicycles = (
@@ -95,9 +82,6 @@ const Shop = () => {
     );
   }
 
-  console.log(filteredData);
-
-  console.log(wordEntered);
   return (
     <>
       <Header

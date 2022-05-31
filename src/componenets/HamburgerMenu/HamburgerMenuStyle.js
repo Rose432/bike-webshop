@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { colors, breakpoints } from "../../lib/style/theme";
 
 export const StyledMenu = styled.nav`
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${colors.primary};
+  background-color: ${colors.bgMenu};
   height: 100vh;
   text-align: center;
   position: absolute;
@@ -17,7 +18,7 @@ export const StyledMenu = styled.nav`
   transition: transform 0.3s ease-in-out;
   width: 100%;
   z-index: 1;
-  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+  transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
 `;
 
 export const MenuLink = styled(Link)`

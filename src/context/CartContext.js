@@ -6,19 +6,28 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({});
+  const [products, setProducts] = useState([]);
 
-  const fetchCart = async () => {
-    setCart(await commerce.cart.retrieve());
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+    setProducts(data);
   };
 
-  console.log(cart);
+  const fetchCart = async () => {
+    try {
+      setCart(await commerce.cart.retrieve());
+    } catch (err) {
+      console.log(console.error(err.message));
+    }
+  };
 
   useEffect(() => {
     fetchCart();
+    fetchProducts();
   }, []);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
+    <CartContext.Provider value={{ cart, setCart, products, setProducts }}>
       {children}
     </CartContext.Provider>
   );

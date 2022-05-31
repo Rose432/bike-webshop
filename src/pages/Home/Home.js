@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { commerce } from "../../lib/commerce";
 import Header from "../../componenets/Header/Header";
 import Landing from "../../componenets/Landing/Landing";
@@ -17,18 +17,11 @@ import {
   Button,
 } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
+import { CartContext } from "../../context/CartContext";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-    setProducts(data);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const { products, setProducts } = useContext(CartContext);
+  console.log(products);
 
   const bicycles =
     products.length > 0 ? (

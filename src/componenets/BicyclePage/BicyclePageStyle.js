@@ -2,23 +2,22 @@ import styled from "styled-components";
 import { colors, breakpoints } from "../../lib/style/theme";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
 
   @media (${breakpoints.tablet}) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 750px;
-    margin: 0 auto;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (${breakpoints.destkop}) {
     width: 900px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.destkopLarge}) {
     width: 1100px;
   }
 `;
@@ -76,7 +75,7 @@ export const Content = styled.div`
     height: 400px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.destkopLarge}) {
     width: 450px;
     height: 450px;
   }

@@ -12,6 +12,11 @@ export const BikeCard = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0px 1px 2px ${colors.primary};
+  flex-basis: 242.5px;
+
+  @media (${breakpoints.destkopLarge}) {
+    flex-basis: 307.5px;
+  }
 
   &:hover {
     figure {

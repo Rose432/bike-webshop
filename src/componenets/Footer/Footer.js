@@ -40,7 +40,7 @@ const Footer = () => {
       <FlexContainer>
         <Title>Contact info</Title>
         <Adress>
-          BIKESHOP j.d.o.o. <br />
+          ADVANTURER j.d.o.o. <br />
           Hercegovačka 59 <br />
           Zagreb <br />
           OIB: 22233344111 <br />

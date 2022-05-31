@@ -174,28 +174,23 @@ export const NotFound = styled.p`
   text-align: center;
 `;
 
-// SEARCH RESULTS
+// Search results
 
-// export const SearchWrapper = styled.div`
-//   position: relative;
-//   display: grid;
-//   grid-template-columns: repeat(1, 1fr);
-//   place-items: center;
-//   gap: 10px;
-//   row-gap: 64px;
+export const SearchWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  place-items: center;
+  gap: 10px;
+  row-gap: 64px;
 
-//   @media (${breakpoints.tabletMedium}) {
-//     display: flex;
-//     flex-wrap: wrap;
-//     row-gap: 64px;
-//     column-gap: 10px;
-//   }
+  @media (${breakpoints.tabletSmall}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-//   @media (${breakpoints.destkop}) {
-//     display: flex;
-//     flex-wrap: wrap;
-//     justify-content: center;
-//     grid-template-columns: repeat(3, 1fr);
-//     column-gap: 48px;
-//   }
-// `;
+  @media (${breakpoints.destkop}) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 10px;
+  }
+`;

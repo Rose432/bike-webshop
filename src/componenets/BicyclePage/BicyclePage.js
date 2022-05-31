@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import {
   Container,
   Figure,
@@ -11,9 +12,24 @@ import {
 } from "./BicyclePageStyle";
 import { Button } from "../../lib/style/generalStyle";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import { commerce } from "../../lib/commerce";
 
-const BicyclePage = ({ imgSrc, bikeTitle, bikeDescription, bikePrice }) => {
+const BicyclePage = ({
+  imgSrc,
+  bikeTitle,
+  bikeDescription,
+  bikePrice,
+  bicycleId,
+}) => {
+  const { cart, setCart } = useContext(CartContext);
   let navigate = useNavigate();
+
+  const handleAddToCart = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity);
+    setCart(item.cart);
+    console.log(cart);
+  };
 
   return (
     <Container>
@@ -29,7 +45,9 @@ const BicyclePage = ({ imgSrc, bikeTitle, bikeDescription, bikePrice }) => {
         </Flex>
         <Description dangerouslySetInnerHTML={{ __html: bikeDescription }} />
         <Price>Price: {bikePrice}</Price>
-        <Button isShop>Add to Cart</Button>
+        <Button onClick={() => handleAddToCart(bicycleId, 1)} isShop>
+          Add to Cart
+        </Button>
       </Content>
     </Container>
   );

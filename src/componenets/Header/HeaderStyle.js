@@ -107,6 +107,7 @@ export const IconContainer = styled.div`
 
 export const Cart = styled(ShoppingCartOutlinedIcon)`
   color: ${colors.secondary};
+  font-size: 30px !important;
 `;
 
 export const Favorite = styled(FavoriteBorderOutlinedIcon)`

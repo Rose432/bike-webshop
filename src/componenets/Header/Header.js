@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   HeaderWrapper,
   HeaderInner,
@@ -11,15 +11,17 @@ import {
   LogoLink,
   IconContainer,
   Cart,
-  Favorite,
+  // Favorite,
   NavWrapper,
   Nav,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
-import { Button } from "../../lib/style/generalStyle";
+import { Badge } from "@material-ui/core";
+import { CartContext } from "../../context/CartContext";
 
 const Header = ({ isSecondary, isHome, buttons }) => {
+  const { cart, setCart } = useContext(CartContext);
   const [open, setOpen] = useState(false);
 
   return (
@@ -35,8 +37,14 @@ const Header = ({ isSecondary, isHome, buttons }) => {
             <LogoLink to="/">Advanturer</LogoLink>
           </LogoContainer>
           <IconContainer>
-            <Favorite isSecondary={isSecondary} />
-            <Cart isSecondary={isSecondary} />
+            {/* <Favorite isSecondary={isSecondary} /> */}
+            <Badge
+              overlap="rectangular"
+              color="error"
+              badgeContent={cart.total_items}
+            >
+              <Cart aria-label="cart" />
+            </Badge>
           </IconContainer>
           <NavWrapper>
             <Nav isSecondary={isSecondary} to="/shop">

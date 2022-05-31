@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../../componenets/Header/Header";
 import Footer from "../../componenets/Footer/Footer";
@@ -8,21 +8,12 @@ import BicyclePage from "../../componenets/BicyclePage/BicyclePage";
 import { commerce } from "../../lib/commerce";
 import { ThreeDots } from "react-loader-spinner";
 import { SpinnerWrapper, Button } from "../../lib/style/generalStyle";
+import { CartContext } from "../../context/CartContext";
 
 const Bicycle = () => {
   const { name } = useParams();
-  const [products, setProducts] = useState([]);
+  const { products, setProducts } = useContext(CartContext);
   const [bicycle, setBicycle] = useState(null);
-
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-
-    setProducts(data);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   useEffect(() => {
     setBicycle(...products.filter((bicycle) => bicycle.name === name));
@@ -38,6 +29,7 @@ const Bicycle = () => {
       bikeDescription={bicycle.description}
       bikeTitle={bicycle.name}
       bikePrice={bicycle.price.formatted_with_symbol}
+      bicycleId={bicycle.id}
     />
   );
 

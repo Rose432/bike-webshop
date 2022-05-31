@@ -10,6 +10,7 @@ export const colors = {
   white: "#ffffff",
   textPrimary: "#333",
   textSecondary: "#555",
+  bgMenu: "#087f5be1",
   bgMenuHover: "#38d9a9",
 };
 

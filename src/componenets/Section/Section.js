@@ -4,6 +4,7 @@ import {
   SectionInner,
   Title,
   SmallLink,
+  TitleContainer,
 } from "./SectionStyle";
 
 const Section = ({
@@ -13,11 +14,18 @@ const Section = ({
   isFooter,
   linkText,
   customElement,
+  button,
+  isCart = false,
 }) => {
   return (
     <SectionWrapper isFooter={isFooter} isAfterSection={isAfterSection}>
       <SectionInner isAfterSection={isAfterSection}>
-        {title && <Title>{title}</Title>}
+        {title && (
+          <TitleContainer isCart={isCart}>
+            <Title isCart={isCart}>{title}</Title>
+            {button && button}
+          </TitleContainer>
+        )}
         {customElement && customElement}
         {children}
         {linkText && <SmallLink to="/shop">{linkText}</SmallLink>}

@@ -39,6 +39,21 @@ export const SectionInner = styled.div`
   }
 `;
 
+export const TitleContainer = styled.div`
+  ${(props) =>
+    props.isCart &&
+    `
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 64px;
+
+   @media (${breakpoints.tablet}) {
+    margin-bottom: 80px;
+  }
+`}
+`;
+
 export const Title = styled.h2`
   text-transform: uppercase;
   display: flex;
@@ -48,9 +63,21 @@ export const Title = styled.h2`
   color: ${colors.textPrimary};
   margin-bottom: 64px;
 
+  ${(props) =>
+    props.isCart &&
+    `
+   margin-bottom: 0;
+`}
+
   @media (${breakpoints.tablet}) {
     font-size: 30px;
     margin-bottom: 80px;
+
+    ${(props) =>
+      props.isCart &&
+      `
+   margin-bottom: 0;
+`}
   }
 
   &::after,
@@ -61,6 +88,12 @@ export const Title = styled.h2`
     background-color: ${colors.tertiary};
     margin-left: 10px;
     margin-right: 10px;
+
+    ${(props) =>
+      props.isCart &&
+      `
+   display: none;
+`}
 
     @media (${breakpoints.tabletMedium}) {
       width: 100px;
