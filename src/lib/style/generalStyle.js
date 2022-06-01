@@ -33,16 +33,18 @@ export const Button = styled.button`
      `}
   }
 
-  &:hover {
-    box-shadow: 0 1px 4px ${colors.black};
-
-    ${(props) =>
-      props.isShop &&
-      `
-      background-color:  ${colors.primary};
-      color:  ${colors.secondary};
-      `}
-  }
+  ${(props) =>
+    props.isCheckout &&
+    `
+    color: ${colors.primary};
+    border: 1px solid ${colors.primary};
+    background-color: ${colors.white};
+    
+    @media(${breakpoints.mobileLarge}){
+      
+      margin-left: 12px;
+    }
+  `}
 
   ${(props) =>
     props.isShop &&
@@ -82,6 +84,17 @@ ${(props) =>
      color: ${colors.primary};
      
  `}
+
+  &:hover {
+    box-shadow: 0 1px 4px ${colors.black};
+
+    ${(props) =>
+      props.isShop &&
+      `
+      background-color:  ${colors.primary};
+      color:  ${colors.secondary};
+      `}
+  }
 `;
 
 // GRID
@@ -193,4 +206,12 @@ export const SearchWrapper = styled.div`
     justify-content: center;
     column-gap: 10px;
   }
+`;
+
+// Subtotal
+
+export const Subtotal = styled.p`
+  font-size: 24px;
+  font-weight: 500;
+  color: ${colors.textPrimary};
 `;

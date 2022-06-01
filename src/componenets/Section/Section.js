@@ -5,6 +5,8 @@ import {
   Title,
   SmallLink,
   TitleContainer,
+  CartContainer,
+  ButtonCartContainer,
 } from "./SectionStyle";
 
 const Section = ({
@@ -16,6 +18,9 @@ const Section = ({
   customElement,
   button,
   isCart = false,
+  subtotal,
+  emptyButton,
+  checkoutButton,
 }) => {
   return (
     <SectionWrapper isFooter={isFooter} isAfterSection={isAfterSection}>
@@ -28,6 +33,15 @@ const Section = ({
         )}
         {customElement && customElement}
         {children}
+        {subtotal && (
+          <CartContainer>
+            {subtotal}{" "}
+            <ButtonCartContainer>
+              {emptyButton}
+              {checkoutButton}
+            </ButtonCartContainer>
+          </CartContainer>
+        )}
         {linkText && <SmallLink to="/shop">{linkText}</SmallLink>}
       </SectionInner>
     </SectionWrapper>

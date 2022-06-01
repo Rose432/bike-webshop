@@ -11,7 +11,7 @@ import {
   LogoLink,
   IconContainer,
   Cart,
-  // Favorite,
+  IconLink,
   NavWrapper,
   Nav,
 } from "./HeaderStyle";
@@ -37,14 +37,16 @@ const Header = ({ isSecondary, isHome, buttons }) => {
             <LogoLink to="/">Advanturer</LogoLink>
           </LogoContainer>
           <IconContainer>
-            {/* <Favorite isSecondary={isSecondary} /> */}
-            <Badge
-              overlap="rectangular"
-              color="error"
-              badgeContent={cart.total_items}
-            >
-              <Cart aria-label="cart" />
-            </Badge>
+            <IconLink to="/cart">
+              {/* <Favorite isSecondary={isSecondary} /> */}
+              <Badge
+                overlap="rectangular"
+                color="error"
+                badgeContent={cart.total_items}
+              >
+                <Cart aria-label="cart" />
+              </Badge>
+            </IconLink>
           </IconContainer>
           <NavWrapper>
             <Nav isSecondary={isSecondary} to="/shop">
@@ -57,6 +59,15 @@ const Header = ({ isSecondary, isHome, buttons }) => {
               Contact
             </Nav>
             {buttons}
+            <IconLink to="/cart">
+              <Badge
+                overlap="rectangular"
+                color="error"
+                badgeContent={cart.total_items}
+              >
+                <Cart aria-label="cart" />
+              </Badge>
+            </IconLink>
           </NavWrapper>
           <Hamburger open={open} setOpen={setOpen} />
         </HeaderInner>

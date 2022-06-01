@@ -91,7 +91,7 @@ export const LogoRightLine = styled.div`
 `;
 
 export const LogoLink = styled.div`
-  font-size: 18px;
+  font-size: 20px;
   color: ${colors.secondary};
   font-weight: 700;
   text-transform: uppercase;
@@ -101,9 +101,15 @@ export const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  /* gap: 5px; */
   z-index: 3;
+
+  @media (${breakpoints.destkop}) {
+    display: none;
+  }
 `;
+
+export const IconLink = styled(Link)``;
 
 export const Cart = styled(ShoppingCartOutlinedIcon)`
   color: ${colors.secondary};

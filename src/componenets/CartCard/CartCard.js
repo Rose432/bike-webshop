@@ -1,4 +1,6 @@
 import React from "react";
+import { useContext } from "react";
+import { commerce } from "../../lib/commerce";
 import {
   CartCardContainer,
   Figure,
@@ -12,8 +14,21 @@ import {
   Remove,
 } from "./CartCardStyle";
 import { Button } from "../../lib/style/generalStyle";
+import { CartContext } from "../../context/CartContext";
 
 const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
+  const { cart, setCart } = useContext(CartContext);
+
+  const handleUpdateCartQty = async (bicycleId, quantity) => {
+    const response = await commerce.cart.update(bicycleId, { quantity });
+    setCart(response.cart);
+  };
+
+  const handleRemoveFromCart = async (bicycleId) => {
+    const response = await commerce.cart.remove(bicycleId);
+    setCart(response.cart);
+  };
+
   return (
     <CartCardContainer>
       <Figure>
@@ -25,11 +40,13 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
       </FlexWrapper>
       <FlexWrapper>
         <QuantityContainer>
-          <Add />
+          <Remove
+            onClick={() => handleUpdateCartQty(bicycleId, quantity - 1)}
+          />
           <Quantity>{quantity}</Quantity>
-          <Remove />
+          <Add onClick={() => handleUpdateCartQty(bicycleId, quantity + 1)} />
         </QuantityContainer>
-        <Button>Delete</Button>
+        <Button onClick={() => handleRemoveFromCart(bicycleId)}>Delete</Button>
       </FlexWrapper>
     </CartCardContainer>
   );

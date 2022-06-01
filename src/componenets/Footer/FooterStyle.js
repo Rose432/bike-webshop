@@ -28,11 +28,11 @@ export const FlexContainer = styled.div`
 export const Title = styled.p`
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 16px;
 
   @media (${breakpoints.tabletMedium}) {
-    font-size: 20px;
+    font-size: 18px;
   }
 `;
 
@@ -40,7 +40,7 @@ export const LogoContainer = styled(Link)`
   display: flex;
   gap: 5px;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 `;
 
 export const LogoImgContainer = styled.div`
@@ -82,7 +82,7 @@ export const LogoRightLine = styled.div`
 `;
 
 export const LogoLink = styled.div`
-  font-size: 18px;
+  font-size: 20px;
   color: ${colors.secondary};
   font-weight: 700;
   text-transform: uppercase;

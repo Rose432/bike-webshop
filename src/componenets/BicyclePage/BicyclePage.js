@@ -40,7 +40,7 @@ const BicyclePage = ({
         <Flex>
           <Name>{bikeTitle}</Name>
           <Button isShop onClick={() => navigate(-1)} isBack>
-            Back
+            Return
           </Button>
         </Flex>
         <Description dangerouslySetInnerHTML={{ __html: bikeDescription }} />

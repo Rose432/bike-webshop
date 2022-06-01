@@ -63,9 +63,19 @@ export const QuantityContainer = styled.div`
 `;
 
 export const Quantity = styled.span`
-  font-size: 20px;
+  font-size: 24px;
 `;
 
-export const Add = styled(RemoveIcon)``;
+export const Remove = styled(RemoveIcon)`
+  cursor: pointer;
+  background-color: #ebebeb;
+  border-radius: 10px;
+  margin-right: 8px;
+`;
 
-export const Remove = styled(AddIcon)``;
+export const Add = styled(AddIcon)`
+  cursor: pointer;
+  background-color: #ebebeb;
+  border-radius: 10px;
+  margin-left: 8px;
+`;
