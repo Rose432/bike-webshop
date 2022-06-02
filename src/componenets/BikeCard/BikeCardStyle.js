@@ -12,7 +12,7 @@ export const BikeCard = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0px 1px 2px ${colors.primary};
-  flex-basis: 242.5px;
+  flex-basis: 326.672px;
 
   @media (${breakpoints.destkopLarge}) {
     flex-basis: 307.5px;
@@ -23,7 +23,7 @@ export const BikeCard = styled.div`
       box-shadow: 0px 2px 5px ${colors.textPrimary};
     }
     img {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
     p {
       color: ${colors.primary};

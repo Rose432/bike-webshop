@@ -8,6 +8,7 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({});
   const [products, setProducts] = useState([]);
 
+  console.log(products, cart);
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
     setProducts(data);

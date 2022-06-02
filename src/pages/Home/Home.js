@@ -21,7 +21,6 @@ import { CartContext } from "../../context/CartContext";
 
 const Home = () => {
   const { products, setProducts } = useContext(CartContext);
-  console.log(products);
 
   const bicycles =
     products.length > 0 ? (

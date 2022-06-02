@@ -27,7 +27,6 @@ const BikeCard = ({
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
     setCart(item.cart);
-    console.log(cart);
   };
 
   return (

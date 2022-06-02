@@ -24,6 +24,7 @@ export const HeaderWrapper = styled.header`
   ${(props) =>
     props.isSecondary &&
     `
+    height: 14vh;
     position: relative;
   background-color: ${colors.primary};
   `}

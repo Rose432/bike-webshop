@@ -38,7 +38,7 @@ const Shop = () => {
 
   let bicycles =
     products.length > 1 ? (
-      <Grid>
+      <Grid isBikeGrid>
         {products.map((bicycle, index) => (
           <BikeCard
             key={bicycle.id}

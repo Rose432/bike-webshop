@@ -127,6 +127,16 @@ export const Grid = styled.div`
 
   @media (${breakpoints.destkop}) {
     grid-template-columns: repeat(4, 1fr);
+
+    ${(props) =>
+      props.isBikeGrid &&
+      `
+    grid-template-columns: repeat(3,1fr);
+    `}
+  }
+
+  @media (${breakpoints.destkopLarge}) {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   ${(props) =>

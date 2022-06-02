@@ -14,6 +14,7 @@ import {
 } from "../../lib/style/generalStyle";
 import { CartContext } from "../../context/CartContext";
 import { ThreeDots } from "react-loader-spinner";
+import EmptyCart from "../../componenets/EmptyCart/EmptyCart";
 
 const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -24,9 +25,11 @@ const Cart = () => {
     setCart(response.cart);
   };
 
-  const renderCart = () => (
-    <>
-      <Grid>
+  let showCart;
+
+  if (cart.line_items && cart.total_items > 0) {
+    showCart = (
+      <Grid isBikeGrid>
         {cart.line_items?.map((item) => (
           <CartCard
             key={item.id}
@@ -38,8 +41,18 @@ const Cart = () => {
           />
         ))}
       </Grid>
-    </>
-  );
+    );
+  } else if (cart.line_items && cart.total_items === 0) {
+    showCart = <EmptyCart />;
+  } else {
+    showCart = (
+      <SpinnerWrapper>
+        <ThreeDots color="#087f5b" height={70} width={70} />
+      </SpinnerWrapper>
+    );
+  }
+
+  console.log(cart);
 
   return (
     <>
@@ -57,20 +70,19 @@ const Cart = () => {
         title={"Your shopping Cart"}
         button={<Button onClick={() => navigate(-1)}>Return</Button>}
         subtotal={
-          <Subtotal>Subtotal: {cart.subtotal?.formatted_with_symbol}</Subtotal>
+          cart.line_items &&
+          cart.total_items > 0 && (
+            <Subtotal>
+              Subtotal: {cart.subtotal?.formatted_with_symbol}
+            </Subtotal>
+          )
         }
         emptyButton={
           <Button onClick={() => handleEmptyCart()}>Empty Cart</Button>
         }
         checkoutButton={<Button isCheckout>Checkout</Button>}
       >
-        {cart?.line_items ? (
-          renderCart()
-        ) : (
-          <SpinnerWrapper>
-            <ThreeDots color="#087f5b" height={70} width={70} />
-          </SpinnerWrapper>
-        )}
+        {showCart}
       </Section>
       <Section isFooter>
         <Footer />
