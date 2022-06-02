@@ -5,6 +5,7 @@ import Shop from "./pages/Shop/Shop";
 import Bicycle from "./pages/Bicycle/Bicycle";
 import Cart from "./pages/Cart/Cart";
 import ScrollToTop from "./componenets/ScrollToTop/ScrollToTop";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/bicycle/:name" element={<Bicycle />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </ScrollToTop>
   );

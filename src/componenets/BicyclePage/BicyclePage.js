@@ -26,9 +26,12 @@ const BicyclePage = ({
   let navigate = useNavigate();
 
   const handleAddToCart = async (productId, quantity) => {
-    const item = await commerce.cart.add(productId, quantity);
-    setCart(item.cart);
-    console.log(cart);
+    try {
+      const item = await commerce.cart.add(productId, quantity);
+      setCart(item.cart);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (

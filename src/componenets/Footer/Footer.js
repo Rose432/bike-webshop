@@ -46,7 +46,7 @@ const Footer = () => {
           OIB: 22233344111 <br />
         </Adress>
         <PhoneNumber>+385 11 222 3333</PhoneNumber>
-        <Email>info@bikeshop.com</Email>
+        <Email>info@advanturer.com</Email>
       </FlexContainer>
       <FlexContainer>
         <Title>Newsletter</Title>

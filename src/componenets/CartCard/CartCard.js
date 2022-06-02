@@ -20,13 +20,21 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
   const { cart, setCart } = useContext(CartContext);
 
   const handleUpdateCartQty = async (bicycleId, quantity) => {
-    const response = await commerce.cart.update(bicycleId, { quantity });
-    setCart(response.cart);
+    try {
+      const response = await commerce.cart.update(bicycleId, { quantity });
+      setCart(response.cart);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   const handleRemoveFromCart = async (bicycleId) => {
-    const response = await commerce.cart.remove(bicycleId);
-    setCart(response.cart);
+    try {
+      const response = await commerce.cart.remove(bicycleId);
+      setCart(response.cart);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (

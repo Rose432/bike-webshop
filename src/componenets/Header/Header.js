@@ -38,7 +38,6 @@ const Header = ({ isSecondary, isHome, buttons }) => {
           </LogoContainer>
           <IconContainer>
             <IconLink to="/cart">
-              {/* <Favorite isSecondary={isSecondary} /> */}
               <Badge
                 overlap="rectangular"
                 color="error"

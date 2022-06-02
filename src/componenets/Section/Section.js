@@ -35,7 +35,7 @@ const Section = ({
         {children}
         {subtotal && (
           <CartContainer>
-            {subtotal}{" "}
+            {subtotal}
             <ButtonCartContainer>
               {emptyButton}
               {checkoutButton}

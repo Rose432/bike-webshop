@@ -8,10 +8,13 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({});
   const [products, setProducts] = useState([]);
 
-  console.log(products, cart);
   const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-    setProducts(data);
+    try {
+      const { data } = await commerce.products.list();
+      setProducts(data);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   const fetchCart = async () => {
