@@ -165,3 +165,5 @@ export const ButtonCartContainer = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const ButtonNav = styled(Link)``;

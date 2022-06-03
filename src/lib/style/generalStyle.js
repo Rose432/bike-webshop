@@ -23,6 +23,12 @@ export const Button = styled.button`
   transition: all 0.3s ease-in-out;
   font-weight: 500;
 
+  ${(props) =>
+    props.isFixed &&
+    `
+    width: 175px;
+  `}
+
   @media (${breakpoints.tabletSmall}) {
     ${(props) =>
       props.isBack &&
@@ -31,6 +37,17 @@ export const Button = styled.button`
     font-size: 16px;
 
      `}
+  }
+
+  &:hover {
+    box-shadow: 0 1px 4px ${colors.black};
+
+    ${(props) =>
+      props.isShop &&
+      `
+      background-color:  ${colors.primary};
+      color:  ${colors.secondary};
+      `}
   }
 
   ${(props) =>
@@ -84,17 +101,6 @@ ${(props) =>
      color: ${colors.primary};
      
  `}
-
-  &:hover {
-    box-shadow: 0 1px 4px ${colors.black};
-
-    ${(props) =>
-      props.isShop &&
-      `
-      background-color:  ${colors.primary};
-      color:  ${colors.secondary};
-      `}
-  }
 `;
 
 // GRID

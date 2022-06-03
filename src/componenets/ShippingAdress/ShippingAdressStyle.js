@@ -5,59 +5,7 @@ import {
   Field as FieldFormik,
   ErrorMessage as ErrorMessageFormik,
 } from "formik";
-// import { css } from "styled-componenets";
-
-export const CheckoutContainer = styled.div`
-  padding: 10px 5px;
-  box-shadow: 0px 1px 3px ${colors.textPrimary};
-  border-radius: 10px;
-`;
-
-export const CheckoutWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1;
-  place-items: center;
-  row-gap: 32px;
-  margin-bottom: 48px;
-`;
-
-export const Title = styled.h1`
-  font-size: 30px;
-  color: ${colors.textPrimary};
-`;
-
-export const StepContainer = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const StepWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2px;
-`;
-
-export const Number = styled.span`
-  font-size: 14px;
-  color: ${colors.secondary};
-  padding: 6px 10px;
-  background-color: ${colors.primary};
-  border-radius: 50%;
-`;
-
-export const StepName = styled.p`
-  font-size: 14px;
-  color: ${colors.textPrimary};
-`;
-
-export const Line = styled.div`
-  content: "";
-  height: 2px;
-  width: 20px;
-  background-color: ${colors.tertiary};
-`;
+import { Link } from "react-router-dom";
 
 export const ShippingAdress = styled.div``;
 
@@ -65,10 +13,25 @@ export const StepTitle = styled.h2`
   text-transform: capitalize;
   font-size: 20px;
   color: ${colors.textPrimary};
-  margin-bottom: 30px;
+  margin-bottom: 32px;
+
+  @media (${breakpoints.tabletSmall}) {
+    font-size: 24px;
+  }
 `;
 
-export const Form = styled(FormFormik)``;
+export const Fieldset = styled.fieldset`
+  border: none;
+`;
+
+export const Form = styled(FormFormik)`
+  @media (${breakpoints.tablet}) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 32px;
+    margin-bottom: 8px;
+  }
+`;
 
 export const FormRow = styled.div`
   margin-bottom: 24px;
@@ -114,4 +77,13 @@ export const ButtonContainer = styled.div`
   flex-direction: column;
   gap: 16px;
   align-items: flex-start;
+
+  @media (${breakpoints.tablet}) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
 `;
+
+export const ButtonNav = styled(Link)``;

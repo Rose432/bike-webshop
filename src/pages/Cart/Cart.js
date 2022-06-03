@@ -78,9 +78,15 @@ const Cart = () => {
           )
         }
         emptyButton={
-          <Button onClick={() => handleEmptyCart()}>Empty Cart</Button>
+          <Button isFixed onClick={() => handleEmptyCart()}>
+            Empty Cart
+          </Button>
         }
-        checkoutButton={<Button isCheckout>Checkout</Button>}
+        checkoutButton={
+          <Button isFixed isCheckout>
+            Checkout
+          </Button>
+        }
       >
         {showCart}
       </Section>

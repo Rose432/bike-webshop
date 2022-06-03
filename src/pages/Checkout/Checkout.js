@@ -1,6 +1,9 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
+import Section from "../../componenets/Section/Section";
+import CheckoutWidget from "../../componenets/CheckoutWidget/CheckoutWidget";
 import ShippingAdress from "../../componenets/ShippingAdress/ShippingAdress";
+import OrderSummary from "../../componenets/OrderSummary/OrderSummary";
 import { commerce } from "../../lib/commerce";
 import { CartContext } from "../../context/CartContext";
 
@@ -15,6 +18,7 @@ const Checkout = () => {
           const token = await commerce.checkout.generateToken(cart.id, {
             type: "cart",
           });
+          console.log(token);
           setCheckoutToken(token);
         } catch (err) {
           console.log(err.message);
@@ -25,9 +29,12 @@ const Checkout = () => {
   }, [cart]);
 
   return (
-    <>
-      <ShippingAdress />
-    </>
+    <Section>
+      <CheckoutWidget>
+        {/* <ShippingAdress /> */}
+        <OrderSummary />
+      </CheckoutWidget>
+    </Section>
   );
 };
 
