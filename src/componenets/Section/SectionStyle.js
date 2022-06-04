@@ -148,7 +148,7 @@ export const CartContainer = styled.div`
 export const ButtonCartContainer = styled.div`
   margin-top: 32px;
   display: flex;
-  row-gap: 12px;
+  gap: 12px;
   flex-direction: column;
   align-items: flex-start;
 

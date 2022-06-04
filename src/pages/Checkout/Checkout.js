@@ -9,7 +9,13 @@ import { CartContext } from "../../context/CartContext";
 
 const Checkout = () => {
   const { cart, setCart } = useContext(CartContext);
+  const [activeStep, setActiveStep] = useState(0);
+  const [shippingData, setShippingData] = useState({});
   const [checkoutToken, setCheckoutToken] = useState(null);
+  const [order, setOrder] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
+
+  console.log(shippingData);
 
   useEffect(() => {
     if (cart.id) {
@@ -18,7 +24,6 @@ const Checkout = () => {
           const token = await commerce.checkout.generateToken(cart.id, {
             type: "cart",
           });
-          console.log(token);
           setCheckoutToken(token);
         } catch (err) {
           console.log(err.message);
@@ -28,11 +33,50 @@ const Checkout = () => {
     }
   }, [cart]);
 
+  const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
+
+  const next = (values) => {
+    setShippingData(values);
+    nextStep();
+  };
+
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.empty();
+    setCart(newCart);
+  };
+
+  const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
+    try {
+      const incomingOrder = await commerce.checkout.capture(
+        checkoutTokenId,
+        newOrder
+      );
+      setOrder(incomingOrder);
+      refreshCart();
+    } catch (error) {
+      setErrorMessage(error.data.error.message);
+    }
+  };
+
   return (
     <Section>
-      <CheckoutWidget>
-        {/* <ShippingAdress /> */}
-        <OrderSummary />
+      <CheckoutWidget activeStep={activeStep} setActiveStep={setActiveStep}>
+        {activeStep === 0 && (
+          <ShippingAdress
+            activeSteup={activeStep}
+            checkoutToken={checkoutToken}
+            next={next}
+          />
+        )}
+        {activeStep === 1 && (
+          <OrderSummary
+            backStep={backStep}
+            handleCaptureCheckout={handleCaptureCheckout}
+            shippingData={shippingData}
+            checkoutToken={checkoutToken}
+          />
+        )}
       </CheckoutWidget>
     </Section>
   );

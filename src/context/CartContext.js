@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { commerce } from "../lib/commerce";
 
 const CartContext = createContext();
@@ -25,13 +25,10 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchCart();
-    fetchProducts();
-  }, []);
-
   return (
-    <CartContext.Provider value={{ cart, setCart, products, setProducts }}>
+    <CartContext.Provider
+      value={{ cart, setCart, products, setProducts, fetchProducts, fetchCart }}
+    >
       {children}
     </CartContext.Provider>
   );

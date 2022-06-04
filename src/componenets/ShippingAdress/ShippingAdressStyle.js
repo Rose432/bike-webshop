@@ -7,7 +7,9 @@ import {
 } from "formik";
 import { Link } from "react-router-dom";
 
-export const ShippingAdress = styled.div``;
+export const ShippingAdress = styled.div`
+  display: ${(activeState) => (activeState ? "block" : "none")};
+`;
 
 export const StepTitle = styled.h2`
   text-transform: capitalize;
@@ -29,7 +31,6 @@ export const Form = styled(FormFormik)`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 32px;
-    margin-bottom: 8px;
   }
 `;
 
@@ -73,10 +74,12 @@ export const Select = styled.select`
 export const Option = styled.option``;
 
 export const ButtonContainer = styled.div`
+  margin-top: 8px;
+  grid-column: span 2;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  align-items: flex-start;
+  justify-content: flex-start;
 
   @media (${breakpoints.tablet}) {
     flex-direction: row;

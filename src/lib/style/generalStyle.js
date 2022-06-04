@@ -57,10 +57,7 @@ export const Button = styled.button`
     border: 1px solid ${colors.primary};
     background-color: ${colors.white};
     
-    @media(${breakpoints.mobileLarge}){
-      
-      margin-left: 12px;
-    }
+    
   `}
 
   ${(props) =>

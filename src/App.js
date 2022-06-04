@@ -1,13 +1,23 @@
 import "./App.scss";
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Home from "./pages/Home/Home";
 import Shop from "./pages/Shop/Shop";
 import Bicycle from "./pages/Bicycle/Bicycle";
 import Cart from "./pages/Cart/Cart";
 import ScrollToTop from "./componenets/ScrollToTop/ScrollToTop";
 import Checkout from "./pages/Checkout/Checkout";
+import { useContext } from "react";
+import { CartContext } from "./context/CartContext";
 
 function App() {
+  const { fetchProducts, fetchCart } = useContext(CartContext);
+
+  useEffect(() => {
+    fetchProducts();
+    fetchCart();
+  }, []);
+
   return (
     <ScrollToTop>
       <Routes>

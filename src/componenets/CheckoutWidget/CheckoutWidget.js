@@ -5,24 +5,25 @@ import {
   Title,
   StepContainer,
   StepWrapper,
-  Number,
+  FirstNumber,
+  SecondNumber,
   StepName,
   Line,
 } from "./CheckoutWidgetStyle";
 
-const CheckoutWidget = ({ children }) => {
+const CheckoutWidget = ({ children, activeStep }) => {
   return (
     <CheckoutContainer>
       <CheckoutWrapper>
         <Title>Checkout</Title>
         <StepContainer>
           <StepWrapper>
-            <Number>1</Number>
+            <FirstNumber activeStep={activeStep}>1</FirstNumber>
             <StepName>Shipping Adress</StepName>
           </StepWrapper>
           <Line />
           <StepWrapper>
-            <Number>2</Number>
+            <SecondNumber activeStep={activeStep}>2</SecondNumber>
             <StepName>Payment Details</StepName>
           </StepWrapper>
         </StepContainer>
