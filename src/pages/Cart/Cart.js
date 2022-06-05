@@ -42,7 +42,7 @@ const Cart = () => {
         ))}
       </Grid>
     );
-  } else if (cart.line_items && cart.total_items === 0) {
+  } else if (cart.total_items === 0 || cart.success === true) {
     showCart = <EmptyCart />;
   } else {
     showCart = (
