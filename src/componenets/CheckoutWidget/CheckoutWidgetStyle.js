@@ -61,8 +61,10 @@ export const FirstNumber = styled.span`
   font-size: 14px;
   color: ${colors.secondary};
   padding: 6px 10px;
-  background-color: ${(activeStep) =>
-    activeStep === 0 ? `${colors.primary}` : `${colors.tertiary}`};
+  background-color: ${(props) =>
+    props.activeStep === 0 || props.activeStep === 2
+      ? `${colors.primary}`
+      : `${colors.tertiary}`};
   border-radius: 50%;
 
   @media (${breakpoints.tablet}) {
@@ -75,8 +77,10 @@ export const SecondNumber = styled.span`
   font-size: 14px;
   color: ${colors.secondary};
   padding: 6px 10px;
-  background-color: ${(activeStep) =>
-    activeStep === 1 ? `${colors.tertiary}` : `${colors.primary}`};
+  background-color: ${(props) =>
+    props.activeStep === 1 || props.activeStep === 2
+      ? `${colors.primary}`
+      : `${colors.tertiary}`};
   border-radius: 50%;
 
   @media (${breakpoints.tablet}) {

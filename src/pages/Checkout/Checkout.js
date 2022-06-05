@@ -4,6 +4,7 @@ import Section from "../../componenets/Section/Section";
 import CheckoutWidget from "../../componenets/CheckoutWidget/CheckoutWidget";
 import ShippingAdress from "../../componenets/ShippingAdress/ShippingAdress";
 import OrderSummary from "../../componenets/OrderSummary/OrderSummary";
+import ConfirmationMessage from "../../componenets/ConfirmationMessage/ConfirmationMessage";
 import { commerce } from "../../lib/commerce";
 import { CartContext } from "../../context/CartContext";
 
@@ -15,7 +16,7 @@ const Checkout = () => {
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log(shippingData);
+  console.log(order);
 
   useEffect(() => {
     if (cart.id) {
@@ -26,7 +27,7 @@ const Checkout = () => {
           });
           setCheckoutToken(token);
         } catch (err) {
-          console.log(err.message);
+          console.log(errorMessage);
         }
       };
       generateToken();
@@ -71,12 +72,14 @@ const Checkout = () => {
         )}
         {activeStep === 1 && (
           <OrderSummary
+            nextStep={nextStep}
             backStep={backStep}
             handleCaptureCheckout={handleCaptureCheckout}
             shippingData={shippingData}
             checkoutToken={checkoutToken}
           />
         )}
+        {activeStep === 2 && <ConfirmationMessage order={order} />}
       </CheckoutWidget>
     </Section>
   );

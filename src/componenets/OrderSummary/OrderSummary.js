@@ -34,6 +34,7 @@ const OrderSummary = ({
   shippingData,
   handleCaptureCheckout,
   backStep,
+  nextStep,
 }) => {
   const { cart, setCart } = useContext(CartContext);
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
@@ -77,6 +78,7 @@ const OrderSummary = ({
         },
       };
       handleCaptureCheckout(checkoutToken.id, orderData);
+      nextStep();
     }
   };
 
