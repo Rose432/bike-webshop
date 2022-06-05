@@ -13,6 +13,7 @@ import {
 import { Button } from "../../lib/style/generalStyle";
 import { commerce } from "../../lib/commerce";
 import { CartContext } from "../../context/CartContext";
+import { FasterCartContext } from "../../context/FasterCartContext";
 
 const BikeCard = ({
   bicycleName,
@@ -23,6 +24,7 @@ const BikeCard = ({
   bicycleId,
 }) => {
   const { cart, setCart } = useContext(CartContext);
+  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
 
   const handleAddToCart = async (productId, quantity) => {
     try {

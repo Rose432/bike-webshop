@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Section from "../../componenets/Section/Section";
 import CheckoutWidget from "../../componenets/CheckoutWidget/CheckoutWidget";
 import ShippingAdress from "../../componenets/ShippingAdress/ShippingAdress";
@@ -16,7 +17,7 @@ const Checkout = () => {
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log(order);
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (cart.id) {
@@ -27,7 +28,7 @@ const Checkout = () => {
           });
           setCheckoutToken(token);
         } catch (err) {
-          console.log(errorMessage);
+          navigate("/");
         }
       };
       generateToken();
