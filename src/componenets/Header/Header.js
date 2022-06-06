@@ -18,10 +18,10 @@ import {
 import Hamburger from "../Hamburger/Hamburger";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import { Badge } from "@material-ui/core";
-import { CartContext } from "../../context/CartContext";
+import { FasterCartContext } from "../../context/FasterCartContext";
 
 const Header = ({ isSecondary, isHome, buttons }) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
   const [open, setOpen] = useState(false);
 
   return (
@@ -41,7 +41,9 @@ const Header = ({ isSecondary, isHome, buttons }) => {
               <Badge
                 overlap="rectangular"
                 color="error"
-                badgeContent={cart.total_items}
+                badgeContent={fasterCart.reduce((acc, cur) => {
+                  return acc + cur.quantity;
+                }, 0)}
               >
                 <Cart aria-label="cart" />
               </Badge>
@@ -62,7 +64,9 @@ const Header = ({ isSecondary, isHome, buttons }) => {
               <Badge
                 overlap="rectangular"
                 color="error"
-                badgeContent={cart.total_items}
+                badgeContent={fasterCart.reduce((acc, cur) => {
+                  return acc + cur.quantity;
+                }, 0)}
               >
                 <Cart aria-label="cart" />
               </Badge>

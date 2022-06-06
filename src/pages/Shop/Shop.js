@@ -18,7 +18,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { CartContext } from "../../context/CartContext";
 
 const Shop = () => {
-  const { cart, setCart, products, setProducts } = useContext(CartContext);
+  const { products, setProducts } = useContext(CartContext);
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -46,7 +46,7 @@ const Shop = () => {
             imgSrc={bicycle.image.url}
             imgAlt={bicycle.description}
             bikeTitle={bicycle.name}
-            bikePrice={bicycle.price.formatted_with_symbol}
+            bikePrice={bicycle.price.raw}
             bicycleId={bicycle.id}
           />
         ))}
@@ -68,6 +68,7 @@ const Shop = () => {
             imgAlt={bicycle.description}
             bikeTitle={bicycle.name}
             bikePrice={bicycle.price.formatted_with_symbol}
+            bicycleId={bicycle.id}
           />
         ))}
       </SearchWrapper>

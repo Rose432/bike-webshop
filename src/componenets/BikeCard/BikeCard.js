@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   BikeCard as BikeContainer,
   FigureLink,
@@ -23,15 +23,35 @@ const BikeCard = ({
   bikePrice,
   bicycleId,
 }) => {
-  const { cart, setCart } = useContext(CartContext);
   const { fasterCart, setFasterCart } = useContext(FasterCartContext);
 
-  const handleAddToCart = async (productId, quantity) => {
-    try {
-      const item = await commerce.cart.add(productId, quantity);
-      setCart(item.cart);
-    } catch (err) {
-      console.log(err.message);
+  const handleAddItemsToCart = (
+    bicycleId,
+    quantity,
+    imgSrc,
+    bicycleName,
+    bikePrice,
+    fasterCart
+  ) => {
+    const cartData = {
+      bicycleId: bicycleId,
+      quantity: quantity,
+      imgSrc: imgSrc,
+      bicycleName: bicycleName,
+      bikePrice: bikePrice,
+    };
+
+    if (fasterCart.length === 0) {
+      setFasterCart((prevArray) => [...prevArray, cartData]);
+    } else if (
+      fasterCart.length > 0 &&
+      fasterCart.every((cur) => cur.bicycleId !== bicycleId)
+    ) {
+      setFasterCart((prevArray) => [...prevArray, cartData]);
+    } else if (fasterCart.some((cur) => cur.bicycleId === bicycleId)) {
+      fasterCart.find((cur) => cur.bicycleId === bicycleId && cur.quantity++);
+      const newArray = fasterCart.slice(0);
+      setFasterCart(newArray);
     }
   };
 
@@ -47,8 +67,20 @@ const BikeCard = ({
         <TitleLink to={`/bicycle/${bicycleName}`}>
           <Title>{bikeTitle}</Title>
         </TitleLink>
-        <Price>{bikePrice}</Price>
-        <Button onClick={() => handleAddToCart(bicycleId, 1)} isShop>
+        <Price>€ {bikePrice}</Price>
+        <Button
+          onClick={() =>
+            handleAddItemsToCart(
+              bicycleId,
+              1,
+              imgSrc,
+              bicycleName,
+              bikePrice,
+              fasterCart
+            )
+          }
+          isShop
+        >
           Add to cart
         </Button>
       </Content>

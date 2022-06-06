@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { commerce } from "../../lib/commerce";
 import {
   CartCardContainer,
@@ -15,25 +15,38 @@ import {
 } from "./CartCardStyle";
 import { Button } from "../../lib/style/generalStyle";
 import { CartContext } from "../../context/CartContext";
+import { FasterCartContext } from "../../context/FasterCartContext";
 
 const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
 
-  const handleUpdateCartQty = async (bicycleId, quantity) => {
-    try {
-      const response = await commerce.cart.update(bicycleId, { quantity });
-      setCart(response.cart);
-    } catch (err) {
-      console.log(err.message);
+  const handleIncrementCartQty = (bicycleId, quantity, fasterCart) => {
+    console.log(fasterCart);
+    if (fasterCart.some((cur) => cur.bicycleId === bicycleId)) {
+      fasterCart.find((cur) => cur.bicycleId === bicycleId && cur.quantity++);
+      const newArray = fasterCart.slice(0);
+      setFasterCart(newArray);
     }
   };
 
-  const handleRemoveFromCart = async (bicycleId) => {
-    try {
-      const response = await commerce.cart.remove(bicycleId);
-      setCart(response.cart);
-    } catch (err) {
-      console.log(err.message);
+  const handleDecrementCartQty = (bicycleId, quantity, fasterCart) => {
+    console.log(fasterCart);
+    if (
+      fasterCart.some((cur) => cur.bicycleId === bicycleId && cur.quantity >= 1)
+    ) {
+      fasterCart.find((cur) => cur.bicycleId === bicycleId && cur.quantity--);
+      const newArray = fasterCart.slice(0);
+      setFasterCart(newArray);
+    } else if (
+      fasterCart.some(
+        (cur) => cur.bicycleId === bicycleId && cur.quantity === 0
+      )
+    ) {
+      const newArray = fasterCart
+        .filter((cur) => cur.bicycleId !== bicycleId)
+        .slice(0);
+
+      setFasterCart(newArray);
     }
   };
 
@@ -49,12 +62,18 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
       <FlexWrapper>
         <QuantityContainer>
           <Remove
-            onClick={() => handleUpdateCartQty(bicycleId, quantity - 1)}
+            onClick={() =>
+              handleDecrementCartQty(bicycleId, quantity, fasterCart)
+            }
           />
           <Quantity>{quantity}</Quantity>
-          <Add onClick={() => handleUpdateCartQty(bicycleId, quantity + 1)} />
+          <Add
+            onClick={() =>
+              handleIncrementCartQty(bicycleId, quantity, fasterCart)
+            }
+          />
         </QuantityContainer>
-        <Button onClick={() => handleRemoveFromCart(bicycleId)}>Delete</Button>
+        <Button>Delete</Button>
       </FlexWrapper>
     </CartCardContainer>
   );

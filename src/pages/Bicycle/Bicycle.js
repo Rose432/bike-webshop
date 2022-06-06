@@ -28,7 +28,7 @@ const Bicycle = () => {
       imgSrc={bicycle.image.url}
       bikeDescription={bicycle.description}
       bikeTitle={bicycle.name}
-      bikePrice={bicycle.price.formatted_with_symbol}
+      bikePrice={bicycle.price.raw}
       bicycleId={bicycle.id}
     />
   );

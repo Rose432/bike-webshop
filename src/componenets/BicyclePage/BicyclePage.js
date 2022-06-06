@@ -12,8 +12,7 @@ import {
 } from "./BicyclePageStyle";
 import { Button } from "../../lib/style/generalStyle";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
-import { commerce } from "../../lib/commerce";
+import { FasterCartContext } from "../../context/FasterCartContext";
 
 const BicyclePage = ({
   imgSrc,
@@ -22,15 +21,36 @@ const BicyclePage = ({
   bikePrice,
   bicycleId,
 }) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
   let navigate = useNavigate();
 
-  const handleAddToCart = async (productId, quantity) => {
-    try {
-      const item = await commerce.cart.add(productId, quantity);
-      setCart(item.cart);
-    } catch (err) {
-      console.log(err.message);
+  const handleAddItemsToCart = (
+    bicycleId,
+    quantity,
+    imgSrc,
+    bikeTitle,
+    bikePrice,
+    fasterCart
+  ) => {
+    const cartData = {
+      bicycleId: bicycleId,
+      quantity: quantity,
+      imgSrc: imgSrc,
+      bikeTitle: bikeTitle,
+      bikePrice: bikePrice,
+    };
+
+    if (fasterCart.length === 0) {
+      setFasterCart((prevArray) => [...prevArray, cartData]);
+    } else if (
+      fasterCart.length > 0 &&
+      fasterCart.every((cur) => cur.bicycleId !== bicycleId)
+    ) {
+      setFasterCart((prevArray) => [...prevArray, cartData]);
+    } else if (fasterCart.some((cur) => cur.bicycleId === bicycleId)) {
+      fasterCart.find((cur) => cur.bicycleId === bicycleId && cur.quantity++);
+      const newArray = fasterCart.slice(0);
+      setFasterCart(newArray);
     }
   };
 
@@ -48,7 +68,19 @@ const BicyclePage = ({
         </Flex>
         <Description dangerouslySetInnerHTML={{ __html: bikeDescription }} />
         <Price>Price: {bikePrice}</Price>
-        <Button onClick={() => handleAddToCart(bicycleId, 1)} isShop>
+        <Button
+          onClick={() =>
+            handleAddItemsToCart(
+              bicycleId,
+              1,
+              imgSrc,
+              bikeTitle,
+              bikePrice,
+              fasterCart
+            )
+          }
+          isShop
+        >
           Add to Cart
         </Button>
       </Content>

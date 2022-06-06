@@ -34,7 +34,7 @@ const Home = () => {
                 imgSrc={bicycle.image.url}
                 imgAlt={bicycle.description}
                 bikeTitle={bicycle.name}
-                bikePrice={bicycle.price.formatted_with_symbol}
+                bikePrice={bicycle.price.raw}
                 bicycleId={bicycle.id}
               />
             )
