@@ -8,9 +8,11 @@ import OrderSummary from "../../componenets/OrderSummary/OrderSummary";
 import ConfirmationMessage from "../../componenets/ConfirmationMessage/ConfirmationMessage";
 import { commerce } from "../../lib/commerce";
 import { CartContext } from "../../context/CartContext";
+import { FasterCartContext } from "../../context/FasterCartContext";
 
 const Checkout = () => {
   const { cart, setCart } = useContext(CartContext);
+  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
   const [activeStep, setActiveStep] = useState(0);
   const [shippingData, setShippingData] = useState({});
   const [checkoutToken, setCheckoutToken] = useState(null);
@@ -43,6 +45,11 @@ const Checkout = () => {
     nextStep();
   };
 
+  const handleEmptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+    setCart(cart);
+  };
+
   const refreshCart = async () => {
     const newCart = await commerce.cart.empty();
     setCart(newCart);
@@ -69,6 +76,7 @@ const Checkout = () => {
             activeSteup={activeStep}
             checkoutToken={checkoutToken}
             next={next}
+            handleEmptyCart={handleEmptyCart}
           />
         )}
         {activeStep === 1 && (

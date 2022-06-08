@@ -39,7 +39,7 @@ const DetectShippingSubdivision = ({ setShippingSubdivision }) => {
   return null;
 };
 
-const CheckoutPage = ({ children, checkoutToken, next }) => {
+const CheckoutPage = ({ children, checkoutToken, next, handleEmptyCart }) => {
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -276,7 +276,9 @@ const CheckoutPage = ({ children, checkoutToken, next }) => {
               </FormRow>
               <ButtonContainer>
                 <ButtonNav to="/cart">
-                  <Button isFixed>Back to Cart</Button>
+                  <Button onClick={() => handleEmptyCart()} isFixed>
+                    Back to Cart
+                  </Button>
                 </ButtonNav>
                 <Button
                   disabled={formik.isSubmitting}

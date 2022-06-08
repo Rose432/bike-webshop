@@ -24,6 +24,7 @@ import {
   ElementsConsumer,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { FasterCartContext } from "../../context/FasterCartContext";
 
 const OrderSummary = ({
   name,
@@ -37,6 +38,7 @@ const OrderSummary = ({
   nextStep,
 }) => {
   const { cart, setCart } = useContext(CartContext);
+  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
   const handleSubmit = async (e, elements, stripe) => {
@@ -79,6 +81,7 @@ const OrderSummary = ({
       };
       handleCaptureCheckout(checkoutToken.id, orderData);
       nextStep();
+      setFasterCart([]);
     }
   };
 

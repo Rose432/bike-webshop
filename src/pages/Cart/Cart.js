@@ -10,11 +10,25 @@ import { CartContext } from "../../context/CartContext";
 import { FasterCartContext } from "../../context/FasterCartContext";
 import { ThreeDots } from "react-loader-spinner";
 import EmptyCart from "../../componenets/EmptyCart/EmptyCart";
+import { commerce } from "../../lib/commerce";
+import { cart, setCart } from "../../context/CartContext";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(CartContext);
   const { fasterCart, setFasterCart } = useContext(FasterCartContext);
+  const { cart, setCart } = useContext(CartContext);
   let navigate = useNavigate();
+
+  const updateCart = function (fasterCart) {
+    fasterCart.map(async (cur) => {
+      try {
+        const { cart } = await commerce.cart.add(cur.bicycleId, cur.quantity);
+        setCart(cart);
+        console.log(cart);
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  };
 
   let showCart;
 
@@ -25,7 +39,7 @@ const Cart = () => {
           <CartCard
             key={cartItem.bicycleId}
             imgSrc={cartItem.imgSrc}
-            name={cartItem.bikeTitle}
+            name={cartItem.bicycleName}
             price={cartItem.bikePrice}
             quantity={cartItem.quantity}
             bicycleId={cartItem.bicycleId}
@@ -62,9 +76,13 @@ const Cart = () => {
             </Subtotal>
           )
         }
-        emptyButton={<Button isFixed>Empty Cart</Button>}
+        emptyButton={
+          <Button isFixed onClick={() => setFasterCart([])}>
+            Empty Cart
+          </Button>
+        }
         checkoutButton={
-          <Button isFixed isCheckout>
+          <Button isFixed isCheckout onClick={() => updateCart(fasterCart)}>
             Checkout
           </Button>
         }

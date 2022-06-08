@@ -29,23 +29,31 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
     }
   };
 
-  const handleDecrementCartQty = (bicycleId, quantity, fasterCart) => {
+  const handleDecrementCartQty = (bicycleId, quantity, fasterCart, name) => {
     console.log(fasterCart);
     if (
-      fasterCart.some((cur) => cur.bicycleId === bicycleId && cur.quantity >= 1)
+      fasterCart.some((cur) => cur.bicycleId === bicycleId && cur.quantity > 1)
     ) {
       fasterCart.find((cur) => cur.bicycleId === bicycleId && cur.quantity--);
       const newArray = fasterCart.slice(0);
       setFasterCart(newArray);
     } else if (
       fasterCart.some(
-        (cur) => cur.bicycleId === bicycleId && cur.quantity === 0
+        (cur) => cur.bicycleId === bicycleId && cur.quantity === 1
       )
     ) {
       const newArray = fasterCart
         .filter((cur) => cur.bicycleId !== bicycleId)
         .slice(0);
+      setFasterCart(newArray);
+    }
+  };
 
+  const handleItemRemove = (bicycleId, fasterCart) => {
+    if (fasterCart.find((cur) => cur.bicycleId === bicycleId)) {
+      const newArray = fasterCart
+        .filter((cur) => cur.bicycleId !== bicycleId)
+        .slice(0);
       setFasterCart(newArray);
     }
   };
@@ -73,7 +81,9 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
             }
           />
         </QuantityContainer>
-        <Button>Delete</Button>
+        <Button onClick={() => handleItemRemove(bicycleId, fasterCart)}>
+          Delete
+        </Button>
       </FlexWrapper>
     </CartCardContainer>
   );
