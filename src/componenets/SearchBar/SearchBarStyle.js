@@ -25,7 +25,7 @@ export const SearchInputs = styled.div`
 
 export const SearchBar = styled.input`
   width: 100%;
-  padding-left: 5px;
+  padding-left: 15px;
   border: 1px solid ${colors.textSecondary};
   border-radius: 10px;
   line-height: 40px;

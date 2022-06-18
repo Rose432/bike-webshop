@@ -41,7 +41,7 @@ const Footer = () => {
         <Title>Contact info</Title>
         <Adress>
           ADVANTURER j.d.o.o. <br />
-          Hercegovačka 59 <br />
+          TRH 99 <br />
           Zagreb <br />
           OIB: 22233344111 <br />
         </Adress>

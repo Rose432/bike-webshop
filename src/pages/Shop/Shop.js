@@ -88,8 +88,12 @@ const Shop = () => {
       <Header
         buttons={
           <>
-            <Button isOutlineSecondary>Log In</Button>
-            <Button isSecondary>Sign Up</Button>
+            <Button isHeaderNav isOutlineSecondary>
+              Log In
+            </Button>
+            <Button isHeaderNav isSecondary>
+              Sign Up
+            </Button>
           </>
         }
         isSecondary

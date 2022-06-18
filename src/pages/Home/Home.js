@@ -51,8 +51,10 @@ const Home = () => {
       <Header
         buttons={
           <>
-            <Button isOutline>Log In</Button>
-            <Button>Sign Up</Button>
+            <Button isHeaderNav isInline>
+              Log In
+            </Button>
+            <Button isHeaderNav>Sign Up</Button>
           </>
         }
         isHome={true}

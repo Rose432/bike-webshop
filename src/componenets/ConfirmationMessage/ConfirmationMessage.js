@@ -5,7 +5,7 @@ import {
   OrderRef,
   ButtonLink,
 } from "./ConfirmationMessageStyle";
-import { Button, SpinnerWrapper, Link } from "../../lib/style/generalStyle";
+import { Button, SpinnerWrapper } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
 
 const ConfirmationMessage = ({ order }) => {

@@ -8,10 +8,9 @@ import CartCard from "../../componenets/CartCard/CartCard";
 import { Button, Grid, Subtotal } from "../../lib/style/generalStyle";
 import { CartContext } from "../../context/CartContext";
 import { FasterCartContext } from "../../context/FasterCartContext";
-import { ThreeDots } from "react-loader-spinner";
 import EmptyCart from "../../componenets/EmptyCart/EmptyCart";
 import { commerce } from "../../lib/commerce";
-import { cart, setCart } from "../../context/CartContext";
+
 
 const Cart = () => {
   const { fasterCart, setFasterCart } = useContext(FasterCartContext);
@@ -56,8 +55,12 @@ const Cart = () => {
       <Header
         buttons={
           <>
-            <Button isOutlineSecondary>Log In</Button>
-            <Button isSecondary>Sign Up</Button>
+            <Button isHeaderNav isOutlineSecondary>
+              Log In
+            </Button>
+            <Button isHeaderNav isSecondary>
+              Sign Up
+            </Button>
           </>
         }
         isSecondary
@@ -65,7 +68,11 @@ const Cart = () => {
       <Section
         isCart={true}
         title={"Your shopping Cart"}
-        button={<Button onClick={() => navigate(-1)}>Return</Button>}
+        button={
+          <Button isFixed onClick={() => navigate(-1)}>
+            Return
+          </Button>
+        }
         subtotal={
           fasterCart.length > 0 && (
             <Subtotal>
@@ -82,7 +89,7 @@ const Cart = () => {
           </Button>
         }
         checkoutButton={
-          <Button isFixed isCheckout onClick={() => updateCart(fasterCart)}>
+          <Button isOutline isFixed onClick={() => updateCart(fasterCart)}>
             Checkout
           </Button>
         }

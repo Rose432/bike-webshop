@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import {
   BikeCard as BikeContainer,
   FigureLink,
@@ -11,8 +11,6 @@ import {
   Price,
 } from "./BikeCardStyle";
 import { Button } from "../../lib/style/generalStyle";
-import { commerce } from "../../lib/commerce";
-import { CartContext } from "../../context/CartContext";
 import { FasterCartContext } from "../../context/FasterCartContext";
 
 const BikeCard = ({

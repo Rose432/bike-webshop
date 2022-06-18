@@ -9,6 +9,7 @@ import {
   Name,
   Description,
   Price,
+  ButtonContainer,
 } from "./BicyclePageStyle";
 import { Button } from "../../lib/style/generalStyle";
 import { useNavigate } from "react-router-dom";
@@ -62,27 +63,30 @@ const BicyclePage = ({
       <Content>
         <Flex>
           <Name>{bikeTitle}</Name>
-          <Button isShop onClick={() => navigate(-1)} isBack>
-            Return
-          </Button>
         </Flex>
         <Description dangerouslySetInnerHTML={{ __html: bikeDescription }} />
         <Price>Price: {bikePrice}</Price>
-        <Button
-          onClick={() =>
-            handleAddItemsToCart(
-              bicycleId,
-              1,
-              imgSrc,
-              bikeTitle,
-              bikePrice,
-              fasterCart
-            )
-          }
-          isShop
-        >
-          Add to Cart
-        </Button>
+        <ButtonContainer>
+          <Button isFixed onClick={() => navigate(-1)}>
+            Return
+          </Button>
+          <Button
+            isFixed
+            isOutline
+            onClick={() =>
+              handleAddItemsToCart(
+                bicycleId,
+                1,
+                imgSrc,
+                bikeTitle,
+                bikePrice,
+                fasterCart
+              )
+            }
+          >
+            Add to Cart
+          </Button>
+        </ButtonContainer>
       </Content>
     </Container>
   );

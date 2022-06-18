@@ -26,6 +26,10 @@ export const Figure = styled.figure`
   width: 300px;
   margin-bottom: 48px;
 
+  @media (${breakpoints.mobileLarge}) {
+    width: 340px;
+  }
+
   @media (${breakpoints.tabletSmall}) {
     width: 400px;
   }
@@ -61,6 +65,10 @@ export const Content = styled.div`
   justify-content: space-between;
   gap: 32px;
   width: 300px;
+
+  @media (${breakpoints.tabletSmall}) {
+    width: 340px;
+  }
 
   @media (${breakpoints.tabletSmall}) {
     width: 400px;
@@ -109,5 +117,18 @@ export const Price = styled.p`
 
   @media (${breakpoints.tablet}) {
     font-size: 24px;
+  }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (${breakpoints.tabletSmall}) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 `;

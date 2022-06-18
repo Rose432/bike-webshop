@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {
-  ShippingAdress,
+  ShippingAdress as Shipping,
   StepTitle,
   Fieldset,
   Form,
@@ -23,7 +23,7 @@ const DetectShippingCountry = ({ setShippingCountry }) => {
 
   useEffect(() => {
     values.shippingCountry !== "" && setShippingCountry(values.shippingCountry);
-  }, [values]);
+  }, [values, setShippingCountry]);
 
   return null;
 };
@@ -34,18 +34,18 @@ const DetectShippingSubdivision = ({ setShippingSubdivision }) => {
   useEffect(() => {
     values.shippingSubdivision !== "" &&
       setShippingSubdivision(values.shippingSubdivision);
-  }, [values]);
+  }, [values, setShippingSubdivision]);
 
   return null;
 };
 
-const CheckoutPage = ({ children, checkoutToken, next, handleEmptyCart }) => {
+const ShippingAdress = ({ children, checkoutToken, next, handleEmptyCart }) => {
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
   const [shippingSubdivision, setShippingSubdivision] = useState("");
   const [shippingOptions, setShippingOptions] = useState([]);
-  const [shippingOption, setShippingOption] = useState("");
+ 
 
   const countries = Object.entries(shippingCountries).map(([code, name]) => ({
     id: code,
@@ -98,7 +98,7 @@ const CheckoutPage = ({ children, checkoutToken, next, handleEmptyCart }) => {
 
   useEffect(() => {
     fetchShippingCountries(checkoutToken?.id);
-  }, []);
+  }, [checkoutToken?.id]);
 
   useEffect(() => {
     if (shippingCountry) fetchShippingSubdivisions(shippingCountry);
@@ -111,10 +111,10 @@ const CheckoutPage = ({ children, checkoutToken, next, handleEmptyCart }) => {
         shippingCountry,
         shippingSubdivision
       );
-  }, [shippingSubdivision]);
+  }, [shippingSubdivision, shippingCountry]);
 
   return (
-    <ShippingAdress>
+    <Shipping>
       <StepTitle>Shipping adress</StepTitle>
       <Formik
         initialValues={{
@@ -284,7 +284,7 @@ const CheckoutPage = ({ children, checkoutToken, next, handleEmptyCart }) => {
                   disabled={formik.isSubmitting}
                   type="submit"
                   isFixed
-                  isCheckout
+                  isOutline
                 >
                   Next
                 </Button>
@@ -293,8 +293,8 @@ const CheckoutPage = ({ children, checkoutToken, next, handleEmptyCart }) => {
           </Fieldset>
         )}
       </Formik>
-    </ShippingAdress>
+    </Shipping>
   );
 };
 
-export default CheckoutPage;
+export default ShippingAdress;

@@ -8,7 +8,7 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({});
   const [products, setProducts] = useState([]);
 
-  console.log(products);
+  console.log(cart);
 
   const fetchProducts = async () => {
     try {

@@ -24,7 +24,6 @@ export const HeaderWrapper = styled.header`
   ${(props) =>
     props.isSecondary &&
     `
-    height: 14vh;
     position: relative;
   background-color: ${colors.primary};
   `}
@@ -146,7 +145,8 @@ export const Nav = styled(NavLink)`
     display: block;
     opacity: 0;
     width: 100%;
-    height: 2px;
+    height: 1px;
+    visibility: hidden;
     background-color: ${colors.secondary};
     margin: auto;
     transition: all 0.3s ease-in-out;
@@ -154,5 +154,13 @@ export const Nav = styled(NavLink)`
 
   &:hover::after {
     opacity: 100;
+    visibility: visible;
+  }
+
+  &.active {
+    &::after {
+      opacity: 100;
+      visibility: visible;
+    }
   }
 `;

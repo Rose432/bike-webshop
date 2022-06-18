@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Section from "../../componenets/Section/Section";
 import CheckoutWidget from "../../componenets/CheckoutWidget/CheckoutWidget";
@@ -8,11 +8,9 @@ import OrderSummary from "../../componenets/OrderSummary/OrderSummary";
 import ConfirmationMessage from "../../componenets/ConfirmationMessage/ConfirmationMessage";
 import { commerce } from "../../lib/commerce";
 import { CartContext } from "../../context/CartContext";
-import { FasterCartContext } from "../../context/FasterCartContext";
 
 const Checkout = () => {
   const { cart, setCart } = useContext(CartContext);
-  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
   const [activeStep, setActiveStep] = useState(0);
   const [shippingData, setShippingData] = useState({});
   const [checkoutToken, setCheckoutToken] = useState(null);
@@ -21,7 +19,7 @@ const Checkout = () => {
 
   let navigate = useNavigate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (cart.id) {
       const generateToken = async () => {
         try {
@@ -30,12 +28,13 @@ const Checkout = () => {
           });
           setCheckoutToken(token);
         } catch (err) {
-          navigate("/");
+          console.error(err);
         }
       };
       generateToken();
+      console.log(checkoutToken);
     }
-  }, [cart]);
+  }, [cart, navigate, checkoutToken]);
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -46,7 +45,7 @@ const Checkout = () => {
   };
 
   const handleEmptyCart = async () => {
-    const { cart } = await commerce.cart.empty();
+    const { cart } = await commerce.cart.delete();
     setCart(cart);
   };
 
@@ -69,28 +68,30 @@ const Checkout = () => {
   };
 
   return (
-    <Section>
-      <CheckoutWidget activeStep={activeStep} setActiveStep={setActiveStep}>
-        {activeStep === 0 && (
-          <ShippingAdress
-            activeSteup={activeStep}
-            checkoutToken={checkoutToken}
-            next={next}
-            handleEmptyCart={handleEmptyCart}
-          />
-        )}
-        {activeStep === 1 && (
-          <OrderSummary
-            nextStep={nextStep}
-            backStep={backStep}
-            handleCaptureCheckout={handleCaptureCheckout}
-            shippingData={shippingData}
-            checkoutToken={checkoutToken}
-          />
-        )}
-        {activeStep === 2 && <ConfirmationMessage order={order} />}
-      </CheckoutWidget>
-    </Section>
+    checkoutToken && (
+      <Section>
+        <CheckoutWidget activeStep={activeStep} setActiveStep={setActiveStep}>
+          {activeStep === 0 && (
+            <ShippingAdress
+              activeSteup={activeStep}
+              checkoutToken={checkoutToken}
+              next={next}
+              handleEmptyCart={handleEmptyCart}
+            />
+          )}
+          {activeStep === 1 && (
+            <OrderSummary
+              nextStep={nextStep}
+              backStep={backStep}
+              handleCaptureCheckout={handleCaptureCheckout}
+              shippingData={shippingData}
+              checkoutToken={checkoutToken}
+            />
+          )}
+          {activeStep === 2 && <ConfirmationMessage order={order} />}
+        </CheckoutWidget>
+      </Section>
+    )
   );
 };
 

@@ -21,7 +21,7 @@ import { Badge } from "@material-ui/core";
 import { FasterCartContext } from "../../context/FasterCartContext";
 
 const Header = ({ isSecondary, isHome, buttons }) => {
-  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
+  const { fasterCart } = useContext(FasterCartContext);
   const [open, setOpen] = useState(false);
 
   return (

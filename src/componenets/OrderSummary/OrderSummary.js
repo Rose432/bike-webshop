@@ -37,7 +37,7 @@ const OrderSummary = ({
   backStep,
   nextStep,
 }) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
   const { fasterCart, setFasterCart } = useContext(FasterCartContext);
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -124,7 +124,7 @@ const OrderSummary = ({
                 <Button isFixed onClick={backStep}>
                   Cancel
                 </Button>
-                <Button disabled={!stripe} type="submit" isFixed isCheckout>
+                <Button disabled={!stripe} type="submit" isFixed isOutline>
                   Finish order
                 </Button>
               </ButtonContainer>

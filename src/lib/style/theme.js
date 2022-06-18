@@ -1,5 +1,6 @@
 export const fonts = {
-  primary: "Roboto, sans-serif",
+  primary: "Inter, sans-serif",
+  secondary: "Roboto, sans-serif",
 };
 
 export const colors = {

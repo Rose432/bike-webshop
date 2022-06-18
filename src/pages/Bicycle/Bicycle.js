@@ -38,8 +38,12 @@ const Bicycle = () => {
       <Header
         buttons={
           <>
-            <Button isOutlineSecondary>Log In</Button>
-            <Button isSecondary>Sign Up</Button>
+            <Button isHeaderNav isOutlineSecondary>
+              Log In
+            </Button>
+            <Button isHederNav isSecondary>
+              Sign Up
+            </Button>
           </>
         }
         isSecondary

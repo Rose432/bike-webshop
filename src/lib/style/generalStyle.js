@@ -3,11 +3,12 @@ import FlightOutlinedIcon from "@material-ui/icons/FlightOutlined";
 import LocalShippingOutlinedIcon from "@material-ui/icons/LocalShippingOutlined";
 import ScheduleOutlinedIcon from "@material-ui/icons/ScheduleOutlined";
 import ContactSupportOutlinedIcon from "@material-ui/icons/ContactSupportOutlined";
-import { colors, breakpoints } from "../../lib/style/theme";
+import { fonts, colors, breakpoints } from "../../lib/style/theme";
 
 // BUTTON
 
 export const Button = styled.button`
+  font-family: ${fonts.primary};
   border: none;
   border-radius: 10px;
   background-color: ${colors.primary};
@@ -22,22 +23,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   font-weight: 500;
-
-  ${(props) =>
-    props.isFixed &&
-    `
-    width: 175px;
-  `}
-
-  @media (${breakpoints.tabletSmall}) {
-    ${(props) =>
-      props.isBack &&
-      `
-    padding: 10px 20px;
-    font-size: 16px;
-
-     `}
-  }
+  border: 1px solid transparent;
 
   &:hover {
     box-shadow: 0 1px 4px ${colors.black};
@@ -51,14 +37,16 @@ export const Button = styled.button`
   }
 
   ${(props) =>
-    props.isCheckout &&
+    props.isFixed &&
     `
-    color: ${colors.primary};
-    border: 1px solid ${colors.primary};
-    background-color: ${colors.white};
-    
-    
-  `}
+        width: 176px;
+      `}
+
+  ${(props) =>
+    props.isHeaderNav &&
+    `
+        width: 115px;
+      `}
 
   ${(props) =>
     props.isShop &&
@@ -67,25 +55,29 @@ export const Button = styled.button`
     border: 1px solid ${colors.primary};
      background-color:  ${colors.white};
      `}
-
-  ${(props) =>
-    props.isBack &&
-    `
-    padding: 8px 16px;
-    font-size: 14px;
-
-     `}
      
 ${(props) =>
-    props.isOutline &&
+    props.isInline &&
     `
+    
     background-color:  ${colors.white};
     color:  ${colors.primary};
     `}
 
+${(props) =>
+    props.isOutline &&
+    `
+    color: ${colors.primary};
+    border: 1px solid ${colors.primary};
+    background-color: ${colors.white};
+    
+    
+  `}
+
  ${(props) =>
     props.isOutlineSecondary &&
     `
+    
      border: 1px solid ${colors.secondary};
     background-color:  ${colors.primary};
     color:  ${colors.secondary};
@@ -94,8 +86,17 @@ ${(props) =>
  ${(props) =>
     props.isSecondary &&
     `
+    
     background-color: ${colors.secondary};
      color: ${colors.primary};
+     border: 1px solid transparent;
+     
+ `}
+
+ ${(props) =>
+    props.isCta &&
+    `
+    font-size: 20px;
      
  `}
 `;

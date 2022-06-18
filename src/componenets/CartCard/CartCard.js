@@ -1,6 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
-import { commerce } from "../../lib/commerce";
+import { useContext} from "react";
 import {
   CartCardContainer,
   Figure,
@@ -14,7 +13,6 @@ import {
   Remove,
 } from "./CartCardStyle";
 import { Button } from "../../lib/style/generalStyle";
-import { CartContext } from "../../context/CartContext";
 import { FasterCartContext } from "../../context/FasterCartContext";
 
 const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
