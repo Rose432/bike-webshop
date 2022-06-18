@@ -1,12 +1,49 @@
 import React from "react";
-import { Section as SectionWrapper, SectionInner, Title } from "./SectionStyle";
+import {
+  Section as SectionWrapper,
+  SectionInner,
+  Title,
+  SmallLink,
+  TitleContainer,
+  CartContainer,
+  ButtonCartContainer,
+  ButtonNav,
+} from "./SectionStyle";
 
-const Section = ({ children, title, isAfterSection, isFooter }) => {
+const Section = ({
+  children,
+  title,
+  isAfterSection,
+  isFooter,
+  linkText,
+  customElement,
+  button,
+  isCart = false,
+  subtotal,
+  emptyButton,
+  checkoutButton,
+}) => {
   return (
     <SectionWrapper isFooter={isFooter} isAfterSection={isAfterSection}>
       <SectionInner isAfterSection={isAfterSection}>
-        {title && <Title>{title}</Title>}
+        {title && (
+          <TitleContainer isCart={isCart}>
+            <Title isCart={isCart}>{title}</Title>
+            {button && button}
+          </TitleContainer>
+        )}
+        {customElement && customElement}
         {children}
+        {subtotal && (
+          <CartContainer>
+            {subtotal}
+            <ButtonCartContainer>
+              {emptyButton}
+              <ButtonNav to="/checkout">{checkoutButton}</ButtonNav>
+            </ButtonCartContainer>
+          </CartContainer>
+        )}
+        {linkText && <SmallLink to="/shop">{linkText}</SmallLink>}
       </SectionInner>
     </SectionWrapper>
   );

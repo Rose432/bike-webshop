@@ -4,7 +4,11 @@ import {
   FlexContainer,
   Title,
   LogoContainer,
-  Logo,
+  LogoImgContainer,
+  LogoDownLine,
+  LogoLeftLine,
+  LogoRightLine,
+  LogoLink,
   Text,
   Adress,
   PhoneNumber,
@@ -18,8 +22,13 @@ const Footer = () => {
     <FooterContainer>
       <FlexContainer>
         <Title>About Us</Title>
-        <LogoContainer>
-          <Logo>Bikeshop</Logo>
+        <LogoContainer to="/">
+          <LogoImgContainer>
+            <LogoDownLine />
+            <LogoLeftLine />
+            <LogoRightLine />
+          </LogoImgContainer>
+          <LogoLink>Advanturer</LogoLink>
         </LogoContainer>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -31,20 +40,20 @@ const Footer = () => {
       <FlexContainer>
         <Title>Contact info</Title>
         <Adress>
-          BIKESHOP j.d.o.o. <br />
-          Hercegovačka 59 <br />
+          ADVANTURER j.d.o.o. <br />
+          TRH 99 <br />
           Zagreb <br />
           OIB: 22233344111 <br />
         </Adress>
         <PhoneNumber>+385 11 222 3333</PhoneNumber>
-        <Email>info@bikeshop.com</Email>
+        <Email>info@advanturer.com</Email>
       </FlexContainer>
       <FlexContainer>
         <Title>Newsletter</Title>
         <SignInNewsletter>
           Subscribe to our daily newsletter to get the latest news.
         </SignInNewsletter>
-        <Button>Sign me Up</Button>
+        <Button isOutline>Sign me Up</Button>
       </FlexContainer>
     </FooterContainer>
   );

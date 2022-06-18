@@ -1,4 +1,6 @@
 import React from "react";
+import { useState, useEffect, useContext } from "react";
+import { commerce } from "../../lib/commerce";
 import Header from "../../componenets/Header/Header";
 import Landing from "../../componenets/Landing/Landing";
 import Section from "../../componenets/Section/Section";
@@ -11,43 +13,57 @@ import {
   TruckIcon,
   ClockIcon,
   QuestionMarkIcon,
+  SpinnerWrapper,
+  Button,
 } from "../../lib/style/generalStyle";
-import Bike1 from "../../assets/images/bike1.jpg";
-import Bike2 from "../../assets/images/bike2.jpg";
-import Bike3 from "../../assets/images/bike3.jpg";
-import Bike4 from "../../assets/images/bike4.jpg";
+import { ThreeDots } from "react-loader-spinner";
+import { CartContext } from "../../context/CartContext";
 
 const Home = () => {
+  const { products, setProducts } = useContext(CartContext);
+
+  const bicycles =
+    products.length > 0 ? (
+      <Grid>
+        {products.map(
+          (bicycle, index) =>
+            index <= 3 && (
+              <BikeCard
+                key={bicycle.id}
+                bicycleName={bicycle.name}
+                imgSrc={bicycle.image.url}
+                imgAlt={bicycle.description}
+                bikeTitle={bicycle.name}
+                bikePrice={bicycle.price.raw}
+                bicycleId={bicycle.id}
+              />
+            )
+        )}
+      </Grid>
+    ) : (
+      <SpinnerWrapper>
+        <ThreeDots color="#087f5b" height={70} width={70} strokeWidth={0.8} />
+      </SpinnerWrapper>
+    );
+
   return (
     <>
-      <Header />
+      <Header
+        buttons={
+          <>
+            <Button isHeaderNav isInline>
+              Log In
+            </Button>
+            <Button isHeaderNav>Sign Up</Button>
+          </>
+        }
+        isHome={true}
+      />
       <Landing />
       <Section
         title={"bestsellers"}
-        children={
-          <Grid>
-            <BikeCard
-              imgSrc={Bike1}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
-            <BikeCard
-              imgSrc={Bike2}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
-            <BikeCard
-              imgSrc={Bike3}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
-            <BikeCard
-              imgSrc={Bike4}
-              bikeTitle={"Bike #100"}
-              bikePrice={"999,99 €"}
-            />
-          </Grid>
-        }
+        linkText={"See more bicycles →"}
+        children={bicycles}
       />
       <Section
         isAfterSection
@@ -80,6 +96,7 @@ const Home = () => {
           </Grid>
         }
       />
+
       <Section isFooter children={<Footer />} />
     </>
   );
