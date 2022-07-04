@@ -3,18 +3,18 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { CartProvider } from "./context/CartContext";
+import { ProductsProvider } from "./context/ProductsContext";
 import { FasterCartProvider } from "./context/FasterCartContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <FasterCartProvider>
-      <CartProvider>
+      <ProductsProvider>
         <Router>
           <App />
         </Router>
-      </CartProvider>
+      </ProductsProvider>
     </FasterCartProvider>
   </React.StrictMode>
 );

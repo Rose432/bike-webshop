@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext} from "react";
+import { useContext } from "react";
 import {
   CartCardContainer,
   Figure,
@@ -19,7 +19,6 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
   const { fasterCart, setFasterCart } = useContext(FasterCartContext);
 
   const handleIncrementCartQty = (bicycleId, quantity, fasterCart) => {
-    console.log(fasterCart);
     if (fasterCart.some((cur) => cur.bicycleId === bicycleId)) {
       fasterCart.find((cur) => cur.bicycleId === bicycleId && cur.quantity++);
       const newArray = fasterCart.slice(0);
@@ -28,7 +27,6 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
   };
 
   const handleDecrementCartQty = (bicycleId, quantity, fasterCart, name) => {
-    console.log(fasterCart);
     if (
       fasterCart.some((cur) => cur.bicycleId === bicycleId && cur.quantity > 1)
     ) {

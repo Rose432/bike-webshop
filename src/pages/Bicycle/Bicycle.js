@@ -5,14 +5,13 @@ import Header from "../../componenets/Header/Header";
 import Footer from "../../componenets/Footer/Footer";
 import Section from "../../componenets/Section/Section";
 import BicyclePage from "../../componenets/BicyclePage/BicyclePage";
-import { commerce } from "../../lib/commerce";
 import { ThreeDots } from "react-loader-spinner";
 import { SpinnerWrapper, Button } from "../../lib/style/generalStyle";
-import { CartContext } from "../../context/CartContext";
+import { ProductsContext } from "../../context/ProductsContext";
 
 const Bicycle = () => {
   const { name } = useParams();
-  const { products, setProducts } = useContext(CartContext);
+  const { products } = useContext(ProductsContext);
   const [bicycle, setBicycle] = useState(null);
 
   useEffect(() => {

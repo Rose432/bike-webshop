@@ -8,14 +8,13 @@ import Cart from "./pages/Cart/Cart";
 import ScrollToTop from "./componenets/ScrollToTop/ScrollToTop";
 import Checkout from "./pages/Checkout/Checkout";
 import { useContext } from "react";
-import { CartContext } from "./context/CartContext";
+import { ProductsContext } from "./context/ProductsContext";
 
 function App() {
-  const { fetchProducts, fetchCart } = useContext(CartContext);
+  const { fetchProducts } = useContext(ProductsContext);
 
   useEffect(() => {
     fetchProducts();
-    fetchCart();
   }, []);
 
   return (

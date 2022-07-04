@@ -11,7 +11,6 @@ import {
   ButtonContainer,
   Select,
   Option,
-  ButtonNav,
 } from "./ShippingAdressStyle";
 import { Button } from "../../lib/style/generalStyle";
 import { Formik, useFormikContext } from "formik";
@@ -45,7 +44,6 @@ const ShippingAdress = ({ children, checkoutToken, next, handleEmptyCart }) => {
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
   const [shippingSubdivision, setShippingSubdivision] = useState("");
   const [shippingOptions, setShippingOptions] = useState([]);
- 
 
   const countries = Object.entries(shippingCountries).map(([code, name]) => ({
     id: code,
@@ -74,10 +72,14 @@ const ShippingAdress = ({ children, checkoutToken, next, handleEmptyCart }) => {
   };
 
   const fetchShippingSubdivisions = async (countryCode) => {
-    const { subdivisions } = await commerce.services.localeListSubdivisions(
-      countryCode
-    );
-    setShippingSubdivisions(subdivisions);
+    try {
+      const { subdivisions } = await commerce.services.localeListSubdivisions(
+        countryCode
+      );
+      setShippingSubdivisions(subdivisions);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   const fetchShippingOptions = async (
@@ -275,11 +277,10 @@ const ShippingAdress = ({ children, checkoutToken, next, handleEmptyCart }) => {
                 <ErrorMessage component={"div"} name="shippingOption" />
               </FormRow>
               <ButtonContainer>
-                <ButtonNav to="/cart">
-                  <Button onClick={() => handleEmptyCart()} isFixed>
-                    Back to Cart
-                  </Button>
-                </ButtonNav>
+                <Button type="button" onClick={() => handleEmptyCart()} isFixed>
+                  Back to Cart
+                </Button>
+
                 <Button
                   disabled={formik.isSubmitting}
                   type="submit"

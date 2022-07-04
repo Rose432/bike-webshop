@@ -7,7 +7,6 @@ import {
   TitleContainer,
   CartContainer,
   ButtonCartContainer,
-  ButtonNav,
 } from "./SectionStyle";
 
 const Section = ({
@@ -39,7 +38,7 @@ const Section = ({
             {subtotal}
             <ButtonCartContainer>
               {emptyButton}
-              <ButtonNav to="/checkout">{checkoutButton}</ButtonNav>
+              {checkoutButton}
             </ButtonCartContainer>
           </CartContainer>
         )}

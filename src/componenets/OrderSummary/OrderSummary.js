@@ -15,7 +15,6 @@ import {
   PaymentTitle,
   ButtonContainer,
 } from "./OrderSummaryStyle";
-import { CartContext } from "../../context/CartContext";
 import { ThreeDots } from "react-loader-spinner";
 import { SpinnerWrapper, Button } from "../../lib/style/generalStyle";
 import {
@@ -36,9 +35,9 @@ const OrderSummary = ({
   handleCaptureCheckout,
   backStep,
   nextStep,
+  cart,
 }) => {
-  const { cart } = useContext(CartContext);
-  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
+  const { setFasterCart } = useContext(FasterCartContext);
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
   const handleSubmit = async (e, elements, stripe) => {

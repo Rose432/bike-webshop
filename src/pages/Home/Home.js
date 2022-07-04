@@ -1,26 +1,18 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
-import { commerce } from "../../lib/commerce";
+import { useContext } from "react";
 import Header from "../../componenets/Header/Header";
 import Landing from "../../componenets/Landing/Landing";
 import Section from "../../componenets/Section/Section";
 import BikeCard from "../../componenets/BikeCard/BikeCard";
 import Feature from "../../componenets/Feature/Feature";
 import Footer from "../../componenets/Footer/Footer";
-import {
-  Grid,
-  AirplaneIcon,
-  TruckIcon,
-  ClockIcon,
-  QuestionMarkIcon,
-  SpinnerWrapper,
-  Button,
-} from "../../lib/style/generalStyle";
+import { Grid, SpinnerWrapper, Button } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
-import { CartContext } from "../../context/CartContext";
+import { ProductsContext } from "../../context/ProductsContext";
+import { featureData } from "./FeatureData";
 
 const Home = () => {
-  const { products, setProducts } = useContext(CartContext);
+  const { products } = useContext(ProductsContext);
 
   const bicycles =
     products.length > 0 ? (
@@ -69,30 +61,14 @@ const Home = () => {
         isAfterSection
         children={
           <Grid isFeature>
-            <Feature
-              icon={<AirplaneIcon />}
-              title={"Fast Delivery"}
-              subtitle={
-                "Our customers are offered possibility of same day delivery."
-              }
-            />
-            <Feature
-              icon={<TruckIcon />}
-              title={"Free Shipping"}
-              subtitle={"Free shipping for all biciycles we are offering."}
-            />
-
-            <Feature
-              icon={<ClockIcon />}
-              title={"Personal Pickup"}
-              subtitle={"Pickup your bike in our store in Zagreb."}
-            />
-
-            <Feature
-              icon={<QuestionMarkIcon />}
-              title={"Customer Support"}
-              subtitle={"For all questions contact us at info@bikeshop.com."}
-            />
+            {featureData.map((curr, i) => (
+              <Feature
+                key={i}
+                icon={<curr.icon />}
+                title={curr.title}
+                subtitle={curr.subtitle}
+              />
+            ))}
           </Grid>
         }
       />

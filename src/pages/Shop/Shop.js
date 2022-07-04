@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
-import { commerce } from "../../lib/commerce";
+import { useState, useContext } from "react";
 import Header from "../../componenets/Header/Header";
 import Section from "../../componenets/Section/Section";
 import BikeCard from "../../componenets/BikeCard/BikeCard";
@@ -15,10 +14,10 @@ import {
   Button,
 } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
-import { CartContext } from "../../context/CartContext";
+import { ProductsContext } from "../../context/ProductsContext";
 
 const Shop = () => {
-  const { products, setProducts } = useContext(CartContext);
+  const { products } = useContext(ProductsContext);
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 

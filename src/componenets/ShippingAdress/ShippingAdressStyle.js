@@ -88,5 +88,3 @@ export const ButtonContainer = styled.div`
     gap: 0;
   }
 `;
-
-export const ButtonNav = styled(Link)``;

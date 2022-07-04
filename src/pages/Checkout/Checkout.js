@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Section from "../../componenets/Section/Section";
 import CheckoutWidget from "../../componenets/CheckoutWidget/CheckoutWidget";
@@ -7,19 +7,30 @@ import ShippingAdress from "../../componenets/ShippingAdress/ShippingAdress";
 import OrderSummary from "../../componenets/OrderSummary/OrderSummary";
 import ConfirmationMessage from "../../componenets/ConfirmationMessage/ConfirmationMessage";
 import { commerce } from "../../lib/commerce";
-import { CartContext } from "../../context/CartContext";
 
 const Checkout = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const [cart, setCart] = useState([]);
   const [activeStep, setActiveStep] = useState(0);
   const [shippingData, setShippingData] = useState({});
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [order, setOrder] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
 
   let navigate = useNavigate();
 
+  const fetchCart = async () => {
+    try {
+      const response = await commerce.cart.retrieve();
+      setCart(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   useLayoutEffect(() => {
+    fetchCart();
+  }, []);
+
+  useEffect(() => {
     if (cart.id) {
       const generateToken = async () => {
         try {
@@ -32,9 +43,8 @@ const Checkout = () => {
         }
       };
       generateToken();
-      console.log(checkoutToken);
     }
-  }, [cart, navigate, checkoutToken]);
+  }, [cart]);
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -45,13 +55,22 @@ const Checkout = () => {
   };
 
   const handleEmptyCart = async () => {
-    const { cart } = await commerce.cart.delete();
-    setCart(cart);
+    try {
+      const { cart } = await commerce.cart.delete();
+      setCart(cart);
+      navigate("/cart");
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   const refreshCart = async () => {
-    const newCart = await commerce.cart.empty();
-    setCart(newCart);
+    try {
+      const newCart = await commerce.cart.empty();
+      setCart(newCart);
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
@@ -62,8 +81,8 @@ const Checkout = () => {
       );
       setOrder(incomingOrder);
       refreshCart();
-    } catch (error) {
-      setErrorMessage(error.data.error.message);
+    } catch (err) {
+      console.error(err.message);
     }
   };
 
@@ -81,6 +100,7 @@ const Checkout = () => {
           )}
           {activeStep === 1 && (
             <OrderSummary
+              cart={cart}
               nextStep={nextStep}
               backStep={backStep}
               handleCaptureCheckout={handleCaptureCheckout}
