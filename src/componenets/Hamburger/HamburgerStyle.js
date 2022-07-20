@@ -13,7 +13,7 @@ export const StyledHamburger = styled.button`
   padding: 0;
   z-index: 2;
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     display: none;
   }
 

@@ -17,7 +17,7 @@ export const HeaderWrapper = styled.header`
     padding: 0 24px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     padding: 0;
   }
 
@@ -31,16 +31,15 @@ export const HeaderWrapper = styled.header`
 
 export const HeaderInner = styled.div`
   width: 100%;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     width: 960px;
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     width: 1260px;
   }
 `;
@@ -97,19 +96,9 @@ export const LogoLink = styled.div`
   text-transform: uppercase;
 `;
 
-export const IconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* gap: 5px; */
+export const IconLink = styled(Link)`
   z-index: 3;
-
-  @media (${breakpoints.destkop}) {
-    display: none;
-  }
 `;
-
-export const IconLink = styled(Link)``;
 
 export const Cart = styled(ShoppingCartOutlinedIcon)`
   color: ${colors.secondary};
@@ -120,47 +109,107 @@ export const Favorite = styled(FavoriteBorderOutlinedIcon)`
   color: ${colors.secondary};
 `;
 
-export const NavWrapper = styled.nav`
-  display: none;
+export const NavPositioner = styled.div`
   z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
 
-  @media (${breakpoints.destkop}) {
-    display: flex;
+export const NavWrapper = styled.nav`
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${colors.bgMenu};
+  height: 100vh;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  z-index: 1;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+
+  @media (${breakpoints.desktop}) {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    backdrop-filter: none;
+    background: transparent;
+    text-align: left;
+    flex-direction: row;
     gap: 20px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 `;
 
 export const Nav = styled(NavLink)`
-  position: relative;
-  color: ${colors.secondary};
-  font-size: 18px;
+  width: 100%;
+  font-size: 20px;
   text-transform: uppercase;
-  letter-spacing: -0.2px;
+  padding: 20px 0;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: ${colors.secondary};
+  transition: all 0.3s ease-in-out;
 
-  &::after {
-    position: absolute;
-    content: "";
-    display: block;
-    opacity: 0;
-    width: 100%;
-    height: 1px;
-    visibility: hidden;
-    background-color: ${colors.secondary};
-    margin: auto;
-    transition: all 0.3s ease-in-out;
+  @media (${breakpoints.tabletSmall}) {
+    font-size: 24px;
   }
 
-  &:hover::after {
-    opacity: 100;
-    visibility: visible;
+  @media (${breakpoints.tablet}) {
+    font-size: 28px;
   }
 
-  &.active {
+  &:hover {
+    background-color: ${colors.bgMenuHover};
+    font-weight: 700;
+  }
+
+  @media (${breakpoints.desktop}) {
+    padding: 0;
+    width: auto;
+    font-weight: 400;
+    position: relative;
+    transition: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+
+    &:hover {
+      background-color: transparent;
+      font-weight: 400;
+    }
+
     &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      opacity: 0;
+      width: 100%;
+      height: 1px;
+      visibility: hidden;
+      background-color: ${colors.secondary};
+      margin: auto;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover::after {
       opacity: 100;
       visibility: visible;
+    }
+
+    &.active {
+      &::after {
+        opacity: 100;
+        visibility: visible;
+      }
     }
   }
 `;

@@ -14,7 +14,7 @@ const Cart = () => {
   const { fasterCart, setFasterCart } = useContext(FasterCartContext);
   let navigate = useNavigate();
 
-  const updateCart = function (fasterCart) {
+  const updateCart = async function (fasterCart) {
     fasterCart.map(async (cur) => {
       try {
         await commerce.cart.add(cur.bicycleId, cur.quantity);

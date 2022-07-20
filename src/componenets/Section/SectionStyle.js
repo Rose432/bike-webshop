@@ -14,7 +14,7 @@ export const Section = styled.section`
     padding: 48px 24px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     padding: 64px 0px;
     display: grid;
     place-items: center;
@@ -30,11 +30,11 @@ export const Section = styled.section`
 export const SectionInner = styled.div`
   width: 100%;
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     width: 1000px;
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     width: 1260px;
   }
 `;

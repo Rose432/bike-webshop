@@ -18,7 +18,7 @@ export const SearchInputs = styled.div`
     width: 350px;
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     width: 400px;
   }
 `;
@@ -38,7 +38,7 @@ export const SearchBar = styled.input`
     border: ${colors.textPrimary};
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     font-size: 16px;
   }
 `;

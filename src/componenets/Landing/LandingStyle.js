@@ -29,13 +29,13 @@ export const LandingInner = styled.div`
     padding: 0 24px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     padding: 0;
     width: 960px;
     left: calc((100% - 960px) / 2);
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     width: 1260px;
     left: calc((100% - 1260px) / 2);
   }
@@ -74,11 +74,11 @@ export const Title = styled.h1`
     font-size: 62px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     font-size: 74px;
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     font-size: 86px;
   }
 `;

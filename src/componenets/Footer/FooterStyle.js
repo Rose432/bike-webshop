@@ -100,7 +100,7 @@ export const Text = styled.p`
     font-size: 14px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     font-size: 16px;
   }
 `;

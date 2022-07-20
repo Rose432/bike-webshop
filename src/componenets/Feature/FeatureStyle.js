@@ -36,7 +36,7 @@ export const IconContainer = styled.span`
   height: 32px;
   transition: all 0.3s ease-in-out;
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     margin-bottom: 24px;
   }
 `;
@@ -47,7 +47,7 @@ export const Title = styled.p`
   margin-bottom: 12px;
   color: ${colors.textPrimary};
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     font-size: 24px;
   }
 `;

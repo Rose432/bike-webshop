@@ -16,7 +16,7 @@ export const CartCardContainer = styled.div`
   flex-basis: 242.5px;
   row-gap: 24px;
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     flex-basis: 307.5px;
   }
 `;

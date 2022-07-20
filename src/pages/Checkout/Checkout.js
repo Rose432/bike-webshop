@@ -54,22 +54,14 @@ const Checkout = () => {
     nextStep();
   };
 
-  const handleEmptyCart = async () => {
-    try {
-      const { cart } = await commerce.cart.delete();
-      setCart(cart);
-      navigate("/cart");
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  const refreshCart = async () => {
+  const emptyCart = async () => {
     try {
       const newCart = await commerce.cart.empty();
       setCart(newCart);
+      navigate("/cart");
     } catch (err) {
       console.error(err.message);
+      navigate("/cart");
     }
   };
 
@@ -80,7 +72,6 @@ const Checkout = () => {
         newOrder
       );
       setOrder(incomingOrder);
-      refreshCart();
     } catch (err) {
       console.error(err.message);
     }
@@ -95,7 +86,7 @@ const Checkout = () => {
               activeSteup={activeStep}
               checkoutToken={checkoutToken}
               next={next}
-              handleEmptyCart={handleEmptyCart}
+              handleEmptyCart={emptyCart}
             />
           )}
           {activeStep === 1 && (

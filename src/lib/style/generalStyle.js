@@ -129,7 +129,7 @@ export const Grid = styled.div`
     `}
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     grid-template-columns: repeat(4, 1fr);
 
     ${(props) =>
@@ -139,7 +139,7 @@ export const Grid = styled.div`
     `}
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     grid-template-columns: repeat(4, 1fr);
   }
 
@@ -214,7 +214,7 @@ export const SearchWrapper = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

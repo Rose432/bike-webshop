@@ -14,7 +14,7 @@ export const BikeCard = styled.div`
   box-shadow: 0px 1px 2px ${colors.primary};
   flex-basis: 326.672px;
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     flex-basis: 307.5px;
   }
 

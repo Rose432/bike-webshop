@@ -13,11 +13,11 @@ export const Container = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     width: 900px;
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     width: 1100px;
   }
 `;
@@ -40,12 +40,12 @@ export const Figure = styled.figure`
     margin-bottom: 0;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     height: 400px;
     width: 400px;
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     height: 450px;
     width: 450px;
     margin-bottom: 0;
@@ -78,12 +78,12 @@ export const Content = styled.div`
     width: 350px;
   }
 
-  @media (${breakpoints.destkop}) {
+  @media (${breakpoints.desktop}) {
     width: 400px;
     height: 400px;
   }
 
-  @media (${breakpoints.destkopLarge}) {
+  @media (${breakpoints.desktopLarge}) {
     width: 450px;
     height: 450px;
   }

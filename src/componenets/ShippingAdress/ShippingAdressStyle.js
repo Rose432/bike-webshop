@@ -5,7 +5,6 @@ import {
   Field as FieldFormik,
   ErrorMessage as ErrorMessageFormik,
 } from "formik";
-import { Link } from "react-router-dom";
 
 export const ShippingAdress = styled.div`
   display: ${(activeState) => (activeState ? "block" : "none")};

@@ -9,14 +9,13 @@ import {
   LogoLeftLine,
   LogoRightLine,
   LogoLink,
-  IconContainer,
   Cart,
   IconLink,
+  NavPositioner,
   NavWrapper,
   Nav,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
-import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import { Badge } from "@material-ui/core";
 import { FasterCartContext } from "../../context/FasterCartContext";
 
@@ -36,7 +35,13 @@ const Header = ({ isSecondary, isHome, buttons }) => {
             </LogoImgContainer>
             <LogoLink to="/">Advanturer</LogoLink>
           </LogoContainer>
-          <IconContainer>
+          <NavPositioner>
+            <NavWrapper open={open}>
+              <Nav to="/shop">Shop</Nav>
+              <Nav to="/">Profile</Nav>
+              <Nav to="/">Contact</Nav>
+              {buttons}
+            </NavWrapper>
             <IconLink to="/cart">
               <Badge
                 overlap="rectangular"
@@ -48,34 +53,11 @@ const Header = ({ isSecondary, isHome, buttons }) => {
                 <Cart aria-label="cart" />
               </Badge>
             </IconLink>
-          </IconContainer>
-          <NavWrapper>
-            <Nav isSecondary={isSecondary} to="/shop">
-              Shop
-            </Nav>
-            <Nav isSecondary={isSecondary} to="/">
-              Profile
-            </Nav>
-            <Nav isSecondary={isSecondary} to="/">
-              Contact
-            </Nav>
-            {buttons}
-            <IconLink to="/cart">
-              <Badge
-                overlap="rectangular"
-                color="error"
-                badgeContent={fasterCart.reduce((acc, cur) => {
-                  return acc + cur.quantity;
-                }, 0)}
-              >
-                <Cart aria-label="cart" />
-              </Badge>
-            </IconLink>
-          </NavWrapper>
-          <Hamburger open={open} setOpen={setOpen} />
+            <Hamburger open={open} setOpen={setOpen} />
+          </NavPositioner>
         </HeaderInner>
       </HeaderWrapper>
-      <HamburgerMenu open={open} setOpen={setOpen} />
+      {/* <HamburgerMenu open={open} setOpen={setOpen} /> */}
     </>
   );
 };
