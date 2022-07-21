@@ -10,10 +10,12 @@ const GlobalStyles = createGlobalStyle`
 }
 
 html {
+  position: relative;
   font-size: 62.5%;
 }
 
 body {
+  position: relative;
   font-family: ${fonts.primary};
   overflow-x: hidden;
 }
