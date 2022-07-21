@@ -50,11 +50,11 @@ export const FlexWrapper = styled.div`
 `;
 
 export const ProductName = styled.p`
-  font-size: 20px;
+  font-size: 2rem;
 `;
 
 export const Price = styled.span`
-  font-size: 20px;
+  font-size: 2rem;
 `;
 
 export const QuantityContainer = styled.div`
@@ -63,7 +63,7 @@ export const QuantityContainer = styled.div`
 `;
 
 export const Quantity = styled.span`
-  font-size: 24px;
+  font-size: 2.4rem;
 `;
 
 export const Remove = styled(RemoveIcon)`

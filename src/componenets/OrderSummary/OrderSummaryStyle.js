@@ -5,12 +5,12 @@ export const Order = styled.div``;
 
 export const StepTitle = styled.h2`
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 2rem;
   color: ${colors.textPrimary};
   margin-bottom: 32px;
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 
@@ -33,46 +33,49 @@ export const TotalContainer = styled.div`
 `;
 
 export const Product = styled.p`
+  font-size: 1.6rem;
   color: ${colors.textPrimary};
   padding-bottom: 4px;
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 `;
 
 export const ProductQuantity = styled.p`
+  font-size: 1.6rem;
   color: ${colors.textSecondary};
-  font-size: 14px;
+  font-size: 1.4rem;
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 `;
 
 export const Price = styled.p`
+  font-size: 1.6rem;
   @media (${breakpoints.tabletSmall}) {
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 `;
 
 export const Total = styled.p`
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 500;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 
 export const Subtotal = styled.p`
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 500;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 
@@ -95,11 +98,11 @@ export const PaymentForm = styled.form``;
 
 export const PaymentTitle = styled.h3`
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 2rem;
   color: ${colors.textPrimary};
   margin-bottom: 32px;
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;

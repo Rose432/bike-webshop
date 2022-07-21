@@ -28,11 +28,11 @@ export const FlexContainer = styled.div`
 export const Title = styled.p`
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1.6rem;
   margin-bottom: 16px;
 
   @media (${breakpoints.tabletMedium}) {
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 `;
 
@@ -89,31 +89,38 @@ export const LogoLink = styled.div`
 `;
 
 export const Text = styled.p`
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 1.3;
 
   @media (${breakpoints.tabletMedium}) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 
   @media (${breakpoints.tablet}) {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 
   @media (${breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 `;
 
 export const Adress = styled.p`
   line-height: 1.3;
   margin-bottom: 16px;
+  font-size: 1.6rem;
 `;
 
-export const PhoneNumber = styled.span``;
+export const PhoneNumber = styled.span`
+  font-size: 1.6rem;
+`;
 
-export const Email = styled.span``;
+export const Email = styled.span`
+  font-size: 1.6rem;
+`;
 
 export const NewsletterContainer = styled.div``;
 
-export const SignInNewsletter = styled.span``;
+export const SignInNewsletter = styled.span`
+  font-size: 1.6rem;
+`;

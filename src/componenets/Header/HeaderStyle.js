@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import { colors, breakpoints } from "../../lib/style/theme";
+import { Badge } from "@material-ui/core";
 
 export const HeaderWrapper = styled.header`
   height: 12vh;
@@ -139,6 +140,7 @@ export const NavWrapper = styled.nav`
     width: auto;
     height: auto;
     transform: none;
+    transition: none;
     backdrop-filter: none;
     background: transparent;
     text-align: left;
@@ -151,7 +153,7 @@ export const NavWrapper = styled.nav`
 
 export const Nav = styled(NavLink)`
   width: 100%;
-  font-size: 20px;
+  font-size: 2rem;
   text-transform: uppercase;
   padding: 20px 0;
   font-weight: 500;
@@ -160,11 +162,11 @@ export const Nav = styled(NavLink)`
   transition: all 0.3s ease-in-out;
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 
   @media (${breakpoints.tablet}) {
-    font-size: 28px;
+    font-size: 2.8rem;
   }
 
   &:hover {
@@ -178,7 +180,7 @@ export const Nav = styled(NavLink)`
     font-weight: 400;
     position: relative;
     transition: none;
-    font-size: 18px;
+    font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: -0.2px;
 
@@ -211,5 +213,11 @@ export const Nav = styled(NavLink)`
         visibility: visible;
       }
     }
+  }
+`;
+
+export const CartItems = styled(Badge)`
+  span {
+    font-size: 12px;
   }
 `;

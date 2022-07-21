@@ -96,27 +96,29 @@ export const Flex = styled.div`
 `;
 
 export const Name = styled.p`
-  font-size: 20px;
+  font-size: 2rem;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tablet}) {
-    font-size: 30px;
+    font-size: 3rem;
   }
 `;
 
 export const Description = styled.p`
+  font-size: 1.6rem;
   color: ${colors.textSecondary};
 
   @media (${breakpoints.tablet}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 
 export const Price = styled.p`
+  font-size: 1.6rem;
   color: ${colors.textSecondary};
 
   @media (${breakpoints.tablet}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 

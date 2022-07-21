@@ -55,37 +55,37 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
   color: ${colors.secondary};
-  font-size: 30px;
+  font-size: 3rem;
   text-align: center;
 
   @media (${breakpoints.mobileLarge}) {
-    font-size: 36px;
+    font-size: 3.6rem;
   }
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 44px;
+    font-size: 4.4rem;
   }
 
   @media (${breakpoints.tabletMedium}) {
-    font-size: 52px;
+    font-size: 5.2rem;
   }
 
   @media (${breakpoints.tablet}) {
-    font-size: 62px;
+    font-size: 6.2rem;
   }
 
   @media (${breakpoints.desktop}) {
-    font-size: 74px;
+    font-size: 7.4rem;
   }
 
   @media (${breakpoints.desktopLarge}) {
-    font-size: 86px;
+    font-size: 8.6rem;
   }
 `;
 
 export const Subtitle = styled.span`
   width: 250px;
-  font-size: 16px;
+  font-size: 1.6rem;
   color: ${colors.secondary};
   text-align: center;
 
@@ -95,17 +95,17 @@ export const Subtitle = styled.span`
 
   @media (${breakpoints.tabletSmall}) {
     width: 350px;
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 
   @media (${breakpoints.tabletMedium}) {
     width: 400px;
-    font-size: 20px;
+    font-size: 2rem;
   }
 
   @media (${breakpoints.tablet}) {
     width: 450px;
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 
   @media (${breakpoints.tablet}) {

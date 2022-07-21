@@ -69,13 +69,13 @@ export const Content = styled.div`
 export const TitleLink = styled(Link)``;
 
 export const Title = styled.p`
-  font-size: 24px;
+  font-size: 2.4rem;
   color: ${colors.textPrimary};
   transition: all 0.3s ease-in-out;
 `;
 
 export const Price = styled.span`
-  font-size: 18px;
+  font-size: 1.8rem;
   color: ${colors.textPrimary};
   transition: all 0.3s ease-in-out;
   margin-bottom: 12px;

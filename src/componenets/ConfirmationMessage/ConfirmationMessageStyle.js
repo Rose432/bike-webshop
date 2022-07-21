@@ -11,19 +11,20 @@ export const ConfirmationContainer = styled.div`
 
 export const Title = styled.h2`
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 2rem;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 
 export const OrderRef = styled.p`
+  font-size: 1.6rem;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 18px;
+    font-size: 1.8rem;
   }
 `;
 

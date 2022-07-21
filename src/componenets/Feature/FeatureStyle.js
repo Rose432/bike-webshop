@@ -42,26 +42,26 @@ export const IconContainer = styled.span`
 `;
 
 export const Title = styled.p`
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 500;
   margin-bottom: 12px;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.desktop}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 
 export const Subtitle = styled.p`
-  font-size: 16px;
+  font-size: 1.6rem;
   color: ${colors.textSecondary};
   line-height: 1.6;
 
   @media (${breakpoints.tabletMedium}) {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 
   @media (${breakpoints.tablet}) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 `;

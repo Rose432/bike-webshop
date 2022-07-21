@@ -32,11 +32,11 @@ export const CheckoutWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 30px;
+  font-size: 3rem;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 36px;
+    font-size: 3.6rem;
   }
 `;
 
@@ -58,7 +58,7 @@ export const StepWrapper = styled.div`
 `;
 
 export const FirstNumber = styled.span`
-  font-size: 14px;
+  font-size: 1.4rem;
   color: ${colors.secondary};
   padding: 6px 10px;
   background-color: ${(props) =>
@@ -68,13 +68,13 @@ export const FirstNumber = styled.span`
   border-radius: 50%;
 
   @media (${breakpoints.tablet}) {
-    font-size: 16px;
+    font-size: 1.6rem;
     padding: 7.5px 12px;
   }
 `;
 
 export const SecondNumber = styled.span`
-  font-size: 14px;
+  font-size: 1.4rem;
   color: ${colors.secondary};
   padding: 6px 10px;
   background-color: ${(props) =>
@@ -84,17 +84,17 @@ export const SecondNumber = styled.span`
   border-radius: 50%;
 
   @media (${breakpoints.tablet}) {
-    font-size: 16px;
+    font-size: 1.6rem;
     padding: 7.5px 12px;
   }
 `;
 
 export const StepName = styled.p`
-  font-size: 14px;
+  font-size: 1.4rem;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tablet}) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 `;
 

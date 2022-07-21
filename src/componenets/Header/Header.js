@@ -14,9 +14,9 @@ import {
   NavPositioner,
   NavWrapper,
   Nav,
+  CartItems,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
-import { Badge } from "@material-ui/core";
 import { FasterCartContext } from "../../context/FasterCartContext";
 
 const Header = ({ isSecondary, isHome, buttons }) => {
@@ -43,15 +43,17 @@ const Header = ({ isSecondary, isHome, buttons }) => {
               {buttons}
             </NavWrapper>
             <IconLink to="/cart">
-              <Badge
+              <CartItems
+                aria-label="Number of items in cart"
                 overlap="rectangular"
                 color="error"
                 badgeContent={fasterCart.reduce((acc, cur) => {
                   return acc + cur.quantity;
                 }, 0)}
+                max={99}
               >
                 <Cart aria-label="cart" />
-              </Badge>
+              </CartItems>
             </IconLink>
             <Hamburger open={open} setOpen={setOpen} />
           </NavPositioner>

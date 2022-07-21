@@ -63,6 +63,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.h2`
+  font-size: 2.4rem;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -78,7 +79,7 @@ export const Title = styled.h2`
 `}
 
   @media (${breakpoints.tablet}) {
-    font-size: 30px;
+    font-size: 3rem;
     margin-bottom: 80px;
 
     ${(props) =>
@@ -116,7 +117,7 @@ export const Title = styled.h2`
 export const SmallLink = styled(Link)`
   padding-top: 48px;
 
-  font-size: 18px;
+  font-size: 1.8rem;
   text-decoration: underline;
   display: flex;
   align-items: center;

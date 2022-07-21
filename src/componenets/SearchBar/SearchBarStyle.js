@@ -30,7 +30,7 @@ export const SearchBar = styled.input`
   border-radius: 10px;
   line-height: 40px;
   outline: none;
-  font-size: 14px;
+  font-size: 1.4rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 3px;
   color: black;
 
@@ -39,7 +39,7 @@ export const SearchBar = styled.input`
   }
 
   @media (${breakpoints.desktop}) {
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 `;
 

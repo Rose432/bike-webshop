@@ -12,12 +12,12 @@ export const ShippingAdress = styled.div`
 
 export const StepTitle = styled.h2`
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 2rem;
   color: ${colors.textPrimary};
   margin-bottom: 32px;
 
   @media (${breakpoints.tabletSmall}) {
-    font-size: 24px;
+    font-size: 2.4rem;
   }
 `;
 
@@ -41,7 +41,7 @@ export const FormField = styled(FieldFormik)`
   /* border: 1px solid ${colors.tertiary}; */
   border: none;
   box-shadow: 0px 1px 3px ${colors.textSecondary};
-  font-size: 14px;
+  font-size: 1.4rem;
   outline: none;
   border-radius: 10px;
   width: 100%;
@@ -55,14 +55,14 @@ export const FormField = styled(FieldFormik)`
 
 export const ErrorMessage = styled(ErrorMessageFormik)`
   color: ${colors.error};
-  font-size: 14px;
+  font-size: 1.4rem;
   padding: 8px;
 `;
 
 export const Select = styled.select`
   border: none;
   box-shadow: 0px 1px 3px ${colors.textSecondary};
-  font-size: 14px;
+  font-size: 1.4rem;
   outline: none;
   border-radius: 10px;
   width: 100%;

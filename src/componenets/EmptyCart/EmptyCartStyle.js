@@ -31,11 +31,11 @@ export const Img = styled.img`
 `;
 export const EmptyText = styled.p`
   text-transform: capitalize;
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 500;
   color: ${colors.textPrimary};
 
   @media (${breakpoints.tablet}) {
-    font-size: 30px;
+    font-size: 3rem;
   }
 `;
