@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import { colors, breakpoints } from "../../lib/style/theme";
+import { colors, breakpoints, fonts } from "../../lib/style/theme";
 import { Badge } from "@material-ui/core";
 
 export const HeaderWrapper = styled.header`
@@ -216,8 +216,84 @@ export const Nav = styled(NavLink)`
   }
 `;
 
+export const UserAuth = styled.div`
+  font-family: ${fonts.secondary};
+  width: 100%;
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 20px 0;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: ${colors.secondary};
+  transition: background-color font-weight 0.3s ease-in-out;
+
+  @media (${breakpoints.tabletSmall}) {
+    font-size: 2.4rem;
+  }
+
+  @media (${breakpoints.tablet}) {
+    font-size: 2.8rem;
+  }
+
+  &:hover {
+    background-color: ${colors.bgMenuHover};
+    font-weight: 700;
+  }
+
+  @media (${breakpoints.desktop}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+    border-radius: 10px;
+    color: ${colors.primary};
+    background-color: ${colors.secondary};
+    transition: box-shadow 0.3s ease-in-out;
+    border: 1px solid ${colors.secondary};
+
+    &:hover {
+      box-shadow: 0 1px 4px ${colors.black};
+      background-color: ${colors.secondary};
+      font-weight: normal;
+    }
+
+    ${(props) =>
+      props.isSecond &&
+      `
+      border: 1px solid ${colors.primary};
+      color: ${colors.secondary};
+      background-color: ${colors.primary};
+
+    &:hover {      
+      background-color: ${colors.primary};    
+    }
+    `}
+
+    ${(props) =>
+      props.isDiffHead &&
+      `
+      color: ${colors.secondary};
+      background-color: ${colors.primary};
+      border: 1px solid ${colors.secondary};
+
+    &:hover {   
+      background-color: ${colors.primary};  
+    }
+    `}
+  }
+`;
+
 export const CartItems = styled(Badge)`
   span {
     font-size: 12px;
   }
+`;
+
+export const AuthLink = styled(NavLink)`
+  width: 100%;
 `;

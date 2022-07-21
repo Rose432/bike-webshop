@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors, breakpoints } from "../../lib/style/theme";
+import CheckIcon from "@material-ui/icons/Check";
 
 export const CheckoutContainer = styled.div`
   padding: 10px 5px;
@@ -58,9 +59,13 @@ export const StepWrapper = styled.div`
 `;
 
 export const FirstNumber = styled.span`
+  width: 25px;
+  height: 25px;
   font-size: 1.4rem;
   color: ${colors.secondary};
-  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${(props) =>
     props.activeStep === 0 || props.activeStep === 2
       ? `${colors.primary}`
@@ -68,15 +73,20 @@ export const FirstNumber = styled.span`
   border-radius: 50%;
 
   @media (${breakpoints.tablet}) {
+    width: 30px;
+    height: 30px;
     font-size: 1.6rem;
-    padding: 7.5px 12px;
   }
 `;
 
 export const SecondNumber = styled.span`
+  height: 25px;
+  width: 25px;
   font-size: 1.4rem;
   color: ${colors.secondary};
-  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${(props) =>
     props.activeStep === 1 || props.activeStep === 2
       ? `${colors.primary}`
@@ -84,8 +94,9 @@ export const SecondNumber = styled.span`
   border-radius: 50%;
 
   @media (${breakpoints.tablet}) {
+    width: 30px;
+    height: 30px;
     font-size: 1.6rem;
-    padding: 7.5px 12px;
   }
 `;
 
@@ -101,7 +112,7 @@ export const StepName = styled.p`
 export const Line = styled.div`
   content: "";
   height: 2px;
-  width: 20px;
+  width: 12px;
   background-color: ${colors.tertiary};
 
   @media (${breakpoints.mobileLarge}) {
@@ -116,3 +127,5 @@ export const Line = styled.div`
     width: 250px;
   }
 `;
+
+export const Check = styled(CheckIcon)``;

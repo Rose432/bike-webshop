@@ -76,7 +76,7 @@ export const ButtonContainer = styled.div`
   margin-top: 8px;
   grid-column: span 2;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 16px;
   justify-content: flex-start;
 

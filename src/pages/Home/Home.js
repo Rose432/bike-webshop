@@ -40,17 +40,7 @@ const Home = () => {
 
   return (
     <>
-      <Header
-        buttons={
-          <>
-            <Button isHeaderNav isInline>
-              Log In
-            </Button>
-            <Button isHeaderNav>Sign Up</Button>
-          </>
-        }
-        isHome={true}
-      />
+      <Header isSecond isHome={true} />
       <Landing />
       <Section
         title={"bestsellers"}

@@ -17,7 +17,7 @@ export const Button = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 1.8rem;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
@@ -40,12 +40,6 @@ export const Button = styled.button`
     props.isFixed &&
     `
         width: 176px;
-      `}
-
-  ${(props) =>
-    props.isHeaderNav &&
-    `
-        width: 115px;
       `}
 
   ${(props) =>
@@ -75,15 +69,6 @@ ${(props) =>
   `}
 
  ${(props) =>
-    props.isOutlineSecondary &&
-    `
-    
-     border: 1px solid ${colors.secondary};
-    background-color:  ${colors.primary};
-    color:  ${colors.secondary};
- `}
-
- ${(props) =>
     props.isSecondary &&
     `
     
@@ -96,7 +81,7 @@ ${(props) =>
  ${(props) =>
     props.isCta &&
     `
-    font-size: 20px;
+    font-size: 2rem;
      
  `}
 `;
@@ -136,6 +121,7 @@ export const Grid = styled.div`
       props.isBikeGrid &&
       `
     grid-template-columns: repeat(3,1fr);
+
     `}
   }
 
@@ -146,7 +132,11 @@ export const Grid = styled.div`
   ${(props) =>
     props.isFeature &&
     `
-    gap: 32px;
+   gap: 32px;
+
+    @media(${breakpoints.desktop}) {
+      gap: 0;
+    }
 
   `}
 `;
@@ -196,7 +186,7 @@ export const NotFoundWrapper = styled.div`
 
 export const NotFound = styled.p`
   color: ${colors.textPrimary};
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 700;
   text-align: center;
 `;
@@ -225,7 +215,7 @@ export const SearchWrapper = styled.div`
 // Subtotal
 
 export const Subtotal = styled.p`
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 500;
   color: ${colors.textPrimary};
 `;

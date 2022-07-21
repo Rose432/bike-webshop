@@ -7,6 +7,8 @@ import ShippingAdress from "../../componenets/ShippingAdress/ShippingAdress";
 import OrderSummary from "../../componenets/OrderSummary/OrderSummary";
 import ConfirmationMessage from "../../componenets/ConfirmationMessage/ConfirmationMessage";
 import { commerce } from "../../lib/commerce";
+import { SpinnerWrapper } from "../../lib/style/generalStyle";
+import { ThreeDots } from "react-loader-spinner";
 
 const Checkout = () => {
   const [cart, setCart] = useState([]);
@@ -14,6 +16,7 @@ const Checkout = () => {
   const [shippingData, setShippingData] = useState({});
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [order, setOrder] = useState({});
+  const [isEmpty, setIsEmpty] = useState(false);
 
   let navigate = useNavigate();
 
@@ -39,6 +42,7 @@ const Checkout = () => {
           });
           setCheckoutToken(token);
         } catch (err) {
+          navigate("/cart");
           console.error(err);
         }
       };
@@ -56,11 +60,14 @@ const Checkout = () => {
 
   const emptyCart = async () => {
     try {
+      setIsEmpty(true);
       const newCart = await commerce.cart.empty();
+      setIsEmpty(false);
       setCart(newCart);
       navigate("/cart");
     } catch (err) {
       console.error(err.message);
+      setIsEmpty(false);
       navigate("/cart");
     }
   };
@@ -78,11 +85,17 @@ const Checkout = () => {
   };
 
   return (
-    checkoutToken && (
-      <Section>
-        <CheckoutWidget activeStep={activeStep} setActiveStep={setActiveStep}>
+    <Section>
+      {checkoutToken ? (
+        <CheckoutWidget
+          order={order}
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
+        >
           {activeStep === 0 && (
             <ShippingAdress
+              isEmpty={isEmpty}
+              cart={cart}
               activeSteup={activeStep}
               checkoutToken={checkoutToken}
               next={next}
@@ -101,8 +114,12 @@ const Checkout = () => {
           )}
           {activeStep === 2 && <ConfirmationMessage order={order} />}
         </CheckoutWidget>
-      </Section>
-    )
+      ) : (
+        <SpinnerWrapper>
+          <ThreeDots color="#087f5b" height={70} width={70} />
+        </SpinnerWrapper>
+      )}
+    </Section>
   );
 };
 

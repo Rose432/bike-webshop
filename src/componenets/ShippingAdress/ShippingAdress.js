@@ -12,10 +12,11 @@ import {
   Select,
   Option,
 } from "./ShippingAdressStyle";
-import { Button } from "../../lib/style/generalStyle";
+import { Button, SpinnerWrapper } from "../../lib/style/generalStyle";
 import { Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 import { commerce } from "../../lib/commerce";
+import { ThreeDots } from "react-loader-spinner";
 
 const DetectShippingCountry = ({ setShippingCountry }) => {
   const { values } = useFormikContext();
@@ -38,7 +39,13 @@ const DetectShippingSubdivision = ({ setShippingSubdivision }) => {
   return null;
 };
 
-const ShippingAdress = ({ children, checkoutToken, next, handleEmptyCart }) => {
+const ShippingAdress = ({
+  children,
+  checkoutToken,
+  next,
+  handleEmptyCart,
+  isEmpty,
+}) => {
   const [shippingCountries, setShippingCountries] = useState([]);
   const [shippingCountry, setShippingCountry] = useState("");
   const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -278,7 +285,13 @@ const ShippingAdress = ({ children, checkoutToken, next, handleEmptyCart }) => {
               </FormRow>
               <ButtonContainer>
                 <Button type="button" onClick={() => handleEmptyCart()} isFixed>
-                  Back to Cart
+                  {isEmpty ? (
+                    <SpinnerWrapper>
+                      <ThreeDots color="#f0fdf9" height={21} width={30} />
+                    </SpinnerWrapper>
+                  ) : (
+                    "Back to Cart"
+                  )}
                 </Button>
 
                 <Button

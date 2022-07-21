@@ -113,4 +113,22 @@ export const Subtitle = styled.span`
   }
 `;
 
-export const ButtonLink = styled(Link)``;
+export const CtaLink = styled(Link)``;
+
+export const Cta = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 10px 20px;
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
+  text-transform: uppercase;
+  transition: box-shadow 0.3s ease-in-out;
+  font-weight: 500;
+  border-radius: 10px;
+
+  &:hover {
+    box-shadow: 0 1px 4px ${colors.black};
+  }
+`;

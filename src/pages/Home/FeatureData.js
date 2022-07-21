@@ -9,7 +9,7 @@ export const featureData = [
   {
     title: "Fast Delivery",
     icon: AirplaneIcon,
-    subtitle: "Our customers are offered possibility of same day delivery.",
+    subtitle: "Same day delivery for domestic orders.",
   },
   {
     title: "Free Shipping",

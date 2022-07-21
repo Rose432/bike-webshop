@@ -5,9 +5,9 @@ import {
   Content,
   Title,
   Subtitle,
-  ButtonLink,
+  CtaLink,
+  Cta,
 } from "./LandingStyle";
-import { Button } from "../../lib/style/generalStyle";
 
 const Landing = () => {
   return (
@@ -18,11 +18,9 @@ const Landing = () => {
           <Subtitle>
             We are premium brand offering the best bikes for You.
           </Subtitle>
-          <ButtonLink to="/shop">
-            <Button isCta isInline>
-              Explore Shop
-            </Button>
-          </ButtonLink>
+          <CtaLink to="/shop">
+            <Cta>Explore Shop</Cta>
+          </CtaLink>
         </Content>
       </LandingInner>
     </LandingBackground>

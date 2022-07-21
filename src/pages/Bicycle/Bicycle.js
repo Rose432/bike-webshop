@@ -34,19 +34,7 @@ const Bicycle = () => {
 
   return (
     <>
-      <Header
-        buttons={
-          <>
-            <Button isHeaderNav isOutlineSecondary>
-              Log In
-            </Button>
-            <Button isHederNav isSecondary>
-              Sign Up
-            </Button>
-          </>
-        }
-        isSecondary
-      />
+      <Header isSecondary isDiffHead />
       <Section children={showBicycle} />
       <Section isFooter children={<Footer />} />
     </>

@@ -71,6 +71,7 @@ export const Remove = styled(RemoveIcon)`
   background-color: #ebebeb;
   border-radius: 10px;
   margin-right: 8px;
+  font-size: 2.4rem;
 `;
 
 export const Add = styled(AddIcon)`
@@ -78,4 +79,5 @@ export const Add = styled(AddIcon)`
   background-color: #ebebeb;
   border-radius: 10px;
   margin-left: 8px;
+  font-size: 2.4rem;
 `;

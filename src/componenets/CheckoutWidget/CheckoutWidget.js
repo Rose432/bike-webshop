@@ -9,21 +9,26 @@ import {
   SecondNumber,
   StepName,
   Line,
+  Check,
 } from "./CheckoutWidgetStyle";
 
-const CheckoutWidget = ({ children, activeStep }) => {
+const CheckoutWidget = ({ children, activeStep, order }) => {
   return (
     <CheckoutContainer>
       <CheckoutWrapper>
         <Title>Checkout</Title>
         <StepContainer>
           <StepWrapper>
-            <FirstNumber activeStep={activeStep}>1</FirstNumber>
+            <FirstNumber activeStep={activeStep}>
+              {order.customer ? <Check /> : "1"}
+            </FirstNumber>
             <StepName>Shipping Adress</StepName>
           </StepWrapper>
           <Line />
           <StepWrapper>
-            <SecondNumber activeStep={activeStep}>2</SecondNumber>
+            <SecondNumber activeStep={activeStep}>
+              {order.customer ? <Check /> : "2"}
+            </SecondNumber>
             <StepName>Payment Details</StepName>
           </StepWrapper>
         </StepContainer>

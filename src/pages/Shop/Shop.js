@@ -84,19 +84,7 @@ const Shop = () => {
 
   return (
     <>
-      <Header
-        buttons={
-          <>
-            <Button isHeaderNav isOutlineSecondary>
-              Log In
-            </Button>
-            <Button isHeaderNav isSecondary>
-              Sign Up
-            </Button>
-          </>
-        }
-        isSecondary
-      />
+      <Header isDiffHead isSecondary />
 
       <Section title={"All Bicycles"}>
         <SearchBar

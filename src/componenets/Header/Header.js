@@ -15,11 +15,13 @@ import {
   NavWrapper,
   Nav,
   CartItems,
+  UserAuth,
+  AuthLink,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
 import { FasterCartContext } from "../../context/FasterCartContext";
 
-const Header = ({ isSecondary, isHome, buttons }) => {
+const Header = ({ isSecondary, isHome, isSecond, isDiffHead }) => {
   const { fasterCart } = useContext(FasterCartContext);
   const [open, setOpen] = useState(false);
 
@@ -36,11 +38,18 @@ const Header = ({ isSecondary, isHome, buttons }) => {
             <LogoLink to="/">Advanturer</LogoLink>
           </LogoContainer>
           <NavPositioner>
-            <NavWrapper open={open}>
+            <NavWrapper id="navigation" open={open}>
               <Nav to="/shop">Shop</Nav>
               <Nav to="/">Profile</Nav>
               <Nav to="/">Contact</Nav>
-              {buttons}
+              <AuthLink to="/">
+                <UserAuth to="/">Log in</UserAuth>
+              </AuthLink>
+              <AuthLink to="/">
+                <UserAuth isSecond={isSecond} isDiffHead={isDiffHead} to="/">
+                  Register
+                </UserAuth>
+              </AuthLink>
             </NavWrapper>
             <IconLink to="/cart">
               <CartItems
@@ -52,14 +61,13 @@ const Header = ({ isSecondary, isHome, buttons }) => {
                 }, 0)}
                 max={99}
               >
-                <Cart aria-label="cart" />
+                <Cart aria-label="open cart page" />
               </CartItems>
             </IconLink>
             <Hamburger open={open} setOpen={setOpen} />
           </NavPositioner>
         </HeaderInner>
       </HeaderWrapper>
-      {/* <HamburgerMenu open={open} setOpen={setOpen} /> */}
     </>
   );
 };
