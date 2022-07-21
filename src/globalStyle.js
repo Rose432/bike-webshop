@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   position: relative;
+  overflow-x: hidden;
   font-size: 62.5%;
 }
 
