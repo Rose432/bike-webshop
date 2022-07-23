@@ -82,7 +82,7 @@ export const Subtotal = styled.p`
 export const ButtonContainer = styled.div`
   margin-top: 32px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 16px;
   align-items: flex-start;
 

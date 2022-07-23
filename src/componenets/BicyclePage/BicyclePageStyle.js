@@ -125,7 +125,7 @@ export const Price = styled.p`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 12px;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-start;
 
   @media (${breakpoints.tabletSmall}) {

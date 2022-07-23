@@ -41,11 +41,11 @@ const Header = ({ isSecondary, isHome, isSecond, isDiffHead }) => {
             <NavWrapper id="navigation" open={open}>
               <Nav to="/shop">Shop</Nav>
               <Nav to="/">Profile</Nav>
-              <Nav to="/">Contact</Nav>
-              <AuthLink to="/">
-                <UserAuth to="/">Log in</UserAuth>
+              {/* <Nav to="/">Contact</Nav> */}
+              <AuthLink to="/login">
+                <UserAuth>Log in</UserAuth>
               </AuthLink>
-              <AuthLink to="/">
+              <AuthLink to="/register">
                 <UserAuth isSecond={isSecond} isDiffHead={isDiffHead} to="/">
                   Register
                 </UserAuth>

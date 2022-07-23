@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { colors, breakpoints } from "../../lib/style/theme";
 
@@ -62,7 +62,7 @@ export const TitleContainer = styled.div`
 `}
 `;
 
-export const Title = styled.h2`
+const titleStyle = css`
   font-size: 2.4rem;
   text-transform: uppercase;
   display: flex;
@@ -71,6 +71,12 @@ export const Title = styled.h2`
   font-weight: 500;
   color: ${colors.textPrimary};
   margin-bottom: 64px;
+
+  ${(props) =>
+    props.isUserAuth &&
+    `
+   margin-bottom: 48px;
+`}
 
   ${(props) =>
     props.isCart &&
@@ -86,6 +92,12 @@ export const Title = styled.h2`
       props.isCart &&
       `
    margin-bottom: 0;
+`}
+
+    ${(props) =>
+      props.isUserAuth &&
+      `
+   margin-bottom: 48px;
 `}
   }
 
@@ -114,6 +126,14 @@ export const Title = styled.h2`
   }
 `;
 
+export const PrimaryTitle = styled.h1`
+  ${titleStyle}
+`;
+
+export const Title = styled.h2`
+  ${titleStyle}
+`;
+
 export const SmallLink = styled(Link)`
   padding-top: 48px;
 
@@ -131,7 +151,7 @@ export const SmallLink = styled(Link)`
   }
 
   &:hover {
-    font-weight: 500;
+    text-shadow: 1px 0 0 ${colors.primary};
   }
 `;
 
@@ -150,7 +170,7 @@ export const ButtonCartContainer = styled.div`
   margin-top: 32px;
   display: flex;
   gap: 12px;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-start;
 
   @media (${breakpoints.mobileLarge}) {

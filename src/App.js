@@ -10,6 +10,8 @@ import Checkout from "./pages/Checkout/Checkout";
 import { useContext } from "react";
 import { ProductsContext } from "./context/ProductsContext";
 import GlobalStyles from "./globalStyle";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
   const { fetchProducts } = useContext(ProductsContext);
@@ -28,6 +30,8 @@ function App() {
           <Route path="/bicycle/:name" element={<Bicycle />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </ScrollToTop>
     </>

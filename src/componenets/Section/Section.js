@@ -7,6 +7,7 @@ import {
   TitleContainer,
   CartContainer,
   ButtonCartContainer,
+  PrimaryTitle,
 } from "./SectionStyle";
 
 const Section = ({
@@ -21,13 +22,23 @@ const Section = ({
   subtotal,
   emptyButton,
   checkoutButton,
+  isSecondaryTitle = false,
+  isUserAuth,
 }) => {
   return (
     <SectionWrapper isFooter={isFooter} isAfterSection={isAfterSection}>
       <SectionInner isAfterSection={isAfterSection}>
         {title && (
           <TitleContainer isCart={isCart}>
-            <Title isCart={isCart}>{title}</Title>
+            {isSecondaryTitle ? (
+              <Title isUserAuth={isUserAuth} isCart={isCart}>
+                {title}
+              </Title>
+            ) : (
+              <PrimaryTitle isUserAuth={isUserAuth} isCart={isCart}>
+                {title}
+              </PrimaryTitle>
+            )}
             {button && button}
           </TitleContainer>
         )}

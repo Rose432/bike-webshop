@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import { colors, breakpoints, fonts } from "../../lib/style/theme";
+import { colors, breakpoints } from "../../lib/style/theme";
 import { Badge } from "@material-ui/core";
 
 export const HeaderWrapper = styled.header`
@@ -151,7 +151,7 @@ export const NavWrapper = styled.nav`
   }
 `;
 
-export const Nav = styled(NavLink)`
+const navItemsStyle = css`
   width: 100%;
   font-size: 2rem;
   text-transform: uppercase;
@@ -173,6 +173,10 @@ export const Nav = styled(NavLink)`
     background-color: ${colors.bgMenuHover};
     font-weight: 700;
   }
+`;
+
+export const Nav = styled(NavLink)`
+  ${navItemsStyle}
 
   @media (${breakpoints.desktop}) {
     padding: 0;
@@ -217,28 +221,7 @@ export const Nav = styled(NavLink)`
 `;
 
 export const UserAuth = styled.div`
-  font-family: ${fonts.secondary};
-  width: 100%;
-  font-size: 2rem;
-  text-transform: uppercase;
-  padding: 20px 0;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: ${colors.secondary};
-  transition: background-color font-weight 0.3s ease-in-out;
-
-  @media (${breakpoints.tabletSmall}) {
-    font-size: 2.4rem;
-  }
-
-  @media (${breakpoints.tablet}) {
-    font-size: 2.8rem;
-  }
-
-  &:hover {
-    background-color: ${colors.bgMenuHover};
-    font-weight: 700;
-  }
+  ${navItemsStyle}
 
   @media (${breakpoints.desktop}) {
     display: flex;

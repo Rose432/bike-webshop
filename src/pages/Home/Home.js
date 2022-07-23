@@ -43,6 +43,7 @@ const Home = () => {
       <Header isSecond isHome={true} />
       <Landing />
       <Section
+        isSecondaryTitle={true}
         title={"bestsellers"}
         linkText={"See more bicycles →"}
         children={bicycles}

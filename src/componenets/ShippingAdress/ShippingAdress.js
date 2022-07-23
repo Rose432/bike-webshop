@@ -183,7 +183,7 @@ const ShippingAdress = ({
               </FormRow>
               <FormRow>
                 <FormField
-                  type="text"
+                  type="email"
                   name="email"
                   placeholder="Email*"
                   disabled={formik.isSubmitting}
