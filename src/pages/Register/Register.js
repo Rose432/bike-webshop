@@ -1,7 +1,9 @@
-import React from "react";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../componenets/Header/Header";
 import Section from "../../componenets/Section/Section";
 import Footer from "../../componenets/Footer/Footer";
+import Snackbar from "../../componenets/Snackbar/Snackbar";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import {
@@ -14,9 +16,13 @@ import {
 import { Button } from "../../lib/style/generalStyle";
 
 const Register = () => {
+  const snackbarRef = useRef(null);
+  let navigate = useNavigate();
+
   return (
     <>
       <Header isDiffHead isSecondary />
+      <Snackbar ref={snackbarRef} message={"Registration was succe"} />
       <Section isUserAuth title={"Register"}>
         <Formik
           initialValues={{
@@ -36,10 +42,10 @@ const Register = () => {
             lastName: Yup.string().required("Last name is required"),
             email: Yup.string()
               .email("Invalid email adress")
-              .required("Emails is required"),
+              .required("Email is required"),
             phoneNumber: Yup.string().required("Phone number is required"),
             adress: Yup.string().required("Adress is required"),
-            city: Yup.string().required("Citry is required"),
+            city: Yup.string().required("City is required"),
             zipPostalCode: Yup.string().required("Zip/Postal code is required"),
             country: Yup.string().required("Country is required"),
             password: Yup.string()
@@ -54,20 +60,29 @@ const Register = () => {
             ),
           })}
           onSubmit={async (values, actions) => {
-            await new Promise((r) => setTimeout(r, 500));
-            alert(JSON.stringify(values, null, 2));
-            actions.resetForm({
-              firstName: "",
-              lastName: "",
-              email: "",
-              phoneNumber: "",
-              adress: "",
-              city: "",
-              zipPostalCode: "",
-              country: "",
-              password: "",
-              passwordConfirmed: "",
-            });
+            try {
+              await new Promise((r) => setTimeout(r, 500));
+              localStorage.setItem("showSnackbar", "true");
+              navigate("/login", { replace: true });
+              actions.resetForm({
+                firstName: "",
+                lastName: "",
+                email: "",
+                phoneNumber: "",
+                adress: "",
+                city: "",
+                zipPostalCode: "",
+                country: "",
+                password: "",
+                passwordConfirmed: "",
+              });
+            } catch (err) {
+              snackbarRef.current.show(
+                false,
+                "Something went wrong, please try again :("
+              );
+              console.error(err.message);
+            }
           }}
         >
           {(formik) => (

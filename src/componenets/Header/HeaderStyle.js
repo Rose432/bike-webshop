@@ -11,16 +11,7 @@ export const HeaderWrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 10px;
   width: 100%;
-
-  @media (${breakpoints.tabletMedium}) {
-    padding: 0 24px;
-  }
-
-  @media (${breakpoints.desktop}) {
-    padding: 0;
-  }
 
   ${(props) =>
     props.isSecondary &&
@@ -31,13 +22,21 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderInner = styled.div`
+  padding: 0 10px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: ${({ open }) => (open ? "fixed" : "static")};
+  z-index: 3;
+
+  @media (${breakpoints.tabletMedium}) {
+    padding: 0 24px;
+  }
 
   @media (${breakpoints.desktop}) {
     width: 960px;
+    padding: 0;
   }
 
   @media (${breakpoints.desktopLarge}) {
@@ -127,7 +126,7 @@ export const NavWrapper = styled.nav`
   background-color: ${colors.bgMenu};
   height: 100vh;
   text-align: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
@@ -151,6 +150,24 @@ export const NavWrapper = styled.nav`
   }
 `;
 
+// export const NavLinksPositioner = styled.div`
+//   margin: auto 0;
+//   overflow-y: auto;
+//   height: 100%;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+
+//   @media (${breakpoints.desktop}) {
+//     flex-direction: row;
+//     gap: 20px;
+//     align-items: center;
+//     justify-content: flex-start;
+//   }
+// `;
+
 const navItemsStyle = css`
   width: 100%;
   font-size: 2rem;
@@ -172,6 +189,55 @@ const navItemsStyle = css`
   &:hover {
     background-color: ${colors.bgMenuHover};
     font-weight: 700;
+  }
+`;
+
+const buttonsStyle = css`
+  @media (${breakpoints.desktop}) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+    border-radius: 10px;
+    color: ${colors.primary};
+    background-color: ${colors.secondary};
+    transition: box-shadow 0.3s ease-in-out;
+    border: 1px solid ${colors.secondary};
+
+    &:hover {
+      box-shadow: 0 1px 4px ${colors.black};
+      background-color: ${colors.secondary};
+      font-weight: normal;
+    }
+
+    ${(props) =>
+      props.isSecond &&
+      `
+      border: 1px solid ${colors.primary};
+      color: ${colors.secondary};
+      background-color: ${colors.primary};
+
+    &:hover {      
+      background-color: ${colors.primary};    
+    }
+    `}
+
+    ${(props) =>
+      props.isDiffHead &&
+      `
+      color: ${colors.secondary};
+      background-color: ${colors.primary};
+      border: 1px solid ${colors.secondary};
+
+    &:hover {   
+      background-color: ${colors.primary};  
+    }
+    `}
   }
 `;
 
@@ -222,53 +288,7 @@ export const Nav = styled(NavLink)`
 
 export const UserAuth = styled.div`
   ${navItemsStyle}
-
-  @media (${breakpoints.desktop}) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    padding: 10px 20px;
-    font-weight: 400;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: -0.2px;
-    border-radius: 10px;
-    color: ${colors.primary};
-    background-color: ${colors.secondary};
-    transition: box-shadow 0.3s ease-in-out;
-    border: 1px solid ${colors.secondary};
-
-    &:hover {
-      box-shadow: 0 1px 4px ${colors.black};
-      background-color: ${colors.secondary};
-      font-weight: normal;
-    }
-
-    ${(props) =>
-      props.isSecond &&
-      `
-      border: 1px solid ${colors.primary};
-      color: ${colors.secondary};
-      background-color: ${colors.primary};
-
-    &:hover {      
-      background-color: ${colors.primary};    
-    }
-    `}
-
-    ${(props) =>
-      props.isDiffHead &&
-      `
-      color: ${colors.secondary};
-      background-color: ${colors.primary};
-      border: 1px solid ${colors.secondary};
-
-    &:hover {   
-      background-color: ${colors.primary};  
-    }
-    `}
-  }
+  ${buttonsStyle}
 `;
 
 export const CartItems = styled(Badge)`
@@ -279,4 +299,13 @@ export const CartItems = styled(Badge)`
 
 export const AuthLink = styled(NavLink)`
   width: 100%;
+`;
+
+export const Logout = styled.button`
+  ${navItemsStyle}
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  ${buttonsStyle}
 `;

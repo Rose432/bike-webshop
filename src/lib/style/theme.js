@@ -12,6 +12,7 @@ export const colors = {
   textPrimary: "#333",
   textSecondary: "#555",
   error: "#f03e3e",
+  success: "#40c057",
   bgMenu: "#087f5be1",
   bgMenuHover: "#38d9a9",
 };

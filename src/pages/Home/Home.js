@@ -1,18 +1,27 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Header from "../../componenets/Header/Header";
 import Landing from "../../componenets/Landing/Landing";
 import Section from "../../componenets/Section/Section";
 import BikeCard from "../../componenets/BikeCard/BikeCard";
 import Feature from "../../componenets/Feature/Feature";
 import Footer from "../../componenets/Footer/Footer";
-import { Grid, SpinnerWrapper, Button } from "../../lib/style/generalStyle";
+import Snackbar from "../../componenets/Snackbar/Snackbar";
+import { Grid, SpinnerWrapper } from "../../lib/style/generalStyle";
 import { ThreeDots } from "react-loader-spinner";
 import { ProductsContext } from "../../context/ProductsContext";
 import { featureData } from "./FeatureData";
 
 const Home = () => {
   const { products } = useContext(ProductsContext);
+  const snackbarRef = useRef(null);
+
+  useEffect(() => {
+    const snackbar = localStorage.getItem("showSnackbar");
+    snackbar && snackbarRef.current.show(true, "Loged In sucessfully :)");
+
+    return localStorage.removeItem("showSnackbar");
+  }, []);
 
   const bicycles =
     products.length > 0 ? (
@@ -41,6 +50,8 @@ const Home = () => {
   return (
     <>
       <Header isSecond isHome={true} />
+      <Snackbar ref={snackbarRef} />
+
       <Landing />
       <Section
         isSecondaryTitle={true}

@@ -44,7 +44,7 @@ const Cart = () => {
           <CartCard
             key={cartItem.bicycleId}
             imgSrc={cartItem.imgSrc}
-            name={cartItem.bicycleName}
+            name={cartItem.bikeTitle}
             price={cartItem.bikePrice}
             quantity={cartItem.quantity}
             bicycleId={cartItem.bicycleId}

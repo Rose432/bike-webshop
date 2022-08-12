@@ -17,18 +17,21 @@ import {
   CartItems,
   UserAuth,
   AuthLink,
+  Logout,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
 import { FasterCartContext } from "../../context/FasterCartContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = ({ isSecondary, isHome, isSecond, isDiffHead }) => {
   const { fasterCart } = useContext(FasterCartContext);
+  const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <HeaderWrapper isSecondary={isSecondary}>
-        <HeaderInner>
+        <HeaderInner open={open}>
           <LogoContainer to="/">
             <LogoImgContainer>
               <LogoDownLine />
@@ -40,16 +43,35 @@ const Header = ({ isSecondary, isHome, isSecond, isDiffHead }) => {
           <NavPositioner>
             <NavWrapper id="navigation" open={open}>
               <Nav to="/shop">Shop</Nav>
-              <Nav to="/">Profile</Nav>
-              {/* <Nav to="/">Contact</Nav> */}
-              <AuthLink to="/login">
-                <UserAuth>Log in</UserAuth>
-              </AuthLink>
-              <AuthLink to="/register">
-                <UserAuth isSecond={isSecond} isDiffHead={isDiffHead} to="/">
-                  Register
-                </UserAuth>
-              </AuthLink>
+              {isLoggedin && <Nav to="/profile">Profile</Nav>}
+              {!isLoggedin && (
+                <>
+                  <AuthLink to="/login">
+                    <UserAuth>Log in</UserAuth>
+                  </AuthLink>
+                  <AuthLink to="/register">
+                    <UserAuth
+                      isSecond={isSecond}
+                      isDiffHead={isDiffHead}
+                      to="/"
+                    >
+                      Register
+                    </UserAuth>
+                  </AuthLink>
+                </>
+              )}
+              {isLoggedin && (
+                <Logout
+                  isSecond={isSecond}
+                  isDiffHead={isDiffHead}
+                  onClick={() => {
+                    localStorage.removeItem("accessToken");
+                    setIsLoggedin(false);
+                  }}
+                >
+                  Logout
+                </Logout>
+              )}
             </NavWrapper>
             <IconLink to="/cart">
               <CartItems

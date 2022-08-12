@@ -6,7 +6,7 @@ import Footer from "../../componenets/Footer/Footer";
 import Section from "../../componenets/Section/Section";
 import BicyclePage from "../../componenets/BicyclePage/BicyclePage";
 import { ThreeDots } from "react-loader-spinner";
-import { SpinnerWrapper, Button } from "../../lib/style/generalStyle";
+import { SpinnerWrapper } from "../../lib/style/generalStyle";
 import { ProductsContext } from "../../context/ProductsContext";
 
 const Bicycle = () => {

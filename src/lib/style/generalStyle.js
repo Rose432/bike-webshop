@@ -39,7 +39,7 @@ export const Button = styled.button`
   ${(props) =>
     props.isFixed &&
     `
-        width: 176px;
+       min-width: 176px;
       `}
 
   ${(props) =>

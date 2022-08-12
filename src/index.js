@@ -5,17 +5,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProductsProvider } from "./context/ProductsContext";
 import { FasterCartProvider } from "./context/FasterCartContext";
+import { AuthProvider } from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FasterCartProvider>
-      <ProductsProvider>
-        <Router>
-          <App />
-        </Router>
-      </ProductsProvider>
-    </FasterCartProvider>
+    <AuthProvider>
+      <FasterCartProvider>
+        <ProductsProvider>
+          <Router>
+            <App />
+          </Router>
+        </ProductsProvider>
+      </FasterCartProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
 

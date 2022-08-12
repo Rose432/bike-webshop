@@ -1,5 +1,4 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import {
   BikeCard as BikeContainer,
   FigureLink,
@@ -21,37 +20,7 @@ const BikeCard = ({
   bikePrice,
   bicycleId,
 }) => {
-  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
-
-  const handleAddItemsToCart = (
-    bicycleId,
-    quantity,
-    imgSrc,
-    bicycleName,
-    bikePrice,
-    fasterCart
-  ) => {
-    const cartData = {
-      bicycleId: bicycleId,
-      quantity: quantity,
-      imgSrc: imgSrc,
-      bicycleName: bicycleName,
-      bikePrice: bikePrice,
-    };
-
-    if (fasterCart.length === 0) {
-      setFasterCart((prevArray) => [...prevArray, cartData]);
-    } else if (
-      fasterCart.length > 0 &&
-      fasterCart.every((cur) => cur.bicycleId !== bicycleId)
-    ) {
-      setFasterCart((prevArray) => [...prevArray, cartData]);
-    } else if (fasterCart.some((cur) => cur.bicycleId === bicycleId)) {
-      fasterCart.find((cur) => cur.bicycleId === bicycleId && cur.quantity++);
-      const newArray = fasterCart.slice(0);
-      setFasterCart(newArray);
-    }
-  };
+  const { fasterCart, handleAddItemsToCart } = useContext(FasterCartContext);
 
   return (
     <BikeContainer>
