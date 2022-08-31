@@ -1,5 +1,4 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import ReactDOM from "react-dom";
 import {
   SnackbarWrapper,
   Symbol,
@@ -8,7 +7,7 @@ import {
   ErrorIcon,
 } from "./SnackbarStyle";
 
-const Snackbar = forwardRef(({ symbol }, ref) => {
+const Snackbar = forwardRef((_, ref) => {
   const [isOpen, setIsOpen] = useState(false);
   const [success, setSucces] = useState(true);
   const [message, setMessage] = useState("");
@@ -24,14 +23,13 @@ const Snackbar = forwardRef(({ symbol }, ref) => {
     },
   }));
 
-  return ReactDOM.createPortal(
+  return (
     isOpen && (
       <SnackbarWrapper isOpen={isOpen} success={success}>
         <Symbol>{success ? <SuccessIcon /> : <ErrorIcon />}</Symbol>
         <Message success={success}>{message}</Message>
       </SnackbarWrapper>
-    ),
-    document.body
+    )
   );
 });
 

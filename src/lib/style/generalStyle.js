@@ -173,6 +173,13 @@ export const SpinnerWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${(props) =>
+    props.isCheckout &&
+    `
+  height: 100vh;
+  width: 100vw;
+  `}
 `;
 
 // NO BICYCLES FOUND

@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import {
   BikeCard as BikeContainer,
   FigureLink,
@@ -10,7 +9,8 @@ import {
   Price,
 } from "./BikeCardStyle";
 import { Button } from "../../lib/style/generalStyle";
-import { FasterCartContext } from "../../context/FasterCartContext";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../features/cart/cartSlice";
 
 const BikeCard = ({
   bicycleName,
@@ -20,7 +20,7 @@ const BikeCard = ({
   bikePrice,
   bicycleId,
 }) => {
-  const { fasterCart, handleAddItemsToCart } = useContext(FasterCartContext);
+  const dispatch = useDispatch();
 
   return (
     <BikeContainer>
@@ -37,13 +37,14 @@ const BikeCard = ({
         <Price>€ {bikePrice}</Price>
         <Button
           onClick={() =>
-            handleAddItemsToCart(
-              bicycleId,
-              1,
-              imgSrc,
-              bicycleName,
-              bikePrice,
-              fasterCart
+            dispatch(
+              addItemToCart({
+                bicycleId,
+                quantity: 1,
+                imgSrc,
+                bikeTitle,
+                bikePrice,
+              })
             )
           }
           isShop

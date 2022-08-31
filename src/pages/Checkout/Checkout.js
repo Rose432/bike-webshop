@@ -85,41 +85,43 @@ const Checkout = () => {
   };
 
   return (
-    <Section>
+    <>
       {checkoutToken ? (
-        <CheckoutWidget
-          order={order}
-          activeStep={activeStep}
-          setActiveStep={setActiveStep}
-        >
-          {activeStep === 0 && (
-            <ShippingAdress
-              isEmpty={isEmpty}
-              cart={cart}
-              activeSteup={activeStep}
-              checkoutToken={checkoutToken}
-              next={next}
-              handleEmptyCart={emptyCart}
-            />
-          )}
-          {activeStep === 1 && (
-            <OrderSummary
-              cart={cart}
-              nextStep={nextStep}
-              backStep={backStep}
-              handleCaptureCheckout={handleCaptureCheckout}
-              shippingData={shippingData}
-              checkoutToken={checkoutToken}
-            />
-          )}
-          {activeStep === 2 && <ConfirmationMessage order={order} />}
-        </CheckoutWidget>
+        <Section>
+          <CheckoutWidget
+            order={order}
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+          >
+            {activeStep === 0 && (
+              <ShippingAdress
+                isEmpty={isEmpty}
+                cart={cart}
+                activeSteup={activeStep}
+                checkoutToken={checkoutToken}
+                next={next}
+                handleEmptyCart={emptyCart}
+              />
+            )}
+            {activeStep === 1 && (
+              <OrderSummary
+                cart={cart}
+                nextStep={nextStep}
+                backStep={backStep}
+                handleCaptureCheckout={handleCaptureCheckout}
+                shippingData={shippingData}
+                checkoutToken={checkoutToken}
+              />
+            )}
+            {activeStep === 2 && <ConfirmationMessage order={order} />}
+          </CheckoutWidget>
+        </Section>
       ) : (
-        <SpinnerWrapper>
-          <ThreeDots color="#087f5b" height={70} width={70} />
+        <SpinnerWrapper isCheckout>
+          <ThreeDots color="#087f5b" height={100} width={100} />
         </SpinnerWrapper>
       )}
-    </Section>
+    </>
   );
 };
 

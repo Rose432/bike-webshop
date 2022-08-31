@@ -15,6 +15,7 @@ export const colors = {
   success: "#40c057",
   bgMenu: "#087f5be1",
   bgMenuHover: "#38d9a9",
+  bgSecondary: "#0D0C0C",
 };
 
 export const breakpoints = {

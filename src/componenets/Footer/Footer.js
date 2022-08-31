@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FooterContainer,
   FlexContainer,
@@ -16,8 +16,18 @@ import {
   SignInNewsletter,
 } from "./FooterStyle";
 import { Button } from "../../lib/style/generalStyle";
+import {
+  FooterForm,
+  FormRow,
+  FormField,
+  ErrorMessage,
+} from "../../lib/style/formStyle";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 const Footer = () => {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
   return (
     <FooterContainer>
       <FlexContainer>
@@ -50,10 +60,49 @@ const Footer = () => {
       </FlexContainer>
       <FlexContainer>
         <Title>Newsletter</Title>
-        <SignInNewsletter>
-          Subscribe to our daily newsletter to get the latest news.
-        </SignInNewsletter>
-        <Button isOutline>Sign me Up</Button>
+        {isSubscribed && (
+          <Title isSubscribed>Than you for your subscription</Title>
+        )}
+        {!isSubscribed && (
+          <SignInNewsletter>
+            Subscribe to our daily newsletter to get the latest news.
+          </SignInNewsletter>
+        )}
+        {!isSubscribed && (
+          <Formik
+            initialValues={{
+              email: "",
+            }}
+            validationSchema={Yup.object({
+              email: Yup.string()
+                .email("Invalid email adress")
+                .required("Email is required"),
+            })}
+            onSubmit={(values, actions) => {
+              setIsSubscribed(true);
+              actions.resetForm({
+                email: "",
+              });
+            }}
+          >
+            {(formik) => (
+              <FooterForm>
+                <FormRow isFooter>
+                  <FormField
+                    type="email"
+                    name="email"
+                    placeholder="Email adress*"
+                    disabled={formik.isSubmitting}
+                  />
+                  <ErrorMessage component={"div"} name="email" />
+                </FormRow>
+                <FormRow isFooter>
+                  <Button isOutline>Sign me Up</Button>
+                </FormRow>
+              </FooterForm>
+            )}
+          </Formik>
+        )}
       </FlexContainer>
     </FooterContainer>
   );

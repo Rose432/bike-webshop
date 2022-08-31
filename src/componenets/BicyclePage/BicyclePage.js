@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import {
   Container,
   Figure,
@@ -12,7 +11,8 @@ import {
 } from "./BicyclePageStyle";
 import { Button } from "../../lib/style/generalStyle";
 import { useNavigate } from "react-router-dom";
-import { FasterCartContext } from "../../context/FasterCartContext";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../features/cart/cartSlice";
 
 const BicyclePage = ({
   imgSrc,
@@ -21,8 +21,8 @@ const BicyclePage = ({
   bikePrice,
   bicycleId,
 }) => {
-  const { fasterCart, handleAddItemsToCart } = useContext(FasterCartContext);
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -34,7 +34,7 @@ const BicyclePage = ({
           <Name>{bikeTitle}</Name>
         </Flex>
         <Description dangerouslySetInnerHTML={{ __html: bikeDescription }} />
-        <Price>Price: {bikePrice}</Price>
+        <Price>Price: € {bikePrice}</Price>
         <ButtonContainer>
           <Button isFixed onClick={() => navigate(-1)}>
             Return
@@ -43,13 +43,14 @@ const BicyclePage = ({
             isFixed
             isOutline
             onClick={() =>
-              handleAddItemsToCart(
-                bicycleId,
-                1,
-                imgSrc,
-                bikeTitle,
-                bikePrice,
-                fasterCart
+              dispatch(
+                addItemToCart({
+                  bicycleId,
+                  quantity: 1,
+                  imgSrc,
+                  bikeTitle,
+                  bikePrice,
+                })
               )
             }
           >

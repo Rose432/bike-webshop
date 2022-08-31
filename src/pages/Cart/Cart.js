@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../componenets/Header/Header";
 import Footer from "../../componenets/Footer/Footer";
@@ -11,23 +11,27 @@ import {
   Subtotal,
   SpinnerWrapper,
 } from "../../lib/style/generalStyle";
-import { FasterCartContext } from "../../context/FasterCartContext";
+
 import EmptyCart from "../../componenets/EmptyCart/EmptyCart";
 import { commerce } from "../../lib/commerce";
 import { ThreeDots } from "react-loader-spinner";
+import { useSelector, useDispatch } from "react-redux";
+import { emptyCart } from "../../features/cart/cartSlice";
+import ConfirmationWindow from "../../componenets/ConfirmationWindow/ConfirmationWindow";
 
 const Cart = () => {
-  const { fasterCart, setFasterCart } = useContext(FasterCartContext);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
   const [isFetching, setIsFetching] = useState(false);
   let navigate = useNavigate();
+  const confirmationRef = useRef(null);
 
-  const updateCart = async function (fasterCart) {
-    fasterCart.map(async (cur) => {
+  const updateCart = async function (cart) {
+    cart.forEach(async (cur) => {
       try {
         setIsFetching(true);
         await commerce.cart.add(cur.bicycleId, cur.quantity);
         setIsFetching(false);
-        navigate("/checkout");
       } catch (err) {
         console.error(err);
         setIsFetching(false);
@@ -37,10 +41,10 @@ const Cart = () => {
 
   let showCart;
 
-  if (fasterCart.length > 0) {
+  if (cart.length > 0) {
     showCart = (
       <Grid isBikeGrid>
-        {fasterCart.map((cartItem) => (
+        {cart.map((cartItem) => (
           <CartCard
             key={cartItem.bicycleId}
             imgSrc={cartItem.imgSrc}
@@ -52,12 +56,16 @@ const Cart = () => {
         ))}
       </Grid>
     );
-  } else if (fasterCart.length === 0) {
+  } else if (cart.length === 0) {
     showCart = <EmptyCart />;
   }
 
   return (
     <>
+      <ConfirmationWindow
+        ref={confirmationRef}
+        confirmFn={() => dispatch(emptyCart())}
+      />
       <Header isDiffHead isSecondary />
       <Section
         isCart={true}
@@ -68,10 +76,10 @@ const Cart = () => {
           </Button>
         }
         subtotal={
-          fasterCart.length > 0 && (
+          cart.length > 0 && (
             <Subtotal>
               Subtotal: €
-              {fasterCart.reduce((acc, cur) => {
+              {cart.reduce((acc, cur) => {
                 const subtotal = acc + cur.bikePrice * cur.quantity;
                 return Math.round((subtotal + Number.EPSILON) * 100) / 100;
               }, 0)}
@@ -79,12 +87,28 @@ const Cart = () => {
           )
         }
         emptyButton={
-          <Button isFixed onClick={() => setFasterCart([])}>
+          <Button
+            isFixed
+            onClick={() =>
+              confirmationRef.current.show(
+                true,
+                "Are you sure?",
+                "Are you sure you want to delete whole cart?"
+              )
+            }
+          >
             Empty Cart
           </Button>
         }
         checkoutButton={
-          <Button isOutline isFixed onClick={() => updateCart(fasterCart)}>
+          <Button
+            isFixed
+            isOutline
+            onClick={async () => {
+              await updateCart(cart);
+              navigate("/checkout");
+            }}
+          >
             {isFetching ? (
               <SpinnerWrapper>
                 <ThreeDots color="#087f5b" height={21} width={30} />

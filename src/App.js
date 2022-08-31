@@ -18,15 +18,17 @@ import Profile from "./pages/Profile/Profile";
 
 function App() {
   const { fetchProducts } = useContext(ProductsContext);
-  const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
+  const { setIsLoggedin } = useContext(AuthContext);
 
   useEffect(() => {
     fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken") !== null;
     token && setIsLoggedin(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

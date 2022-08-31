@@ -31,6 +31,13 @@ export const Title = styled.p`
   font-size: 1.6rem;
   margin-bottom: 16px;
 
+  ${(props) =>
+    props.isSubscribed &&
+    ` 
+    margin-bottom: 0;
+    line-height: 1.5;
+  `}
+
   @media (${breakpoints.tabletMedium}) {
     font-size: 1.8rem;
   }
@@ -123,4 +130,5 @@ export const NewsletterContainer = styled.div``;
 
 export const SignInNewsletter = styled.span`
   font-size: 1.6rem;
+  margin-bottom: 16px;
 `;

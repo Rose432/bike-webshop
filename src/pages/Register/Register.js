@@ -14,15 +14,18 @@ import {
   ErrorMessage,
 } from "../../lib/style/formStyle";
 import { Button } from "../../lib/style/generalStyle";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../features/profile/profileSlice";
 
 const Register = () => {
   const snackbarRef = useRef(null);
   let navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <>
       <Header isDiffHead isSecondary />
-      <Snackbar ref={snackbarRef} message={"Registration was succe"} />
+      <Snackbar ref={snackbarRef} />
       <Section isUserAuth title={"Register"}>
         <Formik
           initialValues={{
@@ -61,7 +64,19 @@ const Register = () => {
           })}
           onSubmit={async (values, actions) => {
             try {
+              const userInfo = {
+                firstName: values.firstName,
+                lastName: values.lastName,
+                phoneNumber: values.phoneNumber,
+                adress: values.adress,
+                city: values.city,
+                zipPostalCode: values.zipPostalCode,
+                country: values.country,
+              };
+              const email = values.email;
+              const password = values.password;
               await new Promise((r) => setTimeout(r, 500));
+              dispatch(registerUser({ userInfo, password, email }));
               localStorage.setItem("showSnackbar", "true");
               navigate("/login", { replace: true });
               actions.resetForm({
@@ -77,10 +92,7 @@ const Register = () => {
                 passwordConfirmed: "",
               });
             } catch (err) {
-              snackbarRef.current.show(
-                false,
-                "Something went wrong, please try again :("
-              );
+              snackbarRef.current.show(false, err.message);
               console.error(err.message);
             }
           }}

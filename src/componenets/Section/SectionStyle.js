@@ -47,7 +47,7 @@ export const TitleContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     row-gap: 24px;
-    margin-bottom: 64px;
+    margin-bottom: 48px;
 
     @media (${breakpoints.tabletMedium}) {
       row-gap: 0;

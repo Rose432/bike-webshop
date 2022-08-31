@@ -1,5 +1,4 @@
 import React from "react";
-import { useContext } from "react";
 import {
   Order,
   StepTitle,
@@ -23,7 +22,8 @@ import {
   ElementsConsumer,
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { FasterCartContext } from "../../context/FasterCartContext";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../../features/cart/cartSlice";
 
 const OrderSummary = ({
   name,
@@ -37,7 +37,7 @@ const OrderSummary = ({
   nextStep,
   cart,
 }) => {
-  const { setFasterCart } = useContext(FasterCartContext);
+  const dispatch = useDispatch();
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
   const handleSubmit = async (e, elements, stripe) => {
@@ -80,7 +80,7 @@ const OrderSummary = ({
       };
       handleCaptureCheckout(checkoutToken.id, orderData);
       nextStep();
-      setFasterCart([]);
+      dispatch(emptyCart());
     }
   };
 

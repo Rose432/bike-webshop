@@ -8,9 +8,24 @@ import {
 
 export const Fieldset = styled.fieldset`
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+
+  ${(props) =>
+    props.isProfile &&
+    `
+  align-items: start;
+  justify-items: start;
+  gap: 24px;
+
+  @media(${breakpoints.tablet}) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+
+  @media(${breakpoints.desktopLarge}) {
+    grid-template-columns: 1.2fr 1.2fr 0.6fr;
+
+  `}
 `;
 
 const formStyle = css`
@@ -18,6 +33,15 @@ const formStyle = css`
   grid-template-columns: 1fr;
   place-items: center;
   width: 100%;
+`;
+
+export const FooterForm = styled(FormFormik)`
+  ${formStyle};
+`;
+
+export const ProfileForm = styled(FormFormik)`
+  width: 100%;
+  max-width: 400px;
 `;
 
 export const LoginForm = styled(FormFormik)`
@@ -42,6 +66,7 @@ export const FormRow = styled.div`
   ${(props) =>
     props.isButton &&
     `
+  margin-bottom: 0;  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,10 +79,15 @@ export const FormRow = styled.div`
       grid-column: span 2;
     }
   `}
+
+  ${(props) =>
+    props.isFooter &&
+    `
+    max-width: 100%;
+  `}
 `;
 
 export const FormField = styled(FieldFormik)`
-  /* border: 1px solid ${colors.tertiary}; */
   border: none;
   box-shadow: 0px 1px 3px ${colors.textSecondary};
   font-size: 1.6rem;

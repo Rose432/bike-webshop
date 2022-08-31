@@ -150,24 +150,6 @@ export const NavWrapper = styled.nav`
   }
 `;
 
-// export const NavLinksPositioner = styled.div`
-//   margin: auto 0;
-//   overflow-y: auto;
-//   height: 100%;
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-
-//   @media (${breakpoints.desktop}) {
-//     flex-direction: row;
-//     gap: 20px;
-//     align-items: center;
-//     justify-content: flex-start;
-//   }
-// `;
-
 const navItemsStyle = css`
   width: 100%;
   font-size: 2rem;

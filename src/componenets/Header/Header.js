@@ -20,11 +20,11 @@ import {
   Logout,
 } from "./HeaderStyle";
 import Hamburger from "../Hamburger/Hamburger";
-import { FasterCartContext } from "../../context/FasterCartContext";
 import { AuthContext } from "../../context/AuthContext";
+import { useSelector } from "react-redux";
 
-const Header = ({ isSecondary, isHome, isSecond, isDiffHead }) => {
-  const { fasterCart } = useContext(FasterCartContext);
+const Header = ({ isSecondary, isSecond, isDiffHead }) => {
+  const cart = useSelector((state) => state.cart.cart);
   const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
@@ -78,7 +78,7 @@ const Header = ({ isSecondary, isHome, isSecond, isDiffHead }) => {
                 aria-label="Number of items in cart"
                 overlap="rectangular"
                 color="error"
-                badgeContent={fasterCart.reduce((acc, cur) => {
+                badgeContent={cart.reduce((acc, cur) => {
                   return acc + cur.quantity;
                 }, 0)}
                 max={99}

@@ -1,5 +1,4 @@
 import { useRef, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "../../componenets/Header/Header";
 import Section from "../../componenets/Section/Section";
 import Footer from "../../componenets/Footer/Footer";
@@ -15,23 +14,27 @@ import {
 import { Button } from "../../lib/style/generalStyle";
 import Snackbar from "../../componenets/Snackbar/Snackbar";
 import { AuthContext } from "../../context/AuthContext";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../features/profile/profileSlice";
 
 const Login = () => {
-  const { isLoggedin, setIsLoggedin } = useContext(AuthContext);
-  let navigate = useNavigate();
+  const { setIsLoggedin } = useContext(AuthContext);
+  const dispatch = useDispatch();
   const snackbarRef = useRef(null);
 
   useEffect(() => {
     const snackbar = localStorage.getItem("showSnackbar");
-    snackbar && snackbarRef.current.show(true, "Registered successfully :)");
-
+    snackbar && snackbarRef.current.show(true, "Registered successfully");
     return localStorage.removeItem("showSnackbar");
   }, []);
 
   return (
     <>
-      <Header isDiffHead isSecondary />
-      <Snackbar ref={snackbarRef} />
+      <Header
+        isDiffHead
+        isSecondary
+      />
+        <Snackbar ref={snackbarRef} />
       <Section isUserAuth title={"Log In"}>
         <Formik
           initialValues={{
@@ -49,6 +52,9 @@ const Login = () => {
           onSubmit={async (values, actions) => {
             try {
               await new Promise((r) => setTimeout(r, 500));
+              dispatch(
+                loginUser({ email: values.email, password: values.password })
+              );
               localStorage.setItem("accessToken", "JWT TOKEN");
               localStorage.setItem("showSnackbar", "true");
               const token = localStorage.getItem("accessToken") !== null;
@@ -58,10 +64,7 @@ const Login = () => {
                 password: "",
               });
             } catch (err) {
-              snackbarRef.current.show(
-                false,
-                "Something went wrong, please try again :("
-              );
+              snackbarRef.current.show(false, err.message);
               console.error(err.message);
             }
           }}

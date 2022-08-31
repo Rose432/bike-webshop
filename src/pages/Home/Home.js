@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     const snackbar = localStorage.getItem("showSnackbar");
-    snackbar && snackbarRef.current.show(true, "Loged In sucessfully :)");
+    snackbar && snackbarRef.current.show(true, "Loged In sucessfully");
 
     return localStorage.removeItem("showSnackbar");
   }, []);
@@ -50,8 +50,8 @@ const Home = () => {
   return (
     <>
       <Header isSecond isHome={true} />
-      <Snackbar ref={snackbarRef} />
 
+      <Snackbar ref={snackbarRef} />
       <Landing />
       <Section
         isSecondaryTitle={true}

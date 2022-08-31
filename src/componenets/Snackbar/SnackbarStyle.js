@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import DoneIcon from "@material-ui/icons/Done";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
-import { colors } from "../../lib/style/theme";
+import { colors, breakpoints } from "../../lib/style/theme";
 
 export const SnackbarWrapper = styled.div`
   padding: 0 16px;
   position: fixed;
+  top: 200px;
   top: 5%;
-  right: 5%;
+  right: 2%;
   width: 300px;
+  max-width: 325px;
   height: 60px;
   border-radius: 8px;
   display: flex;
@@ -42,6 +44,10 @@ export const SnackbarWrapper = styled.div`
       bottom: 0;
       opacity: 0;
     }
+  }
+
+  @media (${breakpoints.desktop}) {
+    right: 15%;
   }
 `;
 

@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import {
   CartCardContainer,
   Figure,
@@ -12,15 +11,15 @@ import {
   Remove,
 } from "./CartCardStyle";
 import { Button } from "../../lib/style/generalStyle";
-import { FasterCartContext } from "../../context/FasterCartContext";
+import { useDispatch } from "react-redux";
+import {
+  incrementCartQuantity,
+  decrementCartQuantity,
+  removeCartItem,
+} from "../../features/cart/cartSlice";
 
 const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
-  const {
-    fasterCart,
-    handleIncrementCartQty,
-    handleDecrementCartQty,
-    handleItemRemove,
-  } = useContext(FasterCartContext);
+  const dispatch = useDispatch();
 
   return (
     <CartCardContainer>
@@ -35,17 +34,19 @@ const CartCard = ({ imgSrc, name, price, quantity, bicycleId }) => {
         <QuantityContainer>
           <Remove
             onClick={() =>
-              handleDecrementCartQty(bicycleId, quantity, fasterCart)
+              dispatch(decrementCartQuantity({ bicycleId, quantity }))
             }
           />
           <Quantity>{quantity}</Quantity>
           <Add
             onClick={() =>
-              handleIncrementCartQty(bicycleId, quantity, fasterCart)
+              dispatch(incrementCartQuantity({ bicycleId, quantity }))
             }
           />
         </QuantityContainer>
-        <Button onClick={() => handleItemRemove(bicycleId, fasterCart)}>
+        <Button
+          onClick={() => dispatch(removeCartItem({ bicycleId, quantity }))}
+        >
           Delete
         </Button>
       </FlexWrapper>
