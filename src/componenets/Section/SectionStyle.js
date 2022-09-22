@@ -135,8 +135,7 @@ export const Title = styled.h2`
 `;
 
 export const SmallLink = styled(Link)`
-  padding-top: 48px;
-
+  margin-top: 48px;
   font-size: 1.8rem;
   text-decoration: underline;
   display: flex;
@@ -147,7 +146,7 @@ export const SmallLink = styled(Link)`
   transition: all 0.2s ease-out;
 
   @media (${breakpoints.tabletMedium}) {
-    padding-top: 64px;
+    margin-top: 64px;
   }
 
   &:hover {

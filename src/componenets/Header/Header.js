@@ -83,7 +83,7 @@ const Header = ({ isSecondary, isSecond, isDiffHead }) => {
                 }, 0)}
                 max={99}
               >
-                <Cart aria-label="open cart page" />
+                <Cart aria-hidden="true" />
               </CartItems>
             </IconLink>
             <Hamburger open={open} setOpen={setOpen} />

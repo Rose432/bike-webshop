@@ -33,7 +33,7 @@ const Home = () => {
                 key={bicycle.id}
                 bicycleName={bicycle.name}
                 imgSrc={bicycle.image.url}
-                imgAlt={bicycle.description}
+                imgAlt={`Picture of bicycle model ${bicycle.name}`}
                 bikeTitle={bicycle.name}
                 bikePrice={bicycle.price.raw}
                 bicycleId={bicycle.id}
